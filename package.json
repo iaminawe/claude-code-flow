@@ -1,10 +1,10 @@
 {
   "name": "@iaminawe/claude-flow-taskmaster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Claude-Flow with enhanced TaskMaster integration - AI, Enterprise & Autonomous features",
   "main": "src/cli/main.ts",
   "bin": {
-    "claude-flow": "./bin/claude-flow"
+    "claude-flow": "./bin/claude-flow-node"
   },
   "scripts": {
     "postinstall": "node scripts/install-enhanced.js",

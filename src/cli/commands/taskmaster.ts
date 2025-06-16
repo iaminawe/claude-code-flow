@@ -181,8 +181,8 @@ async function handleGenerate(prdPath: string | undefined, options: any): Promis
     
     // Also sync to shared storage for VS Code
     try {
-      const { syncTasksToSharedStorage } = await import("../../integrations/taskmaster/services/sync-tasks.ts");
-      await syncTasksToSharedStorage();
+      const { syncTasksDirectly } = await import("../../integrations/taskmaster/services/sync-tasks-direct.ts");
+      await syncTasksDirectly();
       info("Tasks synced to .taskmaster directory for VS Code extension");
     } catch (syncErr) {
       warning("Could not sync to VS Code storage: " + syncErr);
@@ -197,8 +197,8 @@ async function handleSync(options: any): Promise<void> {
   
   try {
     // First, sync tasks from memory to shared storage
-    const { syncTasksToSharedStorage } = await import("../../integrations/taskmaster/services/sync-tasks.ts");
-    const tasks = await syncTasksToSharedStorage();
+    const { syncTasksDirectly } = await import("../../integrations/taskmaster/services/sync-tasks-direct.ts");
+    const tasks = await syncTasksDirectly();
     
     const taskmaster = new TaskMasterDenoBridge();
     

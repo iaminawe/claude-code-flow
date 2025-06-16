@@ -26,8 +26,18 @@ export async function syncTasksToSharedStorage(): Promise<any> {
 
     // Combine all tasks into a single array
     for (const entry of taskLists) {
-      if (Array.isArray(entry.value)) {
-        allTasks.push(...entry.value);
+      try {
+        // Values might be stored as JSON strings
+        let tasks = entry.value;
+        if (typeof tasks === 'string') {
+          tasks = JSON.parse(tasks);
+        }
+        if (Array.isArray(tasks)) {
+          allTasks.push(...tasks);
+        }
+      } catch (e) {
+        // Skip invalid entries
+        console.debug("Skipping invalid entry:", e);
       }
     }
 

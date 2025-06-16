@@ -44,11 +44,11 @@ This example demonstrates building a complete React todo application using:
 
 #### Option B: Using Swarm Mode
 ```bash
-# Start swarm with TaskMaster integration
-./claude-flow swarm start --taskmaster --max-agents 7
+# Start swarm with TaskMaster integration (always use --ui for monitoring)
+./claude-flow swarm start --taskmaster --max-agents 7 --ui
 
-# Or use optimized task file
-./claude-flow swarm start --taskmaster-file tasks-optimized.json
+# Or use optimized task file with real-time UI
+./claude-flow swarm start --taskmaster-file tasks-optimized.json --ui
 ```
 
 ### 4. Build the App with SPARC

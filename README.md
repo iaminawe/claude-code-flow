@@ -113,9 +113,9 @@ Optional: ./claude-flow start --ui  # Interactive process management
 ./claude-flow sparc tdd "user auth"           # Run TDD workflow
 
 # 🐝 Advanced Swarm System (NEW!)
-./claude-flow swarm "Build a REST API" --strategy development --parallel --monitor
+./claude-flow swarm "Build a REST API" --strategy development --parallel --ui
 ./claude-flow swarm "Research AI trends" --strategy research --distributed --ui
-./claude-flow swarm "Optimize performance" --strategy optimization --background
+./claude-flow swarm "Optimize performance" --strategy optimization --ui
 
 # 🎯 Run specific SPARC modes
 ./claude-flow sparc run code "implement API"      # Code generation
@@ -410,6 +410,57 @@ Claude Code slash commands available after init:
 
 # View MCP tools
 ./claude-flow mcp tools
+```
+
+## 📊 **Real-Time Monitoring**
+
+Claude-Flow provides two powerful real-time monitoring systems:
+
+### **1. Swarm UI Monitoring**
+The `--ui` flag enables a beautiful terminal-based dashboard for swarm execution:
+
+```bash
+# Always use --ui for real-time swarm monitoring
+./claude-flow swarm "Build feature" --ui
+./claude-flow swarm start --taskmaster --ui --max-agents 8
+```
+
+**Swarm UI Features:**
+- **Live Agent Status**: See what each agent is working on
+- **Progress Bars**: Visual progress for each task
+- **Resource Usage**: CPU, memory, and agent utilization
+- **Log Stream**: Real-time logs from all agents
+- **Interactive Controls**: Pause, resume, or stop execution
+- **Multi-pane Layout**: Organized view of all swarm activity
+
+### **2. TaskMaster Monitor Dashboard**
+Dedicated monitoring for TaskMaster task execution:
+
+```bash
+# Start in a separate terminal for best experience
+./claude-flow taskmaster monitor
+./claude-flow taskmaster monitor --interval 1  # Faster updates
+```
+
+**TaskMaster Monitor Features:**
+- **Task Overview**: Total, completed, running, queued, failed
+- **Active Task Details**: Current tasks with agent assignment and progress
+- **Performance Metrics**: Velocity, estimates, completion predictions
+- **Agent Utilization**: Load distribution across agent types
+- **Sync Status**: Real-time status synchronization health
+
+### **Using Both Together**
+For maximum visibility when using TaskMaster with Swarm:
+
+```bash
+# Terminal 1: Start swarm with UI
+./claude-flow swarm start --taskmaster-file tasks.json --ui
+
+# Terminal 2: Monitor TaskMaster metrics
+./claude-flow taskmaster monitor
+
+# Terminal 3: Watch overall system status
+./claude-flow monitor
 ```
 
 ## 📋 **TaskMaster Integration** 

@@ -671,6 +671,98 @@ claude-flow sparc tdd "task CRUD operations"
 ./claude-flow taskmaster update task-001 completed
 ```
 
+## Real-Time Monitoring
+
+TaskMaster provides comprehensive real-time monitoring capabilities, especially when integrated with Swarm mode.
+
+### TaskMaster Monitor Dashboard
+
+The dedicated TaskMaster monitor provides detailed execution insights:
+
+```bash
+# Start monitoring (best in a separate terminal)
+./claude-flow taskmaster monitor
+
+# Customize update intervals
+./claude-flow taskmaster monitor --interval 1 --sync-interval 5
+```
+
+**Dashboard Sections:**
+1. **Overview Panel**
+   - Total tasks, completed percentage
+   - Running, queued, and failed counts
+   - Visual progress indicators
+
+2. **Active Tasks**
+   - Task ID and title
+   - Assigned agent and progress percentage
+   - Elapsed time for each task
+
+3. **Performance Metrics**
+   - Tasks per minute velocity
+   - Average task duration
+   - Estimated completion time
+   - Parallelization efficiency
+
+4. **Agent Utilization**
+   - Distribution across agent types
+   - Load balancing metrics
+   - Available vs busy agents
+
+5. **Sync Status**
+   - Real-time synchronization health
+   - Pending updates and conflicts
+   - Last sync timestamp
+
+### Swarm UI Integration
+
+When using TaskMaster with Swarm, always enable the UI for best visibility:
+
+```bash
+# TaskMaster + Swarm with full UI monitoring
+./claude-flow swarm start --taskmaster --ui --max-agents 10
+
+# Using optimized task file
+./claude-flow swarm start --taskmaster-file tasks.json --ui
+
+# Direct PRD execution
+./claude-flow swarm start --taskmaster-prd app.prd --ui
+```
+
+**Swarm UI Features:**
+- **Split-pane Layout**: Agents, tasks, logs, and metrics
+- **Color-coded Status**: Visual task state indicators
+- **Interactive Controls**: Pause, resume, stop commands
+- **Resource Monitoring**: CPU, memory, network usage
+- **Agent Communication**: See inter-agent messages
+- **Error Highlighting**: Immediate failure visibility
+
+### Multi-Terminal Monitoring Setup
+
+For complex projects, use multiple terminals for comprehensive monitoring:
+
+```bash
+# Terminal 1: Execute with Swarm UI
+./claude-flow swarm start --taskmaster-file optimized.json --ui
+
+# Terminal 2: TaskMaster metrics
+./claude-flow taskmaster monitor
+
+# Terminal 3: System-wide monitoring
+./claude-flow monitor
+
+# Terminal 4: Logs (optional)
+tail -f .taskmaster/logs/sync.log
+```
+
+### Monitoring Best Practices
+
+1. **Always use --ui with swarm**: Essential for real-time visibility
+2. **Separate terminals**: Don't mix execution and monitoring
+3. **Adjust intervals**: Lower intervals for rapid tasks
+4. **Watch sync status**: Ensure systems stay synchronized
+5. **Monitor agent utilization**: Optimize concurrency settings
+
 ## Troubleshooting
 
 ### Common Issues
@@ -1126,14 +1218,14 @@ TaskMaster is a practical tool for converting PRDs into structured tasks with SP
 ### Integration with Swarm Mode
 
 ```bash
-# Use TaskMaster tasks directly in swarm mode
-claude-flow swarm start --taskmaster --max-agents 8
+# Use TaskMaster tasks directly in swarm mode (always use --ui for monitoring)
+./claude-flow swarm start --taskmaster --max-agents 8 --ui
 
 # Or use a specific PRD
-claude-flow swarm start --taskmaster-prd requirements.prd
+./claude-flow swarm start --taskmaster-prd requirements.prd --ui
 
 # Or use exported task file
-claude-flow swarm start --taskmaster-file optimized-tasks.json
+./claude-flow swarm start --taskmaster-file optimized-tasks.json --ui
 ```
 
 ### Configuration Management

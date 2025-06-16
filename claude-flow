@@ -1,3 +1,15 @@
 #!/usr/bin/env node
 // Local Claude-Flow wrapper for development
-require('./bin/claude-flow');
+const { spawn } = require('child_process');
+const path = require('path');
+
+// Use the deno wrapper script since compilation fails with stack overflow
+const denoBin = path.join(__dirname, 'bin', 'claude-flow-deno');
+const child = spawn(denoBin, process.argv.slice(2), {
+  stdio: 'inherit',
+  shell: true
+});
+
+child.on('exit', (code) => {
+  process.exit(code);
+});

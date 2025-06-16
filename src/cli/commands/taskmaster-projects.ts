@@ -2,8 +2,7 @@
  * TaskMaster project management commands
  */
 
-import { cyan, bold, yellow, gray } from "https://deno.land/std@0.224.0/fmt/colors.ts";
-import { Select } from "https://deno.land/x/cliffy@v1.0.0-rc.3/prompt/mod.ts";
+import { cyan, bold, yellow, gray, green } from "https://deno.land/std@0.224.0/fmt/colors.ts";
 
 export async function handleProjects(args: string[], options: any): Promise<void> {
   const action = args[0] || 'list';
@@ -13,7 +12,7 @@ export async function handleProjects(args: string[], options: any): Promise<void
       await listProjects();
       break;
     case 'select':
-      await selectProject();
+      await selectProject(args);
       break;
     case 'current':
       await showCurrentProject();
@@ -44,8 +43,9 @@ async function listProjects(): Promise<void> {
           tasks = JSON.parse(tasks);
         }
         if (Array.isArray(tasks) && tasks.length > 0) {
-          // Try to get project info from first task or metadata
-          const projectId = entry.metadata?.prdId || tasks[0]?.metadata?.prdId;
+          // Extract project ID from entry key
+          const match = entry.key.match(/tasks_([a-f0-9-]+)(?:_|$)/);
+          const projectId = match ? match[1] : null;
           if (projectId) {
             taskCounts.set(projectId, (taskCounts.get(projectId) || 0) + tasks.length);
           }
@@ -130,54 +130,60 @@ async function listProjects(): Promise<void> {
   }
 }
 
-async function selectProject(): Promise<void> {
+async function selectProject(args: string[]): Promise<void> {
   try {
-    // Get project list
+    const projectId = args[1];
+    
+    if (!projectId) {
+      console.log(yellow("Please specify a project ID."));
+      console.log("Usage: taskmaster projects select <project-id>");
+      console.log();
+      console.log("To see available project IDs, run: " + gray("taskmaster projects list"));
+      return;
+    }
+    
+    // Special case for clearing selection
+    if (projectId === 'all' || projectId === 'none') {
+      const { syncTasksForProject } = await import("../../integrations/taskmaster/services/sync-with-project-filter.ts");
+      await syncTasksForProject("");
+      console.log(green("✅ Project filter cleared. Showing all tasks."));
+      return;
+    }
+    
+    // Verify project exists
     const memoryPath = "./memory/memory-store.json";
     const memoryData = JSON.parse(await Deno.readTextFile(memoryPath));
-    
-    const projects = [];
     const prdEntries = memoryData.taskmaster_prds || [];
     
+    let foundProject = null;
     for (const entry of prdEntries) {
       try {
         let prd = entry.value;
         if (typeof prd === 'string') {
           prd = JSON.parse(prd);
         }
-        if (prd && prd.id && prd.title) {
-          projects.push({
-            name: prd.title,
-            value: prd.id
-          });
+        if (prd && (prd.id === projectId || prd.id.startsWith(projectId))) {
+          foundProject = prd;
+          break;
         }
       } catch (e) {
         // Skip
       }
     }
     
-    if (projects.length === 0) {
-      console.log(yellow("No projects found."));
+    if (!foundProject) {
+      console.log(yellow(`Project not found: ${projectId}`));
+      console.log("Run " + gray("taskmaster projects list") + " to see available projects.");
       return;
     }
     
-    // Add "All Projects" option
-    projects.unshift({
-      name: "All Projects (No Filter)",
-      value: ""
-    });
-    
-    const selected = await Select.prompt({
-      message: "Select a project to work with:",
-      options: projects
-    });
-    
     // Sync tasks for selected project
     const { syncTasksForProject } = await import("../../integrations/taskmaster/services/sync-with-project-filter.ts");
-    await syncTasksForProject(selected);
+    await syncTasksForProject(foundProject.id);
     
     console.log();
-    console.log("VS Code will now show tasks for the selected project.");
+    console.log(green(`✅ Selected project: ${foundProject.title}`));
+    console.log("VS Code will now show tasks for this project only.");
     console.log("Restart the sync server if it's running.");
     
   } catch (error) {

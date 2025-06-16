@@ -104,7 +104,7 @@ export async function syncTasksForProject(projectId?: string): Promise<any> {
 }
 
 function extractProjectId(key: string): string | undefined {
-  // Try to extract project ID from key patterns like "tasks_PROJECT-ID_timestamp"
-  const match = key.match(/tasks_([a-f0-9-]+)_/);
+  // Try to extract project ID from key patterns like "tasks_PROJECT-ID" or "tasks_PROJECT-ID_timestamp"
+  const match = key.match(/tasks_([a-f0-9-]+)(?:_|$)/);
   return match ? match[1] : undefined;
 }

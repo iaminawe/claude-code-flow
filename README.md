@@ -108,9 +108,9 @@ Optional: ./claude-flow start --ui  # Interactive process management
 
 ```bash
 # ⚡ SPARC Development Workflow (NEW: Simplified!)
-./claude-flow claude-flow sparc "build a todo app" # Orchestrator mode (default)
-./claude-flow claude-flow sparc modes              # List 17+ development modes
-./claude-flow claude-flow sparc tdd "user auth"    # Run TDD workflow
+./claude-flow sparc "build a todo app"        # Orchestrator mode (default)
+./claude-flow sparc modes                     # List 17+ development modes
+./claude-flow sparc tdd "user auth"           # Run TDD workflow
 
 # 🐝 Advanced Swarm System (NEW!)
 ./claude-flow swarm "Build a REST API" --strategy development --parallel --monitor
@@ -118,9 +118,9 @@ Optional: ./claude-flow start --ui  # Interactive process management
 ./claude-flow swarm "Optimize performance" --strategy optimization --background
 
 # 🎯 Run specific SPARC modes
-npx claude-flow sparc run code "implement API"  # Code generation
-npx claude-flow sparc run tdd "auth tests"      # Test-driven development
-npx claude-flow sparc run architect "system"    # Architecture design
+./claude-flow sparc run code "implement API"      # Code generation
+./claude-flow sparc run tdd "auth tests"         # Test-driven development
+./claude-flow sparc run architect "system"       # Architecture design
 
 # 🤖 Spawn a research team
 ./claude-flow agent spawn researcher --name "Senior Researcher"
@@ -1272,6 +1272,30 @@ claude-flow taskmaster update task-002 completed
 claude-flow taskmaster list  # View current status
 ```
 
+### 🔌 **VS Code Integration**
+
+TaskMaster includes full VS Code extension integration for visual task management:
+
+```bash
+# Initialize VS Code sync environment
+claude-flow taskmaster init
+
+# Start the sync server
+claude-flow taskmaster sync server start
+
+# Manage projects
+claude-flow taskmaster projects list      # List all projects with task counts
+claude-flow taskmaster projects select <id>  # Filter tasks by project
+claude-flow taskmaster projects current   # Show current project selection
+```
+
+The VS Code extension (claude-task-master) will automatically:
+- Connect to the sync server via WebSocket
+- Display tasks in a dedicated panel
+- Show project names and task counts
+- Update in real-time as tasks change
+- Support task filtering by project
+
 ### 💡 **TaskMaster Tips**
 
 1. **PRD Structure Matters**: Well-structured markdown PRDs generate better tasks
@@ -1279,12 +1303,13 @@ claude-flow taskmaster list  # View current status
 3. **AI Enhancement**: Requires API key but provides much richer task descriptions
 4. **Memory Integration**: All tasks are stored in Claude-Flow memory for persistence
 5. **Export Flexibility**: Generate outputs for different tools and team members
+6. **VS Code Integration**: Real-time task visualization and project management
+7. **Project Organization**: Tasks automatically include project identification
 
 ### 🚧 **Current Limitations**
 
 - **Markdown Only**: PRDs must be in markdown format
 - **Single AI Provider**: Currently only supports Anthropic Claude API
-- **No Real-time Sync**: VS Code integration exists but isn't connected to CLI
 - **Basic Templates**: Template system is partially implemented
 - **No External Integrations**: Jira, Asana, GitHub sync not available
 

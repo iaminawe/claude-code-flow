@@ -195,7 +195,9 @@ export class TaskMasterDenoBridge {
       // Convert to our TaskMasterTask format if needed
       const tasks: TaskMasterTask[] = generatedTasks.map(task => ({
         ...task,
-        sparc_mode: options?.sparcMapping ? task.sparc_mode : undefined
+        sparc_mode: options?.sparcMapping ? task.sparc_mode : undefined,
+        projectId: parsedPRD.id,
+        projectTitle: parsedPRD.title
       }));
       
       // Store tasks in memory

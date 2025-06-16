@@ -81,6 +81,10 @@ export async function taskmasterAction(ctx: CommandContext): Promise<void> {
         await handleExecuteStatus(args[1], options);
         break;
 
+      case "monitor":
+        await handleMonitor(options);
+        break;
+
       case "help":
         showTaskmasterHelp();
         break;
@@ -181,8 +185,8 @@ async function handleGenerate(prdPath: string | undefined, options: any): Promis
     
     // Also sync to shared storage for VS Code
     try {
-      const { syncTasksDirectly } = await import("../../integrations/taskmaster/services/sync-tasks-direct.ts");
-      await syncTasksDirectly();
+      const { syncTasksFromMemoryFile } = await import("../../integrations/taskmaster/services/sync-tasks-from-file.ts");
+      await syncTasksFromMemoryFile();
       info("Tasks synced to .taskmaster directory for VS Code extension");
     } catch (syncErr) {
       warning("Could not sync to VS Code storage: " + syncErr);
@@ -197,8 +201,8 @@ async function handleSync(options: any): Promise<void> {
   
   try {
     // First, sync tasks from memory to shared storage
-    const { syncTasksDirectly } = await import("../../integrations/taskmaster/services/sync-tasks-direct.ts");
-    const tasks = await syncTasksDirectly();
+    const { syncTasksFromMemoryFile } = await import("../../integrations/taskmaster/services/sync-tasks-from-file.ts");
+    const tasks = await syncTasksFromMemoryFile();
     
     const taskmaster = new TaskMasterDenoBridge();
     
@@ -692,6 +696,12 @@ function showTaskmasterHelp(): void {
   console.log(`    ${gray("No options")}`);
   console.log();
   
+  console.log(`  ${cyan("monitor")}                 Real-time execution monitor dashboard`);
+  console.log(`    ${gray("Options:")}`);
+  console.log(`    ${gray("--interval <seconds>  Update interval (default: 1)")}`);
+  console.log(`    ${gray("--sync-interval <s>   Status sync interval (default: 5)")}`);
+  console.log();
+  
   // Sync commands
   console.log(`  ${cyan("sync")}                    Sync with VS Code extension`);
   console.log(`    ${gray("Options:")}`);
@@ -753,6 +763,7 @@ function showTaskmasterHelp(): void {
   console.log(`  ${gray("claude-flow taskmaster execute task-001 --agent-type developer")}`);
   console.log(`  ${gray("claude-flow taskmaster execute-all --filter priority=high --parallel")}`);
   console.log(`  ${gray("claude-flow taskmaster execute-status exec-1234567890")}`);
+  console.log(`  ${gray("claude-flow taskmaster monitor --interval 2")}`);
   console.log();
 }
 
@@ -878,5 +889,86 @@ async function handleExecuteStatus(executionId: string | undefined, options: any
     
   } catch (err) {
     error(`Failed to get execution status: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
+async function handleMonitor(options: any): Promise<void> {
+  info("Starting TaskMaster execution monitor...");
+  
+  try {
+    const { TaskMasterOrchestratorAdapter } = await import("../../integrations/taskmaster/adapters/orchestrator-adapter.ts");
+    const adapter = new TaskMasterOrchestratorAdapter();
+    
+    // Start monitoring with dashboard callback
+    adapter.startMonitoring({
+      progressInterval: options.interval ? parseInt(options.interval) * 1000 : 1000,
+      syncInterval: options.syncInterval ? parseInt(options.syncInterval) * 1000 : 5000,
+      dashboardCallback: (dashboard) => {
+        // Clear screen for updated dashboard
+        console.clear();
+        
+        console.log(bold(cyan("TaskMaster Execution Monitor")));
+        console.log("Press Ctrl+C to stop\n");
+        
+        // Overview
+        const { overview } = dashboard;
+        console.log(bold("Overview:"));
+        console.log(`  Total Tasks: ${overview.totalTasks}`);
+        console.log(`  Completed: ${green(overview.completedTasks.toString())} (${overview.progressPercentage}%)`);
+        console.log(`  Running: ${yellow(overview.runningTasks.toString())}`);
+        console.log(`  Queued: ${overview.queuedTasks}`);
+        console.log(`  Failed: ${overview.failedTasks > 0 ? red(overview.failedTasks.toString()) : '0'}`);
+        console.log();
+        
+        // Active Tasks
+        if (dashboard.activeTasks.length > 0) {
+          console.log(bold("Active Tasks:"));
+          dashboard.activeTasks.forEach(task => {
+            const duration = Math.round(task.duration / 1000);
+            console.log(`  ${cyan(task.taskId.substring(0, 8))} - ${task.title}`);
+            console.log(`    Agent: ${task.agentId}, Progress: ${task.progress}%, Duration: ${duration}s`);
+          });
+          console.log();
+        }
+        
+        // Estimates
+        const { estimates } = dashboard;
+        console.log(bold("Estimates:"));
+        console.log(`  Remaining Tasks: ${estimates.remainingTasks}`);
+        console.log(`  Average Task Duration: ${Math.round(estimates.averageTaskDuration / 1000)}s`);
+        console.log(`  Current Velocity: ${estimates.currentVelocity.toFixed(2)} tasks/min`);
+        if (estimates.estimatedCompletionTime) {
+          console.log(`  Estimated Completion: ${estimates.estimatedCompletionTime.toLocaleTimeString()}`);
+        }
+        console.log();
+        
+        // Sync Status
+        const syncStatus = adapter.getSyncStatus();
+        console.log(bold("Sync Status:"));
+        console.log(`  Active: ${syncStatus.isActive ? green('Yes') : red('No')}`);
+        console.log(`  Last Sync: ${syncStatus.lastSync ? syncStatus.lastSync.toLocaleTimeString() : 'Never'}`);
+        console.log(`  Pending Updates: ${syncStatus.pendingUpdates}`);
+        console.log(`  Conflicts: ${syncStatus.conflicts}`);
+      }
+    });
+    
+    console.log(success("Monitor started. Press Ctrl+C to stop."));
+    
+    // Handle graceful shutdown
+    const shutdownHandler = () => {
+      console.log("\n\nStopping monitor...");
+      adapter.stopMonitoring();
+      success("Monitor stopped.");
+      Deno.exit(0);
+    };
+    
+    Deno.addSignalListener("SIGINT", shutdownHandler);
+    Deno.addSignalListener("SIGTERM", shutdownHandler);
+    
+    // Keep process alive
+    await new Promise(() => {});
+    
+  } catch (err) {
+    error(`Failed to start monitor: ${err instanceof Error ? err.message : String(err)}`);
   }
 }

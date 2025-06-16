@@ -6,6 +6,8 @@
 import { TaskAdapter } from './task-adapter-deno.ts';
 import { TaskMasterDenoBridge } from '../deno-bridge.ts';
 import { AgentMappingService } from '../services/agent-mapping-service.ts';
+import { TaskMasterProgressMonitor } from '../services/progress-monitor.ts';
+import { TaskMasterStatusSync } from '../services/status-sync.ts';
 import type { Task as TaskMasterTask } from '../types/task-types.ts';
 import type { Task as ClaudeFlowTask } from '../../../core/types/task.types.ts';
 
@@ -31,11 +33,15 @@ export class TaskMasterOrchestratorAdapter {
   private taskAdapter: TaskAdapter;
   private agentMapping: AgentMappingService;
   private taskmaster: TaskMasterDenoBridge;
+  private progressMonitor: TaskMasterProgressMonitor;
+  private statusSync: TaskMasterStatusSync;
 
   constructor() {
     this.taskAdapter = new TaskAdapter();
     this.agentMapping = new AgentMappingService();
     this.taskmaster = new TaskMasterDenoBridge();
+    this.progressMonitor = new TaskMasterProgressMonitor(this.taskmaster);
+    this.statusSync = new TaskMasterStatusSync(this.taskmaster, this);
   }
 
   /**
@@ -71,8 +77,14 @@ export class TaskMasterOrchestratorAdapter {
       // 5. Submit to orchestrator (placeholder for now)
       const executionId = this.generateExecutionId();
       
+      // Track execution in progress monitor
+      this.progressMonitor.trackExecution(taskId, executionId);
+      
       // Update task status in TaskMaster
       await this.taskmaster.updateTaskStatus(taskId, 'in_progress');
+      
+      // Queue status sync
+      this.statusSync.queueStatusUpdate(taskId, 'in_progress', 'orchestrator');
 
       // Return execution result
       return {
@@ -255,5 +267,58 @@ export class TaskMasterOrchestratorAdapter {
 
   private generateExecutionId(): string {
     return `exec-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  /**
+   * Start monitoring and status synchronization
+   */
+  startMonitoring(options?: {
+    progressInterval?: number;
+    syncInterval?: number;
+    dashboardCallback?: (dashboard: any) => void;
+  }): void {
+    const { progressInterval = 1000, syncInterval = 5000, dashboardCallback } = options || {};
+    
+    // Start progress monitoring
+    this.progressMonitor.startMonitoring(progressInterval);
+    if (dashboardCallback) {
+      this.progressMonitor.onDashboardUpdate(dashboardCallback);
+    }
+    
+    // Start status synchronization
+    this.statusSync.startSync(syncInterval);
+  }
+
+  /**
+   * Stop monitoring and synchronization
+   */
+  stopMonitoring(): void {
+    this.progressMonitor.stopMonitoring();
+    this.statusSync.stopSync();
+  }
+
+  /**
+   * Get current progress dashboard
+   */
+  async getProgressDashboard(): Promise<any> {
+    return await this.progressMonitor.getProgressDashboard();
+  }
+
+  /**
+   * Get sync status
+   */
+  getSyncStatus(): any {
+    return this.statusSync.getSyncStatus();
+  }
+
+  /**
+   * Simulate task completion (for testing)
+   */
+  simulateTaskCompletion(executionId: string, success: boolean = true): void {
+    this.progressMonitor.updateExecution(executionId, {
+      status: success ? 'completed' : 'failed',
+      endTime: new Date(),
+      error: success ? undefined : 'Simulated failure'
+    });
   }
 }

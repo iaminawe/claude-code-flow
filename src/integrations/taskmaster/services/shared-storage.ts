@@ -145,7 +145,28 @@ export class SharedStorage {
     try {
       const tasksPath = join(this.tasksPath, 'tasks.json');
       const content = await Deno.readTextFile(tasksPath);
-      return JSON.parse(content);
+      const data = JSON.parse(content);
+      
+      // Handle both formats - array or extension format
+      if (Array.isArray(data)) {
+        return data;
+      } else if (data.tasks && Array.isArray(data.tasks)) {
+        // Convert from extension format back to TaskMaster format
+        return data.tasks.map((task: any) => ({
+          id: task.id,
+          title: task.title,
+          description: task.description,
+          type: task.type || 'implementation',
+          priority: task.priority || 'medium',
+          status: task.status === 'todo' ? 'pending' : task.status.replace('-', '_'),
+          assignee: task.assignedAgent || null,
+          sparc_mode: task.sparcPhase,
+          subtasks: task.subtasks || [],
+          createdAt: task.createdAt,
+          metadata: task.metadata
+        }));
+      }
+      return [];
     } catch (error) {
       await this.log('error', `Failed to read tasks: ${error}`);
       return [];
@@ -167,11 +188,15 @@ export class SharedStorage {
       // Create backup in history
       await this.createBackup();
 
-      // Write new tasks
-      const tasksPath = join(this.tasksPath, 'tasks.json');
-      await this.writeJSON(tasksPath, tasks);
+      // Convert to extension format
+      const { convertToExtensionFormat } = await import("./convert-to-extension-format.ts");
+      const extensionFormat = convertToExtensionFormat(tasks);
 
-      await this.log('info', `Wrote ${tasks.length} tasks`);
+      // Write new tasks in extension format
+      const tasksPath = join(this.tasksPath, 'tasks.json');
+      await this.writeJSON(tasksPath, extensionFormat);
+
+      await this.log('info', `Wrote ${tasks.length} tasks in VS Code extension format`);
     } catch (error) {
       await this.log('error', `Failed to write tasks: ${error}`);
       throw error;

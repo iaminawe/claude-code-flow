@@ -4,6 +4,8 @@ import { TaskMasterDenoBridge } from "../../integrations/taskmaster/deno-bridge.
 import { TaskMasterAIBridge } from "../../integrations/taskmaster/deno-bridge-ai.ts";
 import { join } from "https://deno.land/std@0.224.0/path/mod.ts";
 import { createTaskMasterTemplateCommands } from "./taskmaster-templates.ts";
+import { SharedStorage } from "../../integrations/taskmaster/services/shared-storage.ts";
+import { WebSocketServer } from "../../integrations/taskmaster/services/websocket-server.ts";
 
 export async function taskmasterAction(ctx: CommandContext): Promise<void> {
   const { args, flags = {} } = ctx;
@@ -47,6 +49,10 @@ export async function taskmasterAction(ctx: CommandContext): Promise<void> {
         await handleExport(options);
         break;
 
+      case "init":
+        await handleInit(options);
+        break;
+
       case "templates":
         await handleTemplates(args.slice(1), options);
         break;
@@ -61,6 +67,18 @@ export async function taskmasterAction(ctx: CommandContext): Promise<void> {
         
       case "ai-status":
         await handleAIStatus();
+        break;
+
+      case "execute":
+        await handleExecute(args[1], options);
+        break;
+
+      case "execute-all":
+        await handleExecuteAll(options);
+        break;
+
+      case "execute-status":
+        await handleExecuteStatus(args[1], options);
         break;
 
       case "help":
@@ -184,36 +202,131 @@ async function handleSync(options: any): Promise<void> {
   }
 }
 
+// Global WebSocket server instance
+let wsServer: WebSocketServer | null = null;
+
 async function handleSyncServer(args: string[], options: any): Promise<void> {
   const action = args[0] || 'start';
   
   switch (action) {
     case 'start':
-      info("Starting VS Code sync server...");
-      console.log(cyan("\nSync Server Configuration:"));
-      console.log(`  Port: ${options.port || 8765}`);
-      console.log(`  Host: ${options.host || 'localhost'}`);
-      console.log(`  WebSocket: ${options.websocket !== false ? 'Enabled' : 'Disabled'}`);
-      console.log(`  HTTP: ${options.http !== false ? 'Enabled' : 'Disabled'}`);
-      
-      console.log("\n" + yellow("Note: This feature is still in development."));
-      console.log("The VS Code extension sync server will start here when fully implemented.");
-      console.log("\nFor now, use manual sync with: " + cyan("taskmaster sync"));
+      await startSyncServer(options);
       break;
       
     case 'stop':
-      info("Stopping VS Code sync server...");
-      console.log(yellow("Sync server stop functionality not yet implemented."));
+      await stopSyncServer();
       break;
       
     case 'status':
-      info("VS Code sync server status:");
-      console.log(yellow("Server status functionality not yet implemented."));
+      await showSyncServerStatus();
       break;
       
     default:
       error(`Unknown sync server action: ${action}`);
       console.log("\nAvailable actions: start, stop, status");
+  }
+}
+
+async function startSyncServer(options: any): Promise<void> {
+  info("Starting VS Code sync server...");
+  
+  try {
+    // Check if server is already running
+    if (wsServer) {
+      warning("Sync server is already running!");
+      await showSyncServerStatus();
+      return;
+    }
+    
+    // Initialize storage if needed
+    const storage = new SharedStorage({ autoInit: false });
+    if (!await storage.isInitialized()) {
+      warning("TaskMaster not initialized. Running init...");
+      await storage.initialize();
+    }
+    
+    // Get configuration
+    const config = await storage.getSyncConfig();
+    const port = options.port || config.port || 5173;
+    const host = options.host || config.host || 'localhost';
+    
+    // Create and start server
+    wsServer = new WebSocketServer(storage, port, host);
+    await wsServer.start();
+    
+    success("VS Code sync server started!");
+    console.log();
+    console.log("Server details:");
+    console.log(`  WebSocket: ${cyan(`ws://${host}:${port}/taskmaster`)}`);
+    console.log(`  HTTP API:  ${cyan(`http://${host}:${port}/api/`)}`);
+    console.log(`  Health:    ${cyan(`http://${host}:${port}/health`)}`);
+    console.log();
+    console.log("The VS Code extension will automatically connect to this server.");
+    console.log("To stop the server, run: " + cyan("taskmaster sync server stop"));
+    
+    // Keep the process running
+    console.log("\nPress Ctrl+C to stop the server...");
+    
+    // Handle graceful shutdown
+    const shutdownHandler = async () => {
+      console.log("\n\nShutting down sync server...");
+      if (wsServer) {
+        await wsServer.stop();
+        wsServer = null;
+      }
+      Deno.exit(0);
+    };
+    
+    Deno.addSignalListener("SIGINT", shutdownHandler);
+    Deno.addSignalListener("SIGTERM", shutdownHandler);
+    
+    // Keep process alive
+    await new Promise(() => {});
+    
+  } catch (err) {
+    error(`Failed to start sync server: ${err instanceof Error ? err.message : String(err)}`);
+    wsServer = null;
+  }
+}
+
+async function stopSyncServer(): Promise<void> {
+  info("Stopping VS Code sync server...");
+  
+  try {
+    if (!wsServer) {
+      warning("No sync server is currently running.");
+      return;
+    }
+    
+    await wsServer.stop();
+    wsServer = null;
+    success("VS Code sync server stopped!");
+    
+  } catch (err) {
+    error(`Failed to stop sync server: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
+async function showSyncServerStatus(): Promise<void> {
+  info("VS Code sync server status:");
+  
+  if (!wsServer) {
+    console.log(yellow("  Server is not running"));
+    console.log("\nTo start the server, run: " + cyan("taskmaster sync server start"));
+    return;
+  }
+  
+  const status = wsServer.getStatus();
+  console.log(green("  Server is running"));
+  console.log(`  Host: ${status.host}`);
+  console.log(`  Port: ${status.port}`);
+  console.log(`  Connected clients: ${status.clients}`);
+  
+  if (status.clients > 0) {
+    console.log("\nConnected client IDs:");
+    status.clientIds.forEach(id => {
+      console.log(`  - ${id}`);
+    });
   }
 }
 
@@ -442,6 +555,44 @@ async function handleAIStatus(): Promise<void> {
   }
 }
 
+async function handleInit(options: any): Promise<void> {
+  info("Initializing TaskMaster VS Code sync environment...");
+  
+  try {
+    const storage = new SharedStorage({ autoInit: false });
+    
+    // Check if already initialized
+    if (await storage.isInitialized()) {
+      warning("TaskMaster directory already exists!");
+      console.log("\nExisting structure found at: " + cyan(".taskmaster/"));
+      console.log("\nTo reinitialize, first remove the existing directory:");
+      console.log(gray("  rm -rf .taskmaster"));
+      return;
+    }
+    
+    // Initialize storage
+    await storage.initialize();
+    
+    success("TaskMaster sync environment initialized!");
+    console.log();
+    console.log("Created directory structure:");
+    console.log(cyan("  .taskmaster/"));
+    console.log("  ├── tasks/         " + gray("# Task storage"));
+    console.log("  ├── config/        " + gray("# Sync configuration"));
+    console.log("  ├── sparc/         " + gray("# SPARC mappings"));
+    console.log("  └── logs/          " + gray("# Sync logs"));
+    console.log();
+    console.log("Next steps:");
+    console.log("  1. Install the VS Code extension: " + cyan("claude-task-master"));
+    console.log("  2. Start the sync server: " + cyan("taskmaster sync server start"));
+    console.log("  3. Open VS Code in this directory");
+    console.log();
+    console.log("The extension will automatically detect the .taskmaster directory.");
+  } catch (err) {
+    error(`Failed to initialize: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
 function showTaskmasterHelp(): void {
   console.log();
   console.log(bold(cyan("TaskMaster - PRD Parsing and Task Generation")));
@@ -449,6 +600,11 @@ function showTaskmasterHelp(): void {
   console.log("Usage: claude-flow taskmaster <command> [options]");
   console.log();
   console.log(bold("Commands:"));
+  console.log();
+  
+  // Init command
+  console.log(`  ${cyan("init")}                    Initialize VS Code sync environment`);
+  console.log(`    ${gray("Creates .taskmaster directory for extension integration")}`);
   console.log();
   
   // Parse command
@@ -499,6 +655,28 @@ function showTaskmasterHelp(): void {
   console.log(`  ${cyan("analyze")} <prd-file>      Analyze PRD with AI (requires API key)`);
   console.log(`    ${gray("Returns: Executive summary, complexity assessment, feature breakdown")}`);
   console.log(`    ${gray("         effort estimation, and risk analysis")}`);
+  console.log();
+  
+  // Execute commands
+  console.log(`  ${cyan("execute")} <task-id>       Execute a single task through orchestrator`);
+  console.log(`    ${gray("Options:")}`);
+  console.log(`    ${gray("--agent-type <type>   Specify agent type")}`);
+  console.log(`    ${gray("--timeout <ms>        Execution timeout")}`);
+  console.log(`    ${gray("--retry <count>       Retry count on failure")}`);
+  console.log(`    ${gray("--priority <0-100>    Task priority")}`);
+  console.log();
+  
+  console.log(`  ${cyan("execute-all")}             Execute all tasks (or filtered subset)`);
+  console.log(`    ${gray("Options:")}`);
+  console.log(`    ${gray("--prd-id <id>         Execute tasks from specific PRD")}`);
+  console.log(`    ${gray("--tasks <id1,id2>     Execute specific task IDs")}`);
+  console.log(`    ${gray("--filter <key=val>    Filter tasks (e.g., priority=high,status=pending)")}`);
+  console.log(`    ${gray("--parallel            Enable parallel execution (default: true)")}`);
+  console.log(`    ${gray("--max-agents <n>      Maximum concurrent agents")}`);
+  console.log();
+  
+  console.log(`  ${cyan("execute-status")} <id>     Check execution status`);
+  console.log(`    ${gray("No options")}`);
   console.log();
   
   // Sync commands
@@ -558,4 +736,134 @@ function showTaskmasterHelp(): void {
   console.log(`  ${yellow("# Check AI configuration:")}`);
   console.log(`  ${gray("claude-flow taskmaster ai-status")}`);
   console.log();
+  console.log(`  ${yellow("# Execute tasks:")}`);
+  console.log(`  ${gray("claude-flow taskmaster execute task-001 --agent-type developer")}`);
+  console.log(`  ${gray("claude-flow taskmaster execute-all --filter priority=high --parallel")}`);
+  console.log(`  ${gray("claude-flow taskmaster execute-status exec-1234567890")}`);
+  console.log();
+}
+
+async function handleExecute(taskId: string | undefined, options: any): Promise<void> {
+  if (!taskId) {
+    error("Task ID is required");
+    console.log("Usage: taskmaster execute <task-id> [options]");
+    return;
+  }
+
+  info(`Executing task: ${taskId}`);
+  
+  try {
+    const { TaskMasterOrchestratorAdapter } = await import("../../integrations/taskmaster/adapters/orchestrator-adapter.ts");
+    const adapter = new TaskMasterOrchestratorAdapter();
+    
+    const result = await adapter.executeTask(taskId, {
+      agentType: options.agentType,
+      timeout: options.timeout ? parseInt(options.timeout) : undefined,
+      retryCount: options.retry ? parseInt(options.retry) : undefined,
+      priority: options.priority ? parseInt(options.priority) : undefined
+    });
+    
+    if (result.status === 'failed') {
+      error(`Task execution failed: ${result.error}`);
+      return;
+    }
+    
+    success(`Task ${taskId} queued for execution`);
+    console.log(`  Execution ID: ${cyan(result.executionId)}`);
+    console.log(`  Status: ${result.status}`);
+    if (result.agentId) {
+      console.log(`  Agent: ${result.agentId}`);
+    }
+    
+    console.log();
+    console.log("To check execution status:");
+    console.log(`  ${gray(`claude-flow taskmaster execute-status ${result.executionId}`)}`);
+    
+  } catch (err) {
+    error(`Failed to execute task: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
+async function handleExecuteAll(options: any): Promise<void> {
+  info("Executing all tasks...");
+  
+  try {
+    const { TaskMasterOrchestratorAdapter } = await import("../../integrations/taskmaster/adapters/orchestrator-adapter.ts");
+    const adapter = new TaskMasterOrchestratorAdapter();
+    
+    // Parse filter options
+    let filter;
+    if (options.filter) {
+      filter = {};
+      const filterParts = options.filter.split(',');
+      for (const part of filterParts) {
+        const [key, value] = part.split('=');
+        filter[key] = value;
+      }
+    }
+    
+    const result = await adapter.executeAll({
+      prdId: options.prdId,
+      taskIds: options.tasks ? options.tasks.split(',') : undefined,
+      filter: filter,
+      parallel: options.parallel !== false,
+      maxAgents: options.maxAgents ? parseInt(options.maxAgents) : undefined
+    });
+    
+    if (result.status === 'failed') {
+      error("Bulk execution failed");
+      return;
+    }
+    
+    success(`Bulk execution started`);
+    console.log(`  Execution ID: ${cyan(result.executionId)}`);
+    console.log(`  Total Tasks: ${result.totalTasks}`);
+    console.log(`  Status: ${result.status}`);
+    console.log(`  Mode: ${options.parallel !== false ? 'Parallel' : 'Sequential'}`);
+    
+    if (options.parallel !== false && options.maxAgents) {
+      console.log(`  Max Agents: ${options.maxAgents}`);
+    }
+    
+    console.log();
+    console.log("To monitor progress:");
+    console.log(`  ${gray(`claude-flow taskmaster execute-status ${result.executionId}`)}`);
+    console.log(`  ${gray(`claude-flow swarm status --watch`)}`);
+    
+  } catch (err) {
+    error(`Failed to execute tasks: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
+async function handleExecuteStatus(executionId: string | undefined, options: any): Promise<void> {
+  if (!executionId) {
+    error("Execution ID is required");
+    console.log("Usage: taskmaster execute-status <execution-id>");
+    return;
+  }
+
+  try {
+    const { TaskMasterOrchestratorAdapter } = await import("../../integrations/taskmaster/adapters/orchestrator-adapter.ts");
+    const adapter = new TaskMasterOrchestratorAdapter();
+    
+    const status = await adapter.getExecutionStatus(executionId);
+    
+    console.log();
+    console.log(bold(cyan("Execution Status")));
+    console.log(`  Execution ID: ${executionId}`);
+    console.log(`  Status: ${status.status}`);
+    if (status.message) {
+      console.log(`  Message: ${status.message}`);
+    }
+    console.log();
+    
+    // Note about future implementation
+    if (status.status === 'unknown') {
+      console.log(yellow("Note: Full execution tracking is not yet implemented."));
+      console.log("This feature will be available when swarm integration is complete.");
+    }
+    
+  } catch (err) {
+    error(`Failed to get execution status: ${err instanceof Error ? err.message : String(err)}`);
+  }
 }

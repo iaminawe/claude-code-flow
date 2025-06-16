@@ -1,4 +1,3 @@
 #!/usr/bin/env node
-// Local Claude-Flow wrapper
-import { runCLI } from 'claude-code-flow';
-runCLI();
+// Local Claude-Flow wrapper for development
+require('./bin/claude-flow');

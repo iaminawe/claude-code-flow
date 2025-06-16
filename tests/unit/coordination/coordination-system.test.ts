@@ -13,18 +13,12 @@ import { TaskScheduler } from '../../../src/coordination/scheduler.ts';
 import { ResourceManager } from '../../../src/coordination/resources.ts';
 import { ConflictResolver } from '../../../src/coordination/conflict-resolution.ts';
 import { CircuitBreaker } from '../../../src/coordination/circuit-breaker.ts';
-import { WorkStealingScheduler } from '../../../src/coordination/work-stealing.ts';
 import { DependencyGraph } from '../../../src/coordination/dependency-graph.ts';
-import { AdvancedScheduler } from '../../../src/coordination/advanced-scheduler.ts';
+import { AdvancedTaskScheduler } from '../../../src/coordination/advanced-scheduler.ts';
 import { 
-  AsyncTestUtils, 
-  MemoryTestUtils, 
-  PerformanceTestUtils,
-  TestAssertions,
-  MockFactory 
-} from '../../utils/test-utils.ts';
-import { generateCoordinationTasks, generateErrorScenarios } from '../../fixtures/generators.ts';
-import { setupTestEnv, cleanupTestEnv, TEST_CONFIG } from '../../test.config.ts';
+  AsyncTestUtils,
+  PerformanceTestUtils
+} from '../../test.utils.ts';
 
 describe('Coordination System - Comprehensive Tests', () => {
   let coordinationManager: CoordinationManager;
@@ -34,37 +28,42 @@ describe('Coordination System - Comprehensive Tests', () => {
   let fakeTime: FakeTime;
 
   beforeEach(() => {
-    setupTestEnv();
-    
-    resourceManager = new ResourceManager({
-      maxConcurrentTasks: 10,
-      maxMemoryUsage: 1024 * 1024 * 100, // 100MB
+    // Create mock event bus
+    const mockEventBus = {
+      emit: () => Promise.resolve(),
+      on: () => {},
+      off: () => {},
+      once: () => {},
+      removeAllListeners: () => {},
+    };
+
+    // Create mock logger
+    const mockLogger = {
+      debug: () => {},
+      info: () => {},
+      warn: () => {},
+      error: () => {},
+    };
+
+    // Create coordination config
+    const config = {
+      maxRetries: 3,
+      retryDelay: 100,
+      deadlockDetection: true,
       resourceTimeout: 30000,
-    });
+      messageTimeout: 10000,
+    };
 
-    scheduler = new TaskScheduler({
-      maxConcurrentTasks: 5,
-      taskTimeout: 10000,
-      retryAttempts: 3,
-    });
-
-    conflictResolver = new ConflictResolver({
-      enableConflictDetection: true,
-      resolutionStrategy: 'priority',
-    });
-
-    coordinationManager = new CoordinationManager({
-      scheduler,
-      resourceManager,
-      conflictResolver,
-    });
+    resourceManager = new ResourceManager(config, mockEventBus, mockLogger);
+    scheduler = new TaskScheduler(config, mockEventBus, mockLogger);
+    conflictResolver = new ConflictResolver(config, mockEventBus);
+    coordinationManager = new CoordinationManager(config, mockEventBus, mockLogger);
 
     fakeTime = new FakeTime();
   });
 
   afterEach(async () => {
     fakeTime.restore();
-    await cleanupTestEnv();
   });
 
   describe('Task Scheduling', () => {
@@ -80,9 +79,9 @@ describe('Coordination System - Comprehensive Tests', () => {
         { id: 'high-2', priority: 'high', execute: spy(async () => 'high-2') },
       ];
 
-      // Submit all tasks
+      // Submit all tasks to a test agent
       const promises = tasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task, 'test-agent-1')
       );
 
       const results = await Promise.all(promises);
@@ -129,9 +128,9 @@ describe('Coordination System - Comprehensive Tests', () => {
 
       // Submit tasks in random order
       const promises = [
-        coordinationManager.submitTask('task-c', tasks[2]),
-        coordinationManager.submitTask('task-a', tasks[0]),
-        coordinationManager.submitTask('task-b', tasks[1]),
+        coordinationManager.assignTask('task-c', tasks[2]),
+        coordinationManager.assignTask('task-a', tasks[0]),
+        coordinationManager.assignTask('task-b', tasks[1]),
       ];
 
       await Promise.all(promises);
@@ -151,7 +150,7 @@ describe('Coordination System - Comprehensive Tests', () => {
 
       // Submit tasks with circular dependencies
       const promises = tasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       // Should detect circular dependency and reject
@@ -176,7 +175,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       };
 
       await TestAssertions.assertThrowsAsync(
-        () => coordinationManager.submitTask('long-task', longRunningTask),
+        () => coordinationManager.assignTask('long-task', longRunningTask),
         Error,
         'timeout'
       );
@@ -186,7 +185,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       const tasks = generateCoordinationTasks(20);
       
       const promises = tasks.map(task => 
-        coordinationManager.submitTask(task.id, {
+        coordinationManager.assignTask(task.id, {
           execute: spy(async () => `result-${task.id}`),
           priority: task.priority,
         })
@@ -271,8 +270,8 @@ describe('Coordination System - Comprehensive Tests', () => {
 
       // Submit both tasks simultaneously
       const promises = [
-        coordinationManager.submitTask('deadlock-1', task1),
-        coordinationManager.submitTask('deadlock-2', task2),
+        coordinationManager.assignTask('deadlock-1', task1),
+        coordinationManager.assignTask('deadlock-2', task2),
       ];
 
       const results = await Promise.allSettled(promises);
@@ -307,11 +306,11 @@ describe('Coordination System - Comprehensive Tests', () => {
       };
 
       // Submit low priority task first
-      const lowPromise = coordinationManager.submitTask('low-priority', lowPriorityTask);
+      const lowPromise = coordinationManager.assignTask('low-priority', lowPriorityTask);
       
       // Then submit high priority tasks
       const highPromises = highPriorityTasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       await AsyncTestUtils.delay(20); // Let low priority task get a chance
@@ -337,7 +336,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       ];
 
       const promises = tasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       const results = await Promise.all(promises);
@@ -371,8 +370,8 @@ describe('Coordination System - Comprehensive Tests', () => {
       };
 
       const promises = [
-        coordinationManager.submitTask('timeout-deadlock-1', task1),
-        coordinationManager.submitTask('timeout-deadlock-2', task2),
+        coordinationManager.assignTask('timeout-deadlock-1', task1),
+        coordinationManager.assignTask('timeout-deadlock-2', task2),
       ];
 
       const results = await Promise.allSettled(promises);
@@ -403,7 +402,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       }));
 
       const promises = tasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       // Check resource usage during execution
@@ -460,7 +459,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       }));
 
       const promises = tasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       const results = await Promise.all(promises);
@@ -488,7 +487,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       const startTime = Date.now();
       
       const promises = tasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       await Promise.all(promises);
@@ -520,13 +519,13 @@ describe('Coordination System - Comprehensive Tests', () => {
 
       // First task should fail
       await TestAssertions.assertThrowsAsync(
-        () => coordinationManager.submitTask('failing-task', failingTask),
+        () => coordinationManager.assignTask('failing-task', failingTask),
         Error,
         'Task failed'
       );
 
       // Resource should be cleaned up and available for next task
-      const result = await coordinationManager.submitTask('followup-task', followupTask);
+      const result = await coordinationManager.assignTask('followup-task', followupTask);
       assertEquals(result, 'followup-complete');
     });
   });
@@ -559,7 +558,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       ];
 
       const promises = conflictingTasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       const results = await Promise.all(promises);
@@ -623,7 +622,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       const promises = escalationTasks.map((task, i) => {
         // Stagger submissions to create queue
         return AsyncTestUtils.delay(i * 10).then(() => 
-          coordinationManager.submitTask(task.id, task)
+          coordinationManager.assignTask(task.id, task)
         );
       });
 
@@ -665,7 +664,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       ];
 
       const promises = nestedConflictTasks.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       const results = await Promise.all(promises);
@@ -833,7 +832,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       const { stats } = await PerformanceTestUtils.benchmark(
         async () => {
           const taskId = `perf-task-${Date.now()}-${Math.random()}`;
-          return coordinationManager.submitTask(taskId, {
+          return coordinationManager.assignTask(taskId, {
             execute: async () => 'quick-task',
           });
         },
@@ -853,7 +852,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       const startTime = Date.now();
       
       const promises = largeBatch.map(task => 
-        coordinationManager.submitTask(task.id, task)
+        coordinationManager.assignTask(task.id, task)
       );
 
       const results = await Promise.all(promises);
@@ -881,7 +880,7 @@ describe('Coordination System - Comprehensive Tests', () => {
         }));
 
         const promises = tasks.map(task => 
-          coordinationManager.submitTask(task.id, task)
+          coordinationManager.assignTask(task.id, task)
         );
 
         await Promise.all(promises);
@@ -894,7 +893,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       const results = await PerformanceTestUtils.loadTest(
         async () => {
           const taskId = `load-task-${Date.now()}-${Math.random()}`;
-          return coordinationManager.submitTask(taskId, {
+          return coordinationManager.assignTask(taskId, {
             execute: async () => 'load-test-result',
           });
         },
@@ -931,7 +930,7 @@ describe('Coordination System - Comprehensive Tests', () => {
         if (scenario.recoverable) {
           // Should retry recoverable errors
           try {
-            await coordinationManager.submitTask(`error-task-${scenario.name}`, failingTask);
+            await coordinationManager.assignTask(`error-task-${scenario.name}`, failingTask);
           } catch (error) {
             // May still fail after retries
             assertExists(error);
@@ -939,7 +938,7 @@ describe('Coordination System - Comprehensive Tests', () => {
         } else {
           // Should fail fast for non-recoverable errors
           await TestAssertions.assertThrowsAsync(
-            () => coordinationManager.submitTask(`error-task-${scenario.name}`, failingTask),
+            () => coordinationManager.assignTask(`error-task-${scenario.name}`, failingTask),
             Error,
             scenario.error.message
           );
@@ -966,7 +965,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       };
 
       // Should eventually succeed after scheduler recovers
-      const result = await coordinationManager.submitTask('resilient-task', resilientTask);
+      const result = await coordinationManager.assignTask('resilient-task', resilientTask);
       assertEquals(result, 'recovered');
       assertEquals(failureCount, 3);
     });
@@ -991,7 +990,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       };
 
       // Should recover from resource manager failure
-      const result = await coordinationManager.submitTask('resource-task', resourceTask);
+      const result = await coordinationManager.assignTask('resource-task', resourceTask);
       assertEquals(result, 'resource-task-complete');
     });
 
@@ -1009,7 +1008,7 @@ describe('Coordination System - Comprehensive Tests', () => {
 
       const results = await Promise.allSettled(
         partiallyFailingTasks.map(task => 
-          coordinationManager.submitTask(task.id, task)
+          coordinationManager.assignTask(task.id, task)
         )
       );
 
@@ -1084,7 +1083,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       }));
 
       await Promise.all(
-        tasks.map(task => coordinationManager.submitTask(task.id, task))
+        tasks.map(task => coordinationManager.assignTask(task.id, task))
       );
 
       const metrics = await coordinationManager.getMetrics();
@@ -1112,7 +1111,7 @@ describe('Coordination System - Comprehensive Tests', () => {
 
       await Promise.all(
         resourceIntensiveTasks.map(task => 
-          coordinationManager.submitTask(task.id, task)
+          coordinationManager.assignTask(task.id, task)
         )
       );
 
@@ -1150,7 +1149,7 @@ describe('Coordination System - Comprehensive Tests', () => {
       const startTime = Date.now();
       
       await Promise.all(
-        slowTasks.map(task => coordinationManager.submitTask(task.id, task))
+        slowTasks.map(task => coordinationManager.assignTask(task.id, task))
       );
 
       const endTime = Date.now();

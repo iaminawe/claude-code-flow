@@ -664,9 +664,15 @@ Note: Shows comprehensive help when no subcommand provided or with --help flag
 # Basic task generation (no AI)
 ./claude-flow taskmaster generate requirements.prd --sparc-mapping --output tasks.json
 
+# Initialize VS Code sync environment
+./claude-flow taskmaster init
+
 # AI-enhanced generation (requires ANTHROPIC_API_KEY)
 export ANTHROPIC_API_KEY='your-api-key'
 ./claude-flow taskmaster generate requirements.prd --ai --detailed --enhance
+
+# Start VS Code sync server for real-time synchronization
+./claude-flow taskmaster sync server start
 
 # Analyze PRD with AI
 ./claude-flow taskmaster analyze requirements.prd
@@ -675,7 +681,7 @@ export ANTHROPIC_API_KEY='your-api-key'
 ./claude-flow taskmaster export --format markdown --output project-tasks.md
 ```
 
-**Note:** VS Code sync features are implemented but not yet connected to CLI.
+**VS Code Integration:** Install the [claude-task-master](https://github.com/iaminawe/claude-task-master-extension) extension for real-time visual task management. See [VS Code Sync Guide](./docs/taskmaster-vscode-sync-guide.md) for setup instructions.
 
 #### `agent` - Manage AI Agents
 ```bash

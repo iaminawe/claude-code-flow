@@ -464,6 +464,44 @@ export class TaskMasterDenoBridge {
     return [headers.join(','), ...rows.map(row => row.join(','))].join('\n');
   }
 
+  async getTaskById(taskId: string): Promise<TaskMasterTask | null> {
+    // First check in recently generated tasks
+    const recentTasks = await this.memory.query('tasks', 'taskmaster_tasks');
+    for (const entry of recentTasks) {
+      const tasks = entry.value as TaskMasterTask[];
+      const found = this.findTaskInTree(tasks, taskId);
+      if (found) return found;
+    }
+    
+    // Check in stored task files
+    try {
+      const files = await Deno.readDir('./');
+      for await (const file of files) {
+        if (file.name.endsWith('-tasks.json')) {
+          const content = await Deno.readTextFile(file.name);
+          const tasks = JSON.parse(content) as TaskMasterTask[];
+          const found = this.findTaskInTree(tasks, taskId);
+          if (found) return found;
+        }
+      }
+    } catch {
+      // Ignore file read errors
+    }
+    
+    return null;
+  }
+  
+  private findTaskInTree(tasks: TaskMasterTask[], taskId: string): TaskMasterTask | null {
+    for (const task of tasks) {
+      if (task.id === taskId) return task;
+      if (task.subtasks && task.subtasks.length > 0) {
+        const found = this.findTaskInTree(task.subtasks, taskId);
+        if (found) return found;
+      }
+    }
+    return null;
+  }
+
   on(event: string, handler: (...args: any[]) => void): void {
     this.eventEmitter.on(event, handler);
   }

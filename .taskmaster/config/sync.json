@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "syncMode": "real-time",
+  "conflictResolution": "last-write-wins",
+  "autoSync": true,
+  "port": 5173,
+  "host": "localhost"
+}

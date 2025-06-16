@@ -474,35 +474,51 @@ claude-flow taskmaster templates list
 
 ## VS Code Extension Integration
 
-The [claude-task-master VS Code extension](https://github.com/iaminawe/claude-task-master-extension) provides visual task management.
+The [claude-task-master VS Code extension](https://github.com/iaminawe/claude-task-master-extension) provides visual task management with real-time synchronization.
 
-### Setup
+### Quick Setup
 
-1. **Initialize Extension Support**
+1. **Initialize TaskMaster**
 ```bash
 claude-flow taskmaster init
 ```
 
-This creates:
-```
-.taskmaster/
-├── tasks/
-│   └── tasks.json      # Shared task storage
-├── config/             # Configuration files
-└── sparc/              # SPARC metadata
-```
-
 2. **Install VS Code Extension**
 - Open VS Code/Cursor
-- Go to Extensions (Ctrl+Shift+X)
-- Search for "claude-task-master"
+- Search for "claude-task-master" in Extensions
 - Install and reload
 
-### Visual Features
-- **Task Tree View**: Hierarchical display in sidebar
-- **Status Indicators**: Color-coded task states
-- **Progress Tracking**: Visual progress bars
-- **Context Menu**: Right-click actions
+3. **Start Sync Server**
+```bash
+claude-flow taskmaster sync server start
+```
+
+The extension automatically connects and syncs tasks in real-time.
+
+### Key Features
+- **Real-time Sync**: Instant updates between CLI and VS Code
+- **Visual Task Management**: Tree view with drag & drop
+- **Status Updates**: Click to change task status
+- **File Watching**: Auto-sync on file changes
+- **WebSocket + HTTP**: Reliable connectivity
+
+### Sync Commands
+```bash
+# Initialize sync environment
+claude-flow taskmaster init
+
+# Start sync server
+claude-flow taskmaster sync server start [--port 5173] [--host localhost]
+
+# Stop sync server
+claude-flow taskmaster sync server stop
+
+# Check server status
+claude-flow taskmaster sync server status
+
+# Manual sync (when server not running)
+claude-flow taskmaster sync
+```
 
 ### Status Icons
 - ⏳ **Todo**: Gray, pending tasks
@@ -510,19 +526,8 @@ This creates:
 - ✅ **Completed**: Green, finished tasks
 - 🚫 **Blocked**: Red, blocked items
 
-### Integration Commands
-```bash
-# Sync tasks (placeholder - not connected)
-claude-flow taskmaster sync
-
-# Watch for changes (not implemented)
-claude-flow taskmaster watch
-
-# Export from extension format
-claude-flow taskmaster export --format markdown
-```
-
-**Note**: VS Code sync features exist in code but are NOT connected to CLI commands.
+### Detailed Setup Guide
+For comprehensive setup instructions, troubleshooting, and advanced usage, see the [VS Code Sync Setup Guide](./taskmaster-vscode-sync-guide.md).
 
 ## Export Formats
 

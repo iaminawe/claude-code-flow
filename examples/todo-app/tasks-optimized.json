@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "6a4d25f7-4d74-43da-8636-e8aa502e9f02",
+    "title": "Implement functional requirements",
+    "description": "Address all functional requirements",
+    "type": "functional",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "0acea407-3e31-4046-8bb8-ab5495487684",
+        "title": "Lazy loading for large lists",
+        "description": "Lazy loading for large lists",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "0e8f0cf3-876e-4857-a02c-0204e5605382",
+        "title": "Debounced search",
+        "description": "Debounced search",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "6d286e90-db10-4ae2-a0f0-96c8d8c88114",
+        "title": "Optimized re-renders",
+        "description": "Optimized re-renders",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "ef5e6dc7-f3f6-4875-9da0-c503e9460782",
+        "title": "Efficient localStorage usage",
+        "description": "Efficient localStorage usage",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "createdAt": "2025-06-16T22:26:21.564Z"
+  },
+  {
+    "id": "630b6655-6ef2-4136-b0bc-7e79dfe2416c",
+    "title": "Design Todo List Application PRD architecture",
+    "description": "Create comprehensive architectural design for Todo List Application PRD",
+    "type": "architecture",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "architect",
+    "subtasks": [
+      {
+        "id": "3bb17173-435a-4b09-a62f-8f6694f3148f",
+        "title": "System design",
+        "description": "Create high-level system architecture",
+        "type": "design",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "architect",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "87110d35-f0ad-4792-a430-6d2ef43b24b1",
+        "title": "Database design",
+        "description": "Design database schema and relationships",
+        "type": "database",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "backend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "a073345f-f58c-45aa-9ea1-c15e32be5cb5",
+        "title": "API design",
+        "description": "Design RESTful API endpoints",
+        "type": "api",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "api-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "b59e7c87-ba32-4d71-81cd-f6c25e5ffe5b",
+        "title": "Security design",
+        "description": "Design security architecture",
+        "type": "security",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "security-review",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "createdAt": "2025-06-16T22:26:21.564Z"
+  },
+  {
+    "id": "d7459724-02e1-4f32-a98d-ec4a1e92175a",
+    "title": "Implement technical requirements",
+    "description": "Address all technical requirements",
+    "type": "technical",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "architect",
+    "subtasks": [
+      {
+        "id": "5a60a43d-d86a-42a0-9570-51b96be6803a",
+        "title": "React 18+ with TypeScript",
+        "description": "React 18+ with TypeScript",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "2c690d6d-8aae-480a-87f5-e694b5635ef4",
+        "title": "Vite for build tooling",
+        "description": "Vite for build tooling",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "e8c78f36-dd39-4055-ae42-2dd63218b655",
+        "title": "shadcn/ui for UI components",
+        "description": "shadcn/ui for UI components",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "d5e1f928-acfe-4cb0-8610-14a9953cf1df",
+        "title": "Tailwind CSS for styling",
+        "description": "Tailwind CSS for styling",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "a2a6c5d6-d528-4134-8c37-268b434e885f",
+        "title": "Vitest for unit testing",
+        "description": "Vitest for unit testing",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "9069706a-65d3-4625-97f7-12361be4a6c7",
+        "title": "React Testing Library for component...",
+        "description": "React Testing Library for component testing",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "37923587-aefc-4129-ba6d-0a1845217111",
+        "title": "Component-based architecture",
+        "description": "Component-based architecture",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "5504cc38-bcd9-4683-bfc0-4ac8ac8af4f3",
+        "title": "Custom hooks for business logic",
+        "description": "Custom hooks for business logic",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "e6d3fbe6-ab6d-4482-ba36-e2b4850acd0d",
+        "title": "Context API for state management",
+        "description": "Context API for state management",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "3c52fb8c-b607-4662-b74c-fada7e659dfb",
+        "title": "Proper TypeScript types and interfaces",
+        "description": "Proper TypeScript types and interfaces",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "createdAt": "2025-06-16T22:26:21.564Z"
+  },
+  {
+    "id": "a5bad6b5-7558-4dad-81ac-ddd455de68c2",
+    "title": "**List Todos**",
+    "description": "**List Todos**: Display all todos in a clean, organized list",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "9bf42f20-13c7-4775-a27a-b9e153be7914",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "8e362f64-9892-4e81-b1ab-a1860ecebe46",
+    "title": "**Search Todos**",
+    "description": "**Search Todos**: Search todos by title or description",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "c5370d0a-3ad1-4a44-9610-fc5e8283b5c1",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "fe432bac-bee8-43f1-b1af-4392fccf64fe",
+    "title": "**Clear Completed**",
+    "description": "**Clear Completed**: Bulk action to remove all completed todos",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "b13f21e0-4030-4c4f-9d2c-47e4828bc2bb",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "575fa508-a23c-4e96-8bea-192c1834a162",
+    "title": "**Local Storage**",
+    "description": "**Local Storage**: Persist todos across browser sessions",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "91f8bec8-989f-4476-92b8-0e2ee23260cb",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "2a98e7ea-d3ac-4d15-b5af-1bd945ee7d92",
+    "title": "**Keyboard Navigation**",
+    "description": "**Keyboard Navigation**: Full keyboard accessibility",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "c3fb6da3-c4ce-49bd-8889-0c1206e39e43",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "85bcc37a-5e3b-4a3a-a7d2-305229d86789",
+    "title": "**Responsive Design**",
+    "description": "**Responsive Design**: Mobile-first approach",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "cf9a5bf2-6e97-494e-ae01-7705654f903c",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "21a4c792-1b9b-4a02-be36-640d91b07fdb",
+    "title": "**Animations**",
+    "description": "**Animations**: Smooth transitions for better UX",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "2c43cc79-e6d3-488c-bfb3-a8684989e4a6",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "dbacb023-2c45-4911-a06c-c491871c48c6",
+    "title": "**List Todos**",
+    "description": "**List Todos**: Display all todos in a clean, organized list",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "06288493-f7a9-499d-a7e2-5ccbb35a10d4",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "d3017d35-6ce5-4e5a-a0f0-6d91adc632c0",
+    "title": "**Search Todos**",
+    "description": "**Search Todos**: Search todos by title or description",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "e6685fd7-9236-4955-b277-8df911621ce0",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "e931f9e1-2e15-43a4-8a91-842f89f2dc35",
+    "title": "**Clear Completed**",
+    "description": "**Clear Completed**: Bulk action to remove all completed todos",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "d43d940a-50e2-4b18-8671-d95604e69caf",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "42aed51e-5236-4458-8627-7451c665ea9e",
+    "title": "**Local Storage**",
+    "description": "**Local Storage**: Persist todos across browser sessions",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "81b55c3b-8b83-4bef-99a4-7b2ce69f2b08",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "99dd25df-ecb3-4496-8f9e-9555868c9355",
+    "title": "**Keyboard Navigation**",
+    "description": "**Keyboard Navigation**: Full keyboard accessibility",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "a4dff93e-3c5e-4d5c-b0f1-83296c440792",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "89592766-2b69-46e5-9cb8-381cdf90c62c",
+    "title": "**Responsive Design**",
+    "description": "**Responsive Design**: Mobile-first approach",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "f6ed5463-85ca-4a79-b303-531756aaae4b",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "aabfa926-c95a-42e8-a369-7dd8d97d539f",
+    "title": "**Animations**",
+    "description": "**Animations**: Smooth transitions for better UX",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "adbac839-7925-4d22-97d7-1ef46e7c9d5e",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "b3bbdbf9-5630-4da6-9ca6-74d4928cb7d7",
+    "title": "**Edit Todo**",
+    "description": "**Edit Todo**: In-place editing of todo title and description",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "835be5b7-6713-4e9c-ac49-1f38143d04e6",
+        "title": "Test: **Edit Todo**",
+        "description": "Write tests for **Edit Todo**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "2879086b-f4f1-4d2c-a7fb-c5970327aa4b",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "cffa0250-3314-47a6-a313-3bea3f528946",
+    "title": "**Delete Todo**",
+    "description": "**Delete Todo**: Remove todos with confirmation",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "cc6a54e3-e5b4-4d49-9b42-09b60e7c87a8",
+        "title": "Test: **Delete Todo**",
+        "description": "Write tests for **Delete Todo**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "0a3e4841-243e-4769-b8b6-3651ada2ccfa",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "b8eb4622-c2de-4f32-b759-48fee046a32c",
+    "title": "**Complete Todo**",
+    "description": "**Complete Todo**: Mark todos as complete/incomplete with visual feedback",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "2779dd82-c988-4ea5-86ca-3d86376c7e35",
+        "title": "Test: **Complete Todo**",
+        "description": "Write tests for **Complete Todo**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "4b94862d-adf5-4e71-96cd-bb2098d1b655",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "f8dbaa48-5703-4849-b2d0-55a570012264",
+    "title": "**Filter Todos**",
+    "description": "**Filter Todos**: Filter by All, Active, and Completed states",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "09fe1678-9582-4e4f-bef8-145b1c9f4caa",
+        "title": "Test: **Filter Todos**",
+        "description": "Write tests for **Filter Todos**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "d3feed8b-62bb-4972-81c9-2f1254df9e23",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "22b25f37-717a-4f8e-b14b-3b5fe1d9209b",
+    "title": "**Dark Mode**",
+    "description": "**Dark Mode**: Support system theme preference",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "d1ccb371-fa3a-449e-b95d-d770b50984b0",
+        "title": "Test: **Dark Mode**",
+        "description": "Write tests for **Dark Mode**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "7ce32bbc-8cb9-4470-b958-bef909f31d2f",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "0c5f837f-8f29-4eba-982b-b7e03687c9c3",
+    "title": "**Edit Todo**",
+    "description": "**Edit Todo**: In-place editing of todo title and description",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "75d9415f-f2ec-406d-adaf-ecb3c040a009",
+        "title": "Test: **Edit Todo**",
+        "description": "Write tests for **Edit Todo**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "5d3b5822-46a8-410f-9cac-5f18ac6b9ea7",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "90addb43-3359-478b-967b-45c408b84869",
+    "title": "**Delete Todo**",
+    "description": "**Delete Todo**: Remove todos with confirmation",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "ec5f04b1-307e-4b9c-96b0-f95e0c5cef64",
+        "title": "Test: **Delete Todo**",
+        "description": "Write tests for **Delete Todo**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "2f52917a-aabb-442c-a1b5-050715581fe4",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "c84dd27b-bcb4-45ed-881e-c61207f36fc9",
+    "title": "**Complete Todo**",
+    "description": "**Complete Todo**: Mark todos as complete/incomplete with visual feedback",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "9d35541a-2580-4e5c-b700-228a913d68bf",
+        "title": "Test: **Complete Todo**",
+        "description": "Write tests for **Complete Todo**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "915829b4-0c82-4ecb-97d9-f191e4d3210c",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "58181958-1941-4e9a-9568-aa798fba484e",
+    "title": "**Filter Todos**",
+    "description": "**Filter Todos**: Filter by All, Active, and Completed states",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "2266780f-047d-4e67-b2c1-c0212a3a28d8",
+        "title": "Test: **Filter Todos**",
+        "description": "Write tests for **Filter Todos**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "8bb49018-5d83-4cae-a3a0-5297fd7295cc",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "1fd9920f-07ee-4c44-ac0d-b9d139c28ed6",
+    "title": "**Dark Mode**",
+    "description": "**Dark Mode**: Support system theme preference",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "f08d99f5-da13-49f2-bfa5-dcc8a3ef9a7d",
+        "title": "Test: **Dark Mode**",
+        "description": "Write tests for **Dark Mode**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "bfcde515-6762-4639-ab86-125f82af7c8d",
+      "category": "Technical Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "8e20dcfa-0dbd-4c94-8020-947495dde633",
+    "title": "**Add Todo**",
+    "description": "**Add Todo**: Users can add new todo items with a title and optional description",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "080eb82f-a212-41b7-a147-93de4bb30de6",
+        "title": "Test: **Add Todo**",
+        "description": "Write tests for **Add Todo**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "add68068-0eb6-418d-9358-9ad882db5527",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "c6dde1e5-0a95-4af4-bc11-8cd196966ffc",
+    "title": "**Add Todo**",
+    "description": "**Add Todo**: Users can add new todo items with a title and optional description",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "8fd7bf53-c928-45a1-bfad-219754adbb65",
+        "title": "Test: **Add Todo**",
+        "description": "Write tests for **Add Todo**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "fcc0b288-10a1-4632-b1b2-349efb721819",
+      "category": "Core Features"
+    },
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "630b6655-6ef2-4136-b0bc-7e79dfe2416c"
+    ]
+  },
+  {
+    "id": "6ee16d68-1bbd-4100-a0aa-d6692a7eada1",
+    "title": "Comprehensive testing for Todo List Application PRD",
+    "description": "Implement full test coverage",
+    "type": "testing",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "tdd",
+    "subtasks": [
+      {
+        "id": "60207937-60c7-4b15-b109-ea9d757a79a6",
+        "title": "Unit tests",
+        "description": "Write unit tests for all components",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "bf94e2b9-b552-4ad1-8186-ae78085399ce",
+        "title": "Integration tests",
+        "description": "Test component interactions",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "2f24cc82-bfc9-4797-9a01-e478dd1c8385",
+        "title": "E2E tests",
+        "description": "End-to-end user journey tests",
+        "type": "testing",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "3d9859da-b6bd-4e0f-9c13-ba136b1ed0fc",
+        "title": "Performance tests",
+        "description": "Load and stress testing",
+        "type": "testing",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "78b713f4-d4c3-43ea-95b7-8bd79ce58bfd",
+        "title": "Security tests",
+        "description": "Security vulnerability testing",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "security-review",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "8e20dcfa-0dbd-4c94-8020-947495dde633",
+      "a5bad6b5-7558-4dad-81ac-ddd455de68c2",
+      "b3bbdbf9-5630-4da6-9ca6-74d4928cb7d7",
+      "cffa0250-3314-47a6-a313-3bea3f528946",
+      "b8eb4622-c2de-4f32-b759-48fee046a32c",
+      "f8dbaa48-5703-4849-b2d0-55a570012264",
+      "8e362f64-9892-4e81-b1ab-a1860ecebe46",
+      "fe432bac-bee8-43f1-b1af-4392fccf64fe",
+      "575fa508-a23c-4e96-8bea-192c1834a162",
+      "2a98e7ea-d3ac-4d15-b5af-1bd945ee7d92",
+      "85bcc37a-5e3b-4a3a-a7d2-305229d86789",
+      "22b25f37-717a-4f8e-b14b-3b5fe1d9209b",
+      "21a4c792-1b9b-4a02-be36-640d91b07fdb",
+      "c6dde1e5-0a95-4af4-bc11-8cd196966ffc",
+      "dbacb023-2c45-4911-a06c-c491871c48c6",
+      "0c5f837f-8f29-4eba-982b-b7e03687c9c3",
+      "90addb43-3359-478b-967b-45c408b84869",
+      "c84dd27b-bcb4-45ed-881e-c61207f36fc9",
+      "58181958-1941-4e9a-9568-aa798fba484e",
+      "d3017d35-6ce5-4e5a-a0f0-6d91adc632c0",
+      "e931f9e1-2e15-43a4-8a91-842f89f2dc35",
+      "42aed51e-5236-4458-8627-7451c665ea9e",
+      "99dd25df-ecb3-4496-8f9e-9555868c9355",
+      "89592766-2b69-46e5-9cb8-381cdf90c62c",
+      "1fd9920f-07ee-4c44-ac0d-b9d139c28ed6",
+      "aabfa926-c95a-42e8-a369-7dd8d97d539f"
+    ]
+  },
+  {
+    "id": "248a7904-0f48-4eff-ade1-8530ca77a74c",
+    "title": "Documentation for Todo List Application PRD",
+    "description": "Create comprehensive documentation",
+    "type": "documentation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "docs-writer",
+    "subtasks": [
+      {
+        "id": "117a9290-a78a-43b4-8809-102663c9e641",
+        "title": "API documentation",
+        "description": "Document all API endpoints",
+        "type": "documentation",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "docs-writer",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "c650ce27-27ec-47ae-9978-eed212abfc13",
+        "title": "User guide",
+        "description": "Create end-user documentation",
+        "type": "documentation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "docs-writer",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "3efc5850-96d0-418d-acac-be4a4805e88e",
+        "title": "Developer guide",
+        "description": "Technical documentation for developers",
+        "type": "documentation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "docs-writer",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      },
+      {
+        "id": "734a5170-230e-4a92-ab8d-fa94f375e118",
+        "title": "Deployment guide",
+        "description": "Installation and deployment instructions",
+        "type": "documentation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "devops",
+        "subtasks": [],
+        "createdAt": "2025-06-16T22:26:21.564Z"
+      }
+    ],
+    "createdAt": "2025-06-16T22:26:21.564Z",
+    "dependencies": [
+      "8e20dcfa-0dbd-4c94-8020-947495dde633"
+    ]
+  }
+]

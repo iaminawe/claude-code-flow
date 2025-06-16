@@ -1,0 +1,12 @@
+{
+  "taskTypeToSparc": {
+    "architecture": "architect",
+    "implementation": "code",
+    "testing": "tdd",
+    "security": "security-review",
+    "documentation": "docs-writer",
+    "database": "backend-only",
+    "frontend": "frontend-only",
+    "api": "api-only"
+  }
+}

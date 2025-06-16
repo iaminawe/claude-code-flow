@@ -11,6 +11,7 @@ import { swarmAction } from "./swarm.ts";
 import { SimpleMemoryManager } from "./memory.ts";
 import { sparcAction } from "./sparc.ts";
 import { createMigrateCommand } from "./migrate.ts";
+import { taskmasterAction } from "./taskmaster.ts";
 
 let orchestrator: Orchestrator | null = null;
 let configManager: ConfigManager | null = null;
@@ -1401,6 +1402,62 @@ Now, please proceed with the task: ${task}`;
   // Migration command
   const migrateCmd = createMigrateCommand();
   cli.command(migrateCmd);
+
+  // TaskMaster command
+  cli.command({
+    name: "taskmaster",
+    description: "Parse PRDs and generate structured tasks with SPARC mode mapping",
+    options: [
+      {
+        name: "model",
+        short: "m",
+        description: "AI model to use (default: claude-3-sonnet)",
+        type: "string",
+      },
+      {
+        name: "depth",
+        short: "d",
+        description: "Task decomposition depth",
+        type: "number",
+        default: 3,
+      },
+      {
+        name: "sparc-mapping",
+        description: "Enable SPARC mode mapping",
+        type: "boolean",
+      },
+      {
+        name: "assign-agents",
+        description: "Auto-assign agents to tasks",
+        type: "boolean",
+      },
+      {
+        name: "output",
+        short: "o",
+        description: "Output file path",
+        type: "string",
+      },
+      {
+        name: "format",
+        short: "f",
+        description: "Output format (json, markdown, csv)",
+        type: "string",
+        default: "json",
+      },
+      {
+        name: "verbose",
+        short: "v",
+        description: "Enable verbose logging",
+        type: "boolean",
+      },
+      {
+        name: "dry-run",
+        description: "Preview without executing",
+        type: "boolean",
+      },
+    ],
+    action: taskmasterAction,
+  });
 
   // Swarm UI command (convenience wrapper)
   cli.command({

@@ -1,1111 +1,218 @@
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/cli/init/e2e-workflow.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/cli/init/full-init-flow.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/cli/init/selective-modes.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/full-system.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/mcp.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/start-command.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/start-compatibility.test.ts
-[0m[32mCheck[0m file:///workspaces/claude-code-flow/tests/integration/terminal.test.ts
-[0m[1mTS2339 [0m[ERROR]: Property 'value' does not exist on type 'never'.
-    const choice = typeof result === 'string' ? result : result.value;
-[0m[31m                                                                ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/commands/help.ts[0m:[0m[33m801[0m:[0m[33m65[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Command'.
-const cli = new Command()
-[0m[31m                ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m32[0m:[0m[33m17[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'options' implicitly has an 'any' type.
-  .action(async (options) => {
-[0m[31m                 ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m49[0m:[0m[33m18[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'colors'.
-      console.log(colors.gray('Type "help" for available commands or "exit" to quit.\n'));
-[0m[31m                  ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m55[0m:[0m[33m19[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Command'.
-  .command('repl', new Command()
-[0m[31m                       ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m74[0m:[0m[33m24[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'options' implicitly has an 'any' type.
-    .action(async (options) => {
-[0m[31m                   ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m78[0m:[0m[33m20[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Command'.
-  .command('version', new Command()
-[0m[31m                          ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m86[0m:[0m[33m27[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'options' implicitly has an 'any' type.
-    .action(async (options) => {
-[0m[31m                   ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m89[0m:[0m[33m20[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Command'.
-  .command('completion', new Command()
-[0m[31m                             ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m97[0m:[0m[33m30[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'options' implicitly has an 'any' type.
-    .action(async (options, shell) => {
-[0m[31m                   ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m101[0m:[0m[33m20[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'shell' implicitly has an 'any' type.
-    .action(async (options, shell) => {
-[0m[31m                            ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m101[0m:[0m[33m29[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'colors'.
-    console.error(colors.red(colors.bold('✗ Error:')), formatted);
-[0m[31m                  ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m118[0m:[0m[33m19[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'colors'.
-    console.error(colors.red(colors.bold('✗ Error:')), formatted);
-[0m[31m                             ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m118[0m:[0m[33m30[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'colors'.
-    console.error(colors.gray('\nStack trace:'));
-[0m[31m                  ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m123[0m:[0m[33m19[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'colors'.
-    console.error(colors.gray('\nTry running with --verbose for more details'));
-[0m[31m                  ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m129[0m:[0m[33m19[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'colors'.
-    console.error(colors.gray('Or use "claude-flow help" to see available commands'));
-[0m[31m                  ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m130[0m:[0m[33m19[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'colors'.
-    console.log('\n' + colors.gray('Gracefully shutting down...'));
-[0m[31m                       ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m177[0m:[0m[33m24[0m
-
-[0m[1mTS2304 [0m[ERROR]: Cannot find name 'colors'.
-      colors.setColorEnabled(false);
-[0m[31m      ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/src/cli/index.ts[0m:[0m[33m204[0m:[0m[33m7[0m
-
-[0m[1mTS2305 [0m[ERROR]: Module '"file:///workspaces/claude-code-flow/tests/mocks/index.ts"' has no exported member 'MockMCPTransport'.
-  MockMCPTransport,
-[0m[31m  ~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m25[0m:[0m[33m3[0m
-
-[0m[1mTS2673 [0m[ERROR]: Constructor of class 'EventBus' is private and only accessible within the class declaration.
-    eventBus = new EventBus();
-[0m[31m               ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m65[0m:[0m[33m16[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 0 arguments, but got 2.
-    mcpServer = new MockMCPServer(mcpTransport, logger);
-[0m[31m                                  ~~~~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m73[0m:[0m[33m35[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 7 arguments, but got 6.
-    orchestrator = new Orchestrator(
-[0m[31m                   ^[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m76[0m:[0m[33m20[0m
-
-    An argument for 'logger' was not provided.
-        private logger: ILogger,
-    [0m[36m    ~~~~~~~~~~~~~~~~~~~~~~~[0m
-        at [0m[36mfile:///workspaces/claude-code-flow/src/core/orchestrator.ts[0m:[0m[33m316[0m:[0m[33m5[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-    await mcpServer.initialize();
-[0m[31m                    ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m86[0m:[0m[33m21[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'shutdown' does not exist on type 'MockMCPServer'.
-    await mcpServer.shutdown();
-[0m[31m                    ~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m91[0m:[0m[33m21[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-            await memoryManager.storeEntry({
-[0m[31m                                ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m116[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-            const researchEntries = await memoryManager.queryEntries({
-[0m[31m                                                        ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m154[0m:[0m[33m57[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-            await memoryManager.storeEntry({
-[0m[31m                                ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m177[0m:[0m[33m33[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(researchTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m203[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(implementTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m204[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-      const researchResult = await orchestrator.executeTask(researchTask);
-[0m[31m                                                ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m250[0m:[0m[33m49[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-      const implementResult = await orchestrator.executeTask(implementTask);
-[0m[31m                                                 ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m274[0m:[0m[33m50[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const allMemories = await memoryManager.queryEntries({
-[0m[31m                                              ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m279[0m:[0m[33m47[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'm' implicitly has an 'any' type.
-      const researchMemories = allMemories.filter(m =>
-[0m[31m                                                  ^[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m283[0m:[0m[33m51[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'm' implicitly has an 'any' type.
-      const implementMemories = allMemories.filter(m =>
-[0m[31m                                                   ^[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m286[0m:[0m[33m52[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'sendMessage' does not exist on type 'MockCoordinationManager'.
-            await coordinationManager.sendMessage(
-[0m[31m                                      ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m313[0m:[0m[33m39[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-            await memoryManager.storeEntry({
-[0m[31m                                ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m353[0m:[0m[33m33[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(coordinationTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m379[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(statusTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m380[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-        coordinationTasks.map(task => orchestrator.executeTask(task))
-[0m[31m                                                   ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m431[0m:[0m[33m52[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'result' implicitly has an 'any' type.
-      coordinationResults.forEach(result => {
-[0m[31m                                  ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m435[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-        statusTasks.map(task => orchestrator.executeTask(task))
-[0m[31m                                             ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m460[0m:[0m[33m46[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'result' implicitly has an 'any' type.
-      statusResults.forEach(result => {
-[0m[31m                            ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m464[0m:[0m[33m29[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'sendMessage' does not exist on type 'MockCoordinationManager'.
-      assertEquals(coordinationManager.sendMessage.calls.length, 3);
-[0m[31m                                       ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m469[0m:[0m[33m40[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const statusMemories = await memoryManager.queryEntries({
-[0m[31m                                                 ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m472[0m:[0m[33m50[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'memory' implicitly has an 'any' type.
-      statusMemories.forEach((memory, index) => {
-[0m[31m                              ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m478[0m:[0m[33m31[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'index' implicitly has an 'any' type.
-      statusMemories.forEach((memory, index) => {
-[0m[31m                                      ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m478[0m:[0m[33m39[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(heavyTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m515[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-        heavyTasks.map(task => orchestrator.executeTask(task))
-[0m[31m                                            ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m559[0m:[0m[33m45[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'result' implicitly has an 'any' type.
-      results.forEach(result => {
-[0m[31m                      ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m565[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'healthy' does not exist on type 'HealthStatus'.
-      assertEquals(orchestratorHealth.healthy, true);
-[0m[31m                                      ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m574[0m:[0m[33m39[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getActiveSessions' does not exist on type 'Orchestrator'.
-      const activeSessions = orchestrator.getActiveSessions();
-[0m[31m                                          ~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m580[0m:[0m[33m43[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(unreliableTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m614[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-        resilientTasks.map(task => orchestrator.executeTask(task))
-[0m[31m                                                ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m647[0m:[0m[33m49[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'r' implicitly has an 'any' type.
-      const successfulTasks = results.filter(r => r.status === 'completed');
-[0m[31m                                             ^[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m651[0m:[0m[33m46[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'r' implicitly has an 'any' type.
-      const failedTasks = results.filter(r => r.status === 'failed');
-[0m[31m                                         ^[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m652[0m:[0m[33m42[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'healthy' does not exist on type 'HealthStatus'.
-      assertEquals(health.healthy, true);
-[0m[31m                          ~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m659[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-          await coordinationManager.acquireResource(lockId, context?.agentId || 'unknown');
-[0m[31m                                    ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m680[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getEntry' does not exist on type 'MockMemoryManager'.
-              entry = await memoryManager.getEntry(entry_id);
-[0m[31m                                          ~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m686[0m:[0m[33m43[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'updateEntry' does not exist on type 'MockMemoryManager'.
-              await memoryManager.updateEntry(entry_id, {
-[0m[31m                                  ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m693[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-              await memoryManager.storeEntry({
-[0m[31m                                  ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m700[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-            await coordinationManager.releaseResource(lockId, context?.agentId || 'unknown');
-[0m[31m                                      ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m721[0m:[0m[33m39[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(conflictTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m726[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-        conflictTasks.map(task => orchestrator.executeTask(task))
-[0m[31m                                               ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m765[0m:[0m[33m48[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'result' implicitly has an 'any' type.
-      results.forEach(result => {
-[0m[31m                      ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m769[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getEntry' does not exist on type 'MockMemoryManager'.
-      const finalEntry = await memoryManager.getEntry(sharedEntryId);
-[0m[31m                                             ~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m774[0m:[0m[33m46[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-      assertEquals(coordinationManager.acquireResource.calls.length, 3);
-[0m[31m                                       ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m779[0m:[0m[33m40[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-      assertEquals(coordinationManager.releaseResource.calls.length, 3);
-[0m[31m                                       ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m780[0m:[0m[33m40[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(metricsTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m808[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-        workloadTasks.map(task => orchestrator.executeTask(task))
-[0m[31m                                               ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/full-system.test.ts[0m:[0m[33m839[0m:[0m[33m48[0m
-
-[0m[1mTS2305 [0m[ERROR]: Module '"file:///workspaces/claude-code-flow/tests/mocks/index.ts"' has no exported member 'MockMCPTransport'.
-import { MockMCPServer, MockMCPTransport } from '../mocks/index.ts';
-[0m[31m                        ~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m17[0m:[0m[33m25[0m
-
-[0m[1mTS2673 [0m[ERROR]: Constructor of class 'EventBus' is private and only accessible within the class declaration.
-    eventBus = new EventBus();
-[0m[31m               ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m40[0m:[0m[33m16[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 0 arguments, but got 2.
-    mcpServer = new MockMCPServer(mcpTransport, logger);
-[0m[31m                                  ~~~~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m48[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'shutdown' does not exist on type 'MockMCPServer'.
-    await mcpServer.shutdown();
-[0m[31m                    ~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m52[0m:[0m[33m21[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m58[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(testTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m89[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'listTools' does not exist on type 'MockMCPServer'.
-      const tools = await mcpServer.listTools();
-[0m[31m                                    ~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m92[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-      const result = await mcpServer.executeTool(toolCall, context);
-[0m[31m                                     ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m112[0m:[0m[33m38[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m121[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(errorTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m136[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-      const result = await mcpServer.executeTool(toolCall, context);
-[0m[31m                                     ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m148[0m:[0m[33m38[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m157[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(strictTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m181[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-      const result = await mcpServer.executeTool(invalidCall, context);
-[0m[31m                                     ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m197[0m:[0m[33m38[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m206[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(resourceTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m237[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-        await mcpServer.executeTool(incrementCall, context);
-[0m[31m                        ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m254[0m:[0m[33m25[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-        return mcpServer.executeTool(getCall, context);
-[0m[31m                         ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m262[0m:[0m[33m26[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'result' implicitly has an 'any' type.
-      results.forEach(result => {
-[0m[31m                      ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m269[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m279[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(tool1);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m296[0m:[0m[33m23[0m
-
-[0m[1mTS2322 [0m[ERROR]: Type 'void' is not assignable to type 'PromiseLike<unknown>'.
-        () => mcpServer.registerTool(tool2),
-[0m[31m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m300[0m:[0m[33m15[0m
-
-    The expected type comes from the return type of this signature.
-      fn: () => PromiseLike<unknown>,
-    [0m[36m      ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-        at [0m[36mhttps://deno.land/std@0.220.0/assert/assert_rejects.ts[0m:[0m[33m38[0m:[0m[33m7[0m[0m[1mTS1356 [0m[ERROR]:     Did you mean to mark this function as 'async'?
-            () => mcpServer.registerTool(tool2),
-    [0m[31m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-        at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m300[0m:[0m[33m9[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-        () => mcpServer.registerTool(tool2),
-[0m[31m                        ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m300[0m:[0m[33m25[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'listTools' does not exist on type 'MockMCPServer'.
-      const tools = await mcpServer.listTools();
-[0m[31m                                    ~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m306[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m314[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(calcTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m360[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'handleRequest' does not exist on type 'MockMCPServer'.
-      const response = await mcpServer.handleRequest(request);
-[0m[31m                                       ~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m378[0m:[0m[33m40[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m392[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'handleRequest' does not exist on type 'MockMCPServer'.
-      const response = await mcpServer.handleRequest(invalidRequest);
-[0m[31m                                       ~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m400[0m:[0m[33m40[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m409[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'handleRequest' does not exist on type 'MockMCPServer'.
-      const response = await mcpServer.handleRequest(unknownRequest);
-[0m[31m                                       ~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m418[0m:[0m[33m40[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m426[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(echoTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m447[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m474[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'handleRequest' does not exist on type 'MockMCPServer'.
-        () => mcpServer.handleRequest(request),
-[0m[31m                        ~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m489[0m:[0m[33m25[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m498[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(researchTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m539[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(codeTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m540[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-      const searchResult = await mcpServer.executeTool(searchCall, researchContext);
-[0m[31m                                           ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m575[0m:[0m[33m44[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-      const codeResult = await mcpServer.executeTool(codeCall, implementerContext);
-[0m[31m                                         ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m594[0m:[0m[33m42[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m602[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(perfTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m630[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-        return mcpServer.executeTool(toolCall, context);
-[0m[31m                         ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m648[0m:[0m[33m26[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'result' implicitly has an 'any' type.
-      results.forEach((result, index) => {
-[0m[31m                       ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m657[0m:[0m[33m24[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'index' implicitly has an 'any' type.
-      results.forEach((result, index) => {
-[0m[31m                               ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m657[0m:[0m[33m32[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'initialize' does not exist on type 'MockMCPServer'.
-      await mcpServer.initialize();
-[0m[31m                      ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m664[0m:[0m[33m23[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 2 arguments, but got 1.
-      await mcpServer.registerTool(slowTool);
-[0m[31m                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m682[0m:[0m[33m23[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTool' does not exist on type 'MockMCPServer'.
-      const result = await mcpServer.executeTool(toolCall, context);
-[0m[31m                                     ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp-integration.test.ts[0m:[0m[33m697[0m:[0m[33m38[0m
-
-[0m[1mTS2305 [0m[ERROR]: Module '"https://deno.land/std@0.208.0/testing/bdd.ts"' has no exported member 'expect'.
-import { describe, it, beforeEach, afterEach, expect } from 'https://deno.land/std@0.208.0/testing/bdd.ts';
-[0m[31m                                              ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp.test.ts[0m:[0m[33m5[0m:[0m[33m47[0m
-
-[0m[1mTS2673 [0m[ERROR]: Constructor of class 'EventBus' is private and only accessible within the class declaration.
-    eventBus = new EventBus(logger);
-[0m[31m               ~~~~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/mcp.test.ts[0m:[0m[33m199[0m:[0m[33m16[0m
-
-[0m[1mTS2673 [0m[ERROR]: Constructor of class 'EventBus' is private and only accessible within the class declaration.
-    eventBus = new EventBus();
-[0m[31m               ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m37[0m:[0m[33m16[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-        await coordinationManager.acquireResource(resourceId, entry.agentId);
-[0m[31m                                  ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m78[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-          await memoryManager.storeEntry(entry);
-[0m[31m                              ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m81[0m:[0m[33m31[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-          await coordinationManager.releaseResource(resourceId, entry.agentId);
-[0m[31m                                    ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m83[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      assertEquals(memoryManager.storeEntry.calls.length, 3);
-[0m[31m                                 ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m88[0m:[0m[33m34[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const results = await memoryManager.queryEntries(query);
-[0m[31m                                          ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m97[0m:[0m[33m43[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'entry' implicitly has an 'any' type.
-      const resultAgentIds = results.map(entry => entry.agentId).sort();
-[0m[31m                                         ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m101[0m:[0m[33m42[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      await memoryManager.storeEntry(initialEntry);
-[0m[31m                          ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m123[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-        await coordinationManager.acquireResource(resourceId, agentId);
-[0m[31m                                  ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m133[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getEntry' does not exist on type 'MockMemoryManager'.
-          const current = await memoryManager.getEntry(update.id);
-[0m[31m                                              ~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m137[0m:[0m[33m47[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'updateEntry' does not exist on type 'MockMemoryManager'.
-          await memoryManager.updateEntry(update.id, update);
-[0m[31m                              ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m143[0m:[0m[33m31[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-          await coordinationManager.releaseResource(resourceId, agentId);
-[0m[31m                                    ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m145[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getEntry' does not exist on type 'MockMemoryManager'.
-      const finalEntry = await memoryManager.getEntry(initialEntry.id);
-[0m[31m                                             ~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m150[0m:[0m[33m46[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-        await memoryManager.storeEntry(entry);
-[0m[31m                            ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m183[0m:[0m[33m29[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const allMemories = await memoryManager.queryEntries(synthesisQuery);
-[0m[31m                                              ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m192[0m:[0m[33m47[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'm' implicitly has an 'any' type.
-      const agentTypes = allMemories.map(m => m.context.createdBy).sort();
-[0m[31m                                         ^[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m196[0m:[0m[33m42[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      await memoryManager.storeEntry(acquisitionEntry);
-[0m[31m                          ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m223[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-      await coordinationManager.acquireResource(resourceId, agentId);
-[0m[31m                                ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m226[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      await memoryManager.storeEntry(successEntry);
-[0m[31m                          ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m240[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const resourceHistory = await memoryManager.queryEntries(resourceQuery);
-[0m[31m                                                  ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m248[0m:[0m[33m51[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'entry' implicitly has an 'any' type.
-      const actions = resourceHistory.map(entry => entry.context.action);
-[0m[31m                                          ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m251[0m:[0m[33m43[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-      await coordinationManager.releaseResource(resourceId, agentId);
-[0m[31m                                ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m256[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-      await coordinationManager.acquireResource(resources[0], agents[0]);
-[0m[31m                                ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m265[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-      await coordinationManager.acquireResource(resources[1], agents[1]);
-[0m[31m                                ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m266[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-          await memoryManager.storeEntry(entry);
-[0m[31m                              ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m287[0m:[0m[33m31[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'detectDeadlock' does not exist on type 'MockCoordinationManager'.
-      const deadlockDetected = coordinationManager.detectDeadlock([
-[0m[31m                                                   ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m292[0m:[0m[33m52[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      await memoryManager.storeEntry(deadlockEntry);
-[0m[31m                          ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m316[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const deadlockHistory = await memoryManager.queryEntries(deadlockQuery);
-[0m[31m                                                  ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m324[0m:[0m[33m51[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-      await coordinationManager.releaseResource(resources[0], agents[0]);
-[0m[31m                                ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m329[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-      await coordinationManager.releaseResource(resources[1], agents[1]);
-[0m[31m                                ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m330[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      await memoryManager.storeEntry(sendEntry);
-[0m[31m                          ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m371[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'sendMessage' does not exist on type 'MockCoordinationManager'.
-      await coordinationManager.sendMessage(senderAgent, receiverAgent, message);
-[0m[31m                                ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m374[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      await memoryManager.storeEntry(receiveEntry);
-[0m[31m                          ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m394[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const messageHistory = await memoryManager.queryEntries(messageQuery);
-[0m[31m                                                 ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m402[0m:[0m[33m50[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'entry' implicitly has an 'any' type.
-      const actions = messageHistory.map(entry => entry.context.action);
-[0m[31m                                         ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m405[0m:[0m[33m42[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'sendMessage' does not exist on type 'MockCoordinationManager'.
-      assertEquals(coordinationManager.sendMessage.calls.length, 1);
-[0m[31m                                       ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m410[0m:[0m[33m40[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'sendMessage' does not exist on type 'MockCoordinationManager'.
-      const sentMessage = coordinationManager.sendMessage.calls[0].args[2];
-[0m[31m                                              ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m411[0m:[0m[33m47[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'sendMessage' does not exist on type 'MockCoordinationManager'.
-      coordinationManager.sendMessage = spy(() => {
-[0m[31m                          ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m421[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'sendMessage' does not exist on type 'MockCoordinationManager'.
-        await coordinationManager.sendMessage(senderAgent, receiverAgent, message);
-[0m[31m                                  ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m435[0m:[0m[33m35[0m
-
-[0m[1mTS18046 [0m[ERROR]: 'error' is of type 'unknown'.
-            error: error.message,
-[0m[31m                   ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m447[0m:[0m[33m20[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-        await memoryManager.storeEntry(failureEntry);
-[0m[31m                            ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m455[0m:[0m[33m29[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const failures = await memoryManager.queryEntries(failureQuery);
-[0m[31m                                           ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m464[0m:[0m[33m44[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      await memoryManager.storeEntry(baseEntry);
-[0m[31m                          ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m489[0m:[0m[33m27[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-        await coordinationManager.acquireResource(lockId, agentId);
-[0m[31m                                  ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m502[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getEntry' does not exist on type 'MockMemoryManager'.
-          const currentEntry = await memoryManager.getEntry(entryId);
-[0m[31m                                                   ~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m506[0m:[0m[33m52[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'updateEntry' does not exist on type 'MockMemoryManager'.
-          await memoryManager.updateEntry(entryId, updatedEntry);
-[0m[31m                              ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m517[0m:[0m[33m31[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-          await memoryManager.storeEntry(logEntry);
-[0m[31m                              ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m537[0m:[0m[33m31[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-          await coordinationManager.releaseResource(lockId, agentId);
-[0m[31m                                    ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m540[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getEntry' does not exist on type 'MockMemoryManager'.
-      const finalEntry = await memoryManager.getEntry(entryId);
-[0m[31m                                             ~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m545[0m:[0m[33m46[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const modificationHistory = await memoryManager.queryEntries(modificationQuery);
-[0m[31m                                                      ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m556[0m:[0m[33m55[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-          await memoryManager.storeEntry(entry);
-[0m[31m                              ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m581[0m:[0m[33m31[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-        await coordinationManager.acquireResource(cleanupLock, agentId);
-[0m[31m                                  ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m590[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-          const agentMemories = await memoryManager.queryEntries(query);
-[0m[31m                                                    ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m600[0m:[0m[33m53[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'deleteEntry' does not exist on type 'MockMemoryManager'.
-              await memoryManager.deleteEntry(memory.id);
-[0m[31m                                  ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m605[0m:[0m[33m35[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-          await memoryManager.storeEntry(cleanupEntry);
-[0m[31m                              ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m625[0m:[0m[33m31[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-          await coordinationManager.releaseResource(cleanupLock, agentId);
-[0m[31m                                    ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m628[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const remainingTemp = await memoryManager.queryEntries({
-[0m[31m                                                ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m633[0m:[0m[33m49[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const cleanupLogs = await memoryManager.queryEntries({
-[0m[31m                                              ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m640[0m:[0m[33m47[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'acquireResource' does not exist on type 'MockCoordinationManager'.
-          await coordinationManager.acquireResource(resourceId, agentId);
-[0m[31m                                    ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m664[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-            await memoryManager.storeEntry(entry);
-[0m[31m                                ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m683[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'releaseResource' does not exist on type 'MockCoordinationManager'.
-            await coordinationManager.releaseResource(resourceId, agentId);
-[0m[31m                                      ~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m685[0m:[0m[33m39[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'queryEntries' does not exist on type 'MockMemoryManager'.
-      const allEntries = await memoryManager.queryEntries({
-[0m[31m                                             ~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m694[0m:[0m[33m46[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'entry' implicitly has an 'any' type.
-      const uniqueAgents = new Set(allEntries.map(entry => entry.agentId));
-[0m[31m                                                  ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/memory-coordination.test.ts[0m:[0m[33m702[0m:[0m[33m51[0m
-
-[0m[1mTS2673 [0m[ERROR]: Constructor of class 'EventBus' is private and only accessible within the class declaration.
-    eventBus = new EventBus();
-[0m[31m               ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m83[0m:[0m[33m16[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 7 arguments, but got 6.
-    orchestrator = new Orchestrator(
-[0m[31m                   ^[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m89[0m:[0m[33m20[0m
-
-    An argument for 'logger' was not provided.
-        private logger: ILogger,
-    [0m[36m    ~~~~~~~~~~~~~~~~~~~~~~~[0m
-        at [0m[36mfile:///workspaces/claude-code-flow/src/core/orchestrator.ts[0m:[0m[33m316[0m:[0m[33m5[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getActiveSessions' does not exist on type 'Orchestrator'.
-      const sessions = orchestrator.getActiveSessions();
-[0m[31m                                    ~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m130[0m:[0m[33m37[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-      const result = await orchestrator.executeTask(task);
-[0m[31m                                        ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m158[0m:[0m[33m41[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-        tasks.map(task => orchestrator.executeTask(task))
-[0m[31m                                       ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m196[0m:[0m[33m40[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'result' implicitly has an 'any' type.
-      results.forEach((result, index) => {
-[0m[31m                       ~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m201[0m:[0m[33m24[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'index' implicitly has an 'any' type.
-      results.forEach((result, index) => {
-[0m[31m                               ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m201[0m:[0m[33m32[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getActiveSessions' does not exist on type 'Orchestrator'.
-      assertEquals(orchestrator.getActiveSessions().length, 1);
-[0m[31m                                ~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m216[0m:[0m[33m33[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 1 arguments, but got 2.
-      await orchestrator.terminateAgent(sessionId, 'Test cleanup');
-[0m[31m                                                   ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m220[0m:[0m[33m52[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getActiveSessions' does not exist on type 'Orchestrator'.
-      assertEquals(orchestrator.getActiveSessions().length, 0);
-[0m[31m                                ~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m223[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'getActiveSessions' does not exist on type 'Orchestrator'.
-      assertEquals(orchestrator.getActiveSessions().length, 0);
-[0m[31m                                ~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m253[0m:[0m[33m33[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-      const result = await orchestrator.executeTask(task);
-[0m[31m                                        ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m286[0m:[0m[33m41[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-      const result = await orchestrator.executeTask(task);
-[0m[31m                                        ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m330[0m:[0m[33m41[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-      await orchestrator.executeTask(task);
-[0m[31m                         ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m458[0m:[0m[33m26[0m
-
-[0m[1mTS2554 [0m[ERROR]: Expected 1 arguments, but got 2.
-      await orchestrator.terminateAgent(sessionId, 'Event test cleanup');
-[0m[31m                                                   ~~~~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m461[0m:[0m[33m52[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-      const result = await orchestrator.executeTask(task);
-[0m[31m                                        ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m512[0m:[0m[33m41[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      assertEquals(memoryManager.storeEntry.calls.length > 0, true);
-[0m[31m                                 ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m543[0m:[0m[33m34[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      const storedEntries = memoryManager.storeEntry.calls.map(call => call.args[0]);
-[0m[31m                                          ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m545[0m:[0m[33m43[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'call' implicitly has an 'any' type.
-      const storedEntries = memoryManager.storeEntry.calls.map(call => call.args[0]);
-[0m[31m                                                               ~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m545[0m:[0m[33m64[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'entry' implicitly has an 'any' type.
-      const spawnEntry = storedEntries.find(entry =>
-[0m[31m                                            ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m546[0m:[0m[33m45[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'executeTask' does not exist on type 'Orchestrator'.
-      await orchestrator.executeTask(task);
-[0m[31m                         ~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m582[0m:[0m[33m26[0m
-
-[0m[1mTS2339 [0m[ERROR]: Property 'storeEntry' does not exist on type 'MockMemoryManager'.
-      const taskEntries = memoryManager.storeEntry.calls
-[0m[31m                                        ~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m585[0m:[0m[33m41[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'call' implicitly has an 'any' type.
-        .map(call => call.args[0])
-[0m[31m             ~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m586[0m:[0m[33m14[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'entry' implicitly has an 'any' type.
-        .filter(entry => entry.content.includes('Task'));
-[0m[31m                ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m587[0m:[0m[33m17[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'entry' implicitly has an 'any' type.
-      const startEntry = taskEntries.find(entry =>
-[0m[31m                                          ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m591[0m:[0m[33m43[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'entry' implicitly has an 'any' type.
-      const completeEntry = taskEntries.find(entry =>
-[0m[31m                                             ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/orchestrator-terminal.test.ts[0m:[0m[33m594[0m:[0m[33m46[0m
-
-[0m[1mTS2322 [0m[ERROR]: Type '(path: string) => Promise<void>' is not assignable to type '(path: string | URL, data: string | ReadableStream<string>, options?: WriteFileOptions | undefined) => Promise<void>'.
-  Types of parameters 'path' and 'path' are incompatible.
-    Type 'string | URL' is not assignable to type 'string'.
-      Type 'URL' is not assignable to type 'string'.
-      Deno.writeTextFile = async (path: string) => {
-[0m[31m      ~~~~~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/start-compatibility.test.ts[0m:[0m[33m81[0m:[0m[33m7[0m
-
-[0m[1mTS2322 [0m[ERROR]: Type '(path: string) => Promise<Deno.FileInfo>' is not assignable to type '(path: string | URL) => Promise<FileInfo>'.
-  Types of parameters 'path' and 'path' are incompatible.
-    Type 'string | URL' is not assignable to type 'string'.
-      Type 'URL' is not assignable to type 'string'.
-      Deno.stat = async (path: string) => {
-[0m[31m      ~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/start-compatibility.test.ts[0m:[0m[33m90[0m:[0m[33m7[0m
-
-[0m[1mTS2673 [0m[ERROR]: Constructor of class 'EventBus' is private and only accessible within the class declaration.
-  const eventBus = new EventBus();
-[0m[31m                   ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/terminal.test.ts[0m:[0m[33m214[0m:[0m[33m20[0m
-
-[0m[1mTS2673 [0m[ERROR]: Constructor of class 'EventBus' is private and only accessible within the class declaration.
-  const eventBus = new EventBus();
-[0m[31m                   ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/terminal.test.ts[0m:[0m[33m251[0m:[0m[33m20[0m
-
-[0m[1mTS7006 [0m[ERROR]: Parameter 'event' implicitly has an 'any' type.
-  eventBus.on('terminal:maintenance', (event) => {
-[0m[31m                                       ~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/terminal.test.ts[0m:[0m[33m260[0m:[0m[33m40[0m
-
-[0m[1mTS2673 [0m[ERROR]: Constructor of class 'EventBus' is private and only accessible within the class declaration.
-  const eventBus = new EventBus();
-[0m[31m                   ~~~~~~~~~~~~~~[0m
-    at [0m[36mfile:///workspaces/claude-code-flow/tests/integration/terminal.test.ts[0m:[0m[33m283[0m:[0m[33m20[0m
-
-Found 214 errors.
-
-[0m[1m[31merror[0m: Type checking failed.
-
-  [33minfo:[39m The program failed type-checking, but it still might work correctly.
-  [36mhint:[39m Re-run with [4m--no-check[24m to skip type-checking.
+[0m[32mDownload[0m https://registry.npmjs.org/vitest
+[0m[32mDownload[0m https://registry.npmjs.org/@edge-runtime%2fvm
+[0m[32mDownload[0m https://registry.npmjs.org/@types%2fchai
+[0m[32mDownload[0m https://registry.npmjs.org/@types%2fdebug
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2fbrowser
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2fexpect
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2fmocker
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2fpretty-format
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2frunner
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2fsnapshot
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2fspy
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2fui
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest%2futils
+[0m[32mDownload[0m https://registry.npmjs.org/chai
+[0m[32mDownload[0m https://registry.npmjs.org/debug
+[0m[32mDownload[0m https://registry.npmjs.org/expect-type
+[0m[32mDownload[0m https://registry.npmjs.org/happy-dom
+[0m[32mDownload[0m https://registry.npmjs.org/jsdom
+[0m[32mDownload[0m https://registry.npmjs.org/magic-string
+[0m[32mDownload[0m https://registry.npmjs.org/pathe
+[0m[32mDownload[0m https://registry.npmjs.org/picomatch
+[0m[32mDownload[0m https://registry.npmjs.org/std-env
+[0m[32mDownload[0m https://registry.npmjs.org/tinybench
+[0m[32mDownload[0m https://registry.npmjs.org/tinyexec
+[0m[32mDownload[0m https://registry.npmjs.org/tinyglobby
+[0m[32mDownload[0m https://registry.npmjs.org/tinypool
+[0m[32mDownload[0m https://registry.npmjs.org/tinyrainbow
+[0m[32mDownload[0m https://registry.npmjs.org/vite
+[0m[32mDownload[0m https://registry.npmjs.org/vite-node
+[0m[32mDownload[0m https://registry.npmjs.org/why-is-node-running
+[0m[32mDownload[0m https://registry.npmjs.org/@types%2fdeep-eql
+[0m[32mDownload[0m https://registry.npmjs.org/estree-walker
+[0m[32mDownload[0m https://registry.npmjs.org/msw
+[0m[32mDownload[0m https://registry.npmjs.org/strip-literal
+[0m[32mDownload[0m https://registry.npmjs.org/tinyspy
+[0m[32mDownload[0m https://registry.npmjs.org/loupe
+[0m[32mDownload[0m https://registry.npmjs.org/assertion-error
+[0m[32mDownload[0m https://registry.npmjs.org/check-error
+[0m[32mDownload[0m https://registry.npmjs.org/deep-eql
+[0m[32mDownload[0m https://registry.npmjs.org/pathval
+[0m[32mDownload[0m https://registry.npmjs.org/ms
+[0m[32mDownload[0m https://registry.npmjs.org/@jridgewell%2fsourcemap-codec
+[0m[32mDownload[0m https://registry.npmjs.org/fdir
+[0m[32mDownload[0m https://registry.npmjs.org/esbuild
+[0m[32mDownload[0m https://registry.npmjs.org/fsevents
+[0m[32mDownload[0m https://registry.npmjs.org/jiti
+[0m[32mDownload[0m https://registry.npmjs.org/less
+[0m[32mDownload[0m https://registry.npmjs.org/lightningcss
+[0m[32mDownload[0m https://registry.npmjs.org/postcss
+[0m[32mDownload[0m https://registry.npmjs.org/rollup
+[0m[32mDownload[0m https://registry.npmjs.org/sass
+[0m[32mDownload[0m https://registry.npmjs.org/sass-embedded
+[0m[32mDownload[0m https://registry.npmjs.org/stylus
+[0m[32mDownload[0m https://registry.npmjs.org/sugarss
+[0m[32mDownload[0m https://registry.npmjs.org/terser
+[0m[32mDownload[0m https://registry.npmjs.org/tsx
+[0m[32mDownload[0m https://registry.npmjs.org/yaml
+[0m[32mDownload[0m https://registry.npmjs.org/cac
+[0m[32mDownload[0m https://registry.npmjs.org/es-module-lexer
+[0m[32mDownload[0m https://registry.npmjs.org/siginfo
+[0m[32mDownload[0m https://registry.npmjs.org/stackback
+[0m[32mDownload[0m https://registry.npmjs.org/@types%2festree
+[0m[32mDownload[0m https://registry.npmjs.org/js-tokens
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2faix-ppc64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fandroid-arm
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fandroid-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fandroid-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fdarwin-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fdarwin-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2ffreebsd-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2ffreebsd-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-arm
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-ia32
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-loong64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-mips64el
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-ppc64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-riscv64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-s390x
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2flinux-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fnetbsd-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fnetbsd-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fopenbsd-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fopenbsd-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fsunos-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fwin32-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fwin32-ia32
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild%2fwin32-x64
+[0m[32mDownload[0m https://registry.npmjs.org/nanoid
+[0m[32mDownload[0m https://registry.npmjs.org/picocolors
+[0m[32mDownload[0m https://registry.npmjs.org/source-map-js
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-android-arm-eabi
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-android-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-darwin-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-darwin-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-freebsd-arm64
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-freebsd-x64
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-arm-gnueabihf
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-arm-musleabihf
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-arm64-gnu
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-arm64-musl
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-loongarch64-gnu
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-powerpc64le-gnu
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-riscv64-gnu
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-riscv64-musl
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-s390x-gnu
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-x64-gnu
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-linux-x64-musl
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-win32-arm64-msvc
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-win32-ia32-msvc
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup%2frollup-win32-x64-msvc
+[0m[32mDownload[0m https://registry.npmjs.org/vitest/-/vitest-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest/mocker/-/mocker-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest/pretty-format/-/pretty-format-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.14.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest/snapshot/-/snapshot-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/pathe/-/pathe-2.0.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/chai/-/chai-5.2.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/tinybench/-/tinybench-2.9.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/debug/-/debug-4.4.1.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/vite/-/vite-6.3.5.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/tinyrainbow/-/tinyrainbow-2.0.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest/spy/-/spy-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest/utils/-/utils-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/magic-string/-/magic-string-0.30.17.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/picomatch/-/picomatch-4.0.2.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest/runner/-/runner-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/vite-node/-/vite-node-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/tinyexec/-/tinyexec-0.3.2.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/why-is-node-running/-/why-is-node-running-2.3.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@vitest/expect/-/expect-3.2.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/tinypool/-/tinypool-1.1.1.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/expect-type/-/expect-type-1.2.1.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/std-env/-/std-env-3.9.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@types/chai/-/chai-5.2.2.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/estree-walker/-/estree-walker-3.0.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/fdir/-/fdir-6.4.6.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/assertion-error/-/assertion-error-2.0.1.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/check-error/-/check-error-2.1.1.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/pathval/-/pathval-2.0.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/loupe/-/loupe-3.1.4.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/deep-eql/-/deep-eql-5.0.2.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/ms/-/ms-2.1.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/postcss/-/postcss-8.5.6.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/rollup/-/rollup-4.43.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/esbuild/-/esbuild-0.25.5.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/tinyspy/-/tinyspy-4.0.3.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/strip-literal/-/strip-literal-3.0.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/cac/-/cac-6.7.14.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-1.7.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/siginfo/-/siginfo-2.0.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/stackback/-/stackback-0.0.2.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@types/deep-eql/-/deep-eql-4.0.2.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@types/estree/-/estree-1.0.8.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.43.0.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@types/estree/-/estree-1.0.7.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.25.5.tgz
+[0m[32mDownload[0m https://registry.npmjs.org/js-tokens/-/js-tokens-9.0.1.tgz
+[0m[32mInitialize[0m chai@5.2.0
+[0m[32mInitialize[0m assertion-error@2.0.1
+[0m[32mInitialize[0m js-tokens@9.0.1
+[0m[32mInitialize[0m tinyglobby@0.2.14
+[0m[32mInitialize[0m ms@2.1.3
+[0m[32mInitialize[0m tinybench@2.9.0
+[0m[32mInitialize[0m pathval@2.0.0
+[0m[32mInitialize[0m expect-type@1.2.1
+[0m[32mInitialize[0m deep-eql@5.0.2
+[0m[32mInitialize[0m picomatch@4.0.2
+[0m[32mInitialize[0m estree-walker@3.0.3
+[0m[32mInitialize[0m esbuild@0.25.5
+[0m[32mInitialize[0m pathe@2.0.3
+[0m[32mInitialize[0m tinyspy@4.0.3
+[0m[32mInitialize[0m picocolors@1.1.1
+[0m[32mInitialize[0m siginfo@2.0.0
+[0m[32mInitialize[0m tinyexec@0.3.2
+[0m[32mInitialize[0m @types/estree@1.0.7
+[0m[32mInitialize[0m @types/estree@1.0.8
+[0m[32mInitialize[0m std-env@3.9.0
+[0m[32mInitialize[0m debug@4.4.1
+[0m[32mInitialize[0m stackback@0.0.2
+[0m[32mInitialize[0m tinyrainbow@2.0.0
+[0m[32mInitialize[0m check-error@2.1.1
+[0m[32mInitialize[0m why-is-node-running@2.3.0
+[0m[32mInitialize[0m @vitest/spy@3.2.3
+[0m[32mInitialize[0m @jridgewell/sourcemap-codec@1.5.0
+[0m[32mInitialize[0m es-module-lexer@1.7.0
+[0m[32mInitialize[0m source-map-js@1.2.1
+[0m[32mInitialize[0m @vitest/pretty-format@3.2.3
+[0m[32mInitialize[0m tinypool@1.1.1
+[0m[32mInitialize[0m cac@6.7.14
+[0m[32mInitialize[0m fsevents@2.3.3
+[0m[32mInitialize[0m @types/deep-eql@4.0.2
+[0m[32mInitialize[0m strip-literal@3.0.0
+[0m[32mInitialize[0m magic-string@0.30.17
+[0m[32mInitialize[0m fdir@6.4.6
+[0m[32mInitialize[0m @vitest/utils@3.2.3
+[0m[32mInitialize[0m @vitest/expect@3.2.3
+[0m[32mInitialize[0m nanoid@3.3.11
+[0m[32mInitialize[0m loupe@3.1.4
+[0m[32mInitialize[0m vite-node@3.2.3
+[0m[32mInitialize[0m @types/chai@5.2.2
+[0m[32mInitialize[0m @vitest/snapshot@3.2.3
+[0m[32mInitialize[0m postcss@8.5.6
+[0m[32mInitialize[0m @vitest/mocker@3.2.3
+[0m[32mInitialize[0m @vitest/runner@3.2.3
+[0m[32mInitialize[0m @rollup/rollup-darwin-arm64@4.43.0
+[0m[32mInitialize[0m rollup@4.43.0
+[0m[32mInitialize[0m vite@6.3.5
+[0m[32mInitialize[0m vitest@3.2.3
+[0m[32mInitialize[0m @esbuild/darwin-arm64@0.25.5
+[0m[1m[31merror[0m: Relative import path "os" not prefixed with / or ./ or ../ and not in import map from "file:///Users/iaminawe/Sites/claude-code-flow/tests/integration/taskmaster/storage-sync.test.ts"
+  [0m[36mhint:[0m If you want to use a built-in Node module, add a "node:" prefix (ex. "node:os").
+    at [0m[36mfile:///Users/iaminawe/Sites/claude-code-flow/tests/integration/taskmaster/storage-sync.test.ts[0m:[0m[33m21[0m:[0m[33m24[0m

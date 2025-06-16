@@ -74,15 +74,15 @@ Build an e-commerce platform with user authentication and payments.
 EOF
 
 # 2. Generate tasks (basic - no AI)
-./claude-flow taskmaster generate project.prd --sparc-mapping --output tasks.json
+././claude-flow taskmaster generate project.prd --sparc-mapping --output tasks.json
 
 # 3. With AI enhancement (requires API key)
 export ANTHROPIC_API_KEY='your-api-key'
-./claude-flow taskmaster generate project.prd --ai --detailed --enhance
+././claude-flow taskmaster generate project.prd --ai --detailed --enhance
 
 # 4. View and export
-./claude-flow taskmaster list
-./claude-flow taskmaster export --format markdown --output tasks.md
+././claude-flow taskmaster list
+././claude-flow taskmaster export --format markdown --output tasks.md
 ```
 
 ## Installation & Setup
@@ -92,10 +92,10 @@ TaskMaster is built into Claude-Flow - no additional installation required.
 ### Basic Setup
 ```bash
 # Verify TaskMaster is available
-./claude-flow taskmaster info
+././claude-flow taskmaster info
 
 # Initialize for VS Code extension (optional)
-./claude-flow taskmaster init
+././claude-flow taskmaster init
 ```
 
 ### AI Enhancement Setup
@@ -104,7 +104,7 @@ TaskMaster is built into Claude-Flow - no additional installation required.
 export ANTHROPIC_API_KEY='sk-ant-...'
 
 # Verify AI is configured
-./claude-flow taskmaster ai-status
+././claude-flow taskmaster ai-status
 ```
 
 ## Command Reference
@@ -115,13 +115,13 @@ The TaskMaster CLI includes comprehensive built-in help:
 
 ```bash
 # Show TaskMaster help (works with no subcommand or --help)
-claude-flow taskmaster
-claude-flow taskmaster --help
+././claude-flow taskmaster
+././claude-flow taskmaster --help
 
 # Get help for specific subcommands
-claude-flow taskmaster help generate
-claude-flow taskmaster help export
-claude-flow taskmaster generate --help
+././claude-flow taskmaster help generate
+././claude-flow taskmaster help export
+././claude-flow taskmaster generate --help
 ```
 
 ### Core Commands
@@ -129,13 +129,13 @@ claude-flow taskmaster generate --help
 #### `parse <prd-file>`
 Parse PRD and display structure.
 ```bash
-claude-flow taskmaster parse requirements.prd
+././claude-flow taskmaster parse requirements.prd
 ```
 
 #### `generate <prd-file> [options]`
 Generate tasks from PRD.
 ```bash
-claude-flow taskmaster generate requirements.prd [options]
+././claude-flow taskmaster generate requirements.prd [options]
 ```
 
 **Options:**
@@ -151,20 +151,20 @@ claude-flow taskmaster generate requirements.prd [options]
 #### `list`
 Display stored PRDs and task summaries.
 ```bash
-claude-flow taskmaster list
+./claude-flow taskmaster list
 ```
 
 #### `update <task-id> <status>`
 Update task status.
 ```bash
-claude-flow taskmaster update task-001 completed
+./claude-flow taskmaster update task-001 completed
 ```
 Status options: `pending`, `in_progress`, `completed`, `blocked`
 
 #### `export [options]`
 Export stored tasks.
 ```bash
-claude-flow taskmaster export --format markdown --output tasks.md
+./claude-flow taskmaster export --format markdown --output tasks.md
 ```
 
 **Options:**
@@ -175,13 +175,13 @@ claude-flow taskmaster export --format markdown --output tasks.md
 #### `ai-status`
 Check AI configuration.
 ```bash
-claude-flow taskmaster ai-status
+./claude-flow taskmaster ai-status
 ```
 
 #### `analyze <prd-file>`
 Analyze PRD with AI (requires API key).
 ```bash
-claude-flow taskmaster analyze requirements.prd
+./claude-flow taskmaster analyze requirements.prd
 ```
 
 Returns:
@@ -194,27 +194,27 @@ Returns:
 #### `templates list`
 List available templates (partially implemented).
 ```bash
-claude-flow taskmaster templates list
+./claude-flow taskmaster templates list
 ```
 
 #### `info`
 Display TaskMaster information and capabilities.
 ```bash
-claude-flow taskmaster info
+./claude-flow taskmaster info
 ```
 
 #### `help [subcommand]`
 Show comprehensive help for TaskMaster or specific subcommands.
 ```bash
 # General TaskMaster help
-claude-flow taskmaster help
+./claude-flow taskmaster help
 
 # Help for specific subcommand
-claude-flow taskmaster help generate
-claude-flow taskmaster help export
+./claude-flow taskmaster help generate
+./claude-flow taskmaster help export
 
 # Also works with --help flag on any command
-claude-flow taskmaster generate --help
+./claude-flow taskmaster generate --help
 ```
 
 ## PRD Format Guidelines
@@ -335,7 +335,7 @@ TaskMaster automatically maps tasks to SPARC development phases based on content
 
 ```bash
 # 1. Generate tasks with SPARC mapping
-claude-flow taskmaster generate app.prd --sparc-mapping
+./claude-flow taskmaster generate app.prd --sparc-mapping
 
 # 2. Execute SPARC mode for a task
 claude-flow sparc run architect "Design system architecture"
@@ -361,12 +361,12 @@ When configured with an Anthropic API key, TaskMaster provides enhanced capabili
    export ANTHROPIC_API_KEY='sk-ant-...'
    
    # Option B: Command-line Flag
-   claude-flow taskmaster generate prd.md --ai --api-key 'your-key'
+   ./claude-flow taskmaster generate prd.md --ai --api-key 'your-key'
    ```
 
 3. **Verify Setup**
    ```bash
-   claude-flow taskmaster ai-status
+   ./claude-flow taskmaster ai-status
    ```
 
 ### Enhanced Features
@@ -379,13 +379,13 @@ When configured with an Anthropic API key, TaskMaster provides enhanced capabili
 ### AI Commands
 ```bash
 # Check AI status
-claude-flow taskmaster ai-status
+./claude-flow taskmaster ai-status
 
 # Analyze PRD with AI
-claude-flow taskmaster analyze requirements.prd
+./claude-flow taskmaster analyze requirements.prd
 
 # Generate with AI enhancement
-claude-flow taskmaster generate requirements.prd \
+./claude-flow taskmaster generate requirements.prd \
   --ai \
   --detailed \
   --enhance \
@@ -467,7 +467,7 @@ interface TaskTemplate {
 ### Template Commands
 ```bash
 # List templates (partially works)
-claude-flow taskmaster templates list
+././claude-flow taskmaster templates list
 
 # Note: Apply, import, export commands exist but are not functional
 ```
@@ -480,7 +480,7 @@ The [claude-task-master VS Code extension](https://github.com/iaminawe/claude-ta
 
 1. **Initialize TaskMaster**
 ```bash
-claude-flow taskmaster init
+././claude-flow taskmaster init
 ```
 
 2. **Install VS Code Extension**
@@ -490,7 +490,7 @@ claude-flow taskmaster init
 
 3. **Start Sync Server**
 ```bash
-claude-flow taskmaster sync server start
+././claude-flow taskmaster sync server start
 ```
 
 The extension automatically connects and syncs tasks in real-time.
@@ -505,19 +505,19 @@ The extension automatically connects and syncs tasks in real-time.
 ### Sync Commands
 ```bash
 # Initialize sync environment
-claude-flow taskmaster init
+./claude-flow taskmaster init
 
 # Start sync server
-claude-flow taskmaster sync server start [--port 5173] [--host localhost]
+./claude-flow taskmaster sync server start [--port 5173] [--host localhost]
 
 # Stop sync server
-claude-flow taskmaster sync server stop
+./claude-flow taskmaster sync server stop
 
 # Check server status
-claude-flow taskmaster sync server status
+./claude-flow taskmaster sync server status
 
 # Manual sync (when server not running)
-claude-flow taskmaster sync
+./claude-flow taskmaster sync
 ```
 
 ### Status Icons
@@ -615,10 +615,10 @@ Simple task management application.
 EOF
 
 # 2. Generate tasks
-claude-flow taskmaster generate app.prd --sparc-mapping
+./claude-flow taskmaster generate app.prd --sparc-mapping
 
 # 3. Export for team
-claude-flow taskmaster export --format markdown --output tasks.md
+./claude-flow taskmaster export --format markdown --output tasks.md
 ```
 
 ### AI-Enhanced Workflow
@@ -627,10 +627,10 @@ claude-flow taskmaster export --format markdown --output tasks.md
 export ANTHROPIC_API_KEY='sk-ant-...'
 
 # 2. Analyze PRD first
-claude-flow taskmaster analyze app.prd
+./claude-flow taskmaster analyze app.prd
 
 # 3. Generate enhanced tasks
-claude-flow taskmaster generate app.prd \
+./claude-flow taskmaster generate app.prd \
   --ai \
   --detailed \
   --enhance \
@@ -643,23 +643,23 @@ cat enhanced-tasks.json | jq '.tasks[0]'
 ### Team Collaboration Workflow
 ```bash
 # 1. Generate tasks
-claude-flow taskmaster generate project.prd --sparc-mapping
+./claude-flow taskmaster generate project.prd --sparc-mapping
 
 # 2. Export for different uses
-claude-flow taskmaster export --format markdown --output dev-tasks.md
-claude-flow taskmaster export --format csv --output pm-timeline.csv
-claude-flow taskmaster export --format json --output ci-tasks.json
+./claude-flow taskmaster export --format markdown --output dev-tasks.md
+./claude-flow taskmaster export --format csv --output pm-timeline.csv
+./claude-flow taskmaster export --format json --output ci-tasks.json
 
 # 3. Track progress
-claude-flow taskmaster update task-001 in_progress
-claude-flow taskmaster update task-002 completed
-claude-flow taskmaster list
+./claude-flow taskmaster update task-001 in_progress
+./claude-flow taskmaster update task-002 completed
+./claude-flow taskmaster list
 ```
 
 ### Integration with SPARC Development
 ```bash
 # 1. Generate SPARC-mapped tasks
-claude-flow taskmaster generate app.prd --sparc-mapping
+./claude-flow taskmaster generate app.prd --sparc-mapping
 
 # 2. Execute architecture phase
 claude-flow sparc run architect "Design task management system"
@@ -668,7 +668,7 @@ claude-flow sparc run architect "Design task management system"
 claude-flow sparc tdd "task CRUD operations"
 
 # 4. Update task status
-claude-flow taskmaster update task-001 completed
+./claude-flow taskmaster update task-001 completed
 ```
 
 ## Troubleshooting
@@ -706,13 +706,13 @@ claude-flow taskmaster update task-001 completed
 ### Debug Commands
 ```bash
 # Verbose output
-claude-flow taskmaster generate prd.md --verbose
+./claude-flow taskmaster generate prd.md --verbose
 
 # Check stored data
 claude-flow memory query taskmaster
 
 # Verify setup
-claude-flow taskmaster info
+./claude-flow taskmaster info
 ```
 
 ### Error Messages
@@ -779,10 +779,10 @@ This section outlines the implementation plan to bridge TaskMaster's PRD-driven 
 **1.1 TaskMaster Execute Command**
 ```bash
 # Execute single task
-claude-flow taskmaster execute <task-id>
+./claude-flow taskmaster execute <task-id>
 
 # Execute with specific agent type
-claude-flow taskmaster execute <task-id> --agent-type developer
+./claude-flow taskmaster execute <task-id> --agent-type developer
 ```
 
 **1.2 SPARC Mode to Agent Mapping**
@@ -834,10 +834,10 @@ claude-flow swarm --taskmaster --parallel --max-agents 10
 **4.1 Execute All Command**
 ```bash
 # Execute entire project
-claude-flow taskmaster execute-all --prd-id <id>
+./claude-flow taskmaster execute-all --prd-id <id>
 
 # With swarm configuration
-claude-flow taskmaster execute-all --swarm --parallel --review
+./claude-flow taskmaster execute-all --swarm --parallel --review
 ```
 
 **4.2 Progress Monitoring**
@@ -867,10 +867,10 @@ claude-flow taskmaster execute-all --swarm --parallel --review
 #### Complete Project Execution
 ```bash
 # 1. Generate tasks from PRD with SPARC mapping
-claude-flow taskmaster generate project.prd --sparc-mapping --ai
+./claude-flow taskmaster generate project.prd --sparc-mapping --ai
 
 # 2. Execute with swarm orchestration
-claude-flow taskmaster execute-all --swarm --parallel --max-agents 10
+./claude-flow taskmaster execute-all --swarm --parallel --max-agents 10
 
 # 3. Monitor progress
 claude-flow swarm status --watch
@@ -879,10 +879,10 @@ claude-flow swarm status --watch
 #### Selective Execution
 ```bash
 # Execute only high-priority tasks
-claude-flow taskmaster execute-all --filter priority=high --swarm
+./claude-flow taskmaster execute-all --filter priority=high --swarm
 
 # Execute specific SPARC phase
-claude-flow taskmaster execute-all --filter sparc_mode=tdd --swarm
+./claude-flow taskmaster execute-all --filter sparc_mode=tdd --swarm
 ```
 
 ## Additional Claude-Flow Feature Integrations
@@ -897,7 +897,7 @@ claude-flow taskmaster execute-all --filter sparc_mode=tdd --swarm
 claude-flow memory store arch_decisions "API will use REST with JWT auth"
 
 # All code generation agents will have access to this context
-claude-flow taskmaster execute-all --shared-memory-namespace project_x
+./claude-flow taskmaster execute-all --shared-memory-namespace project_x
 ```
 
 ### Workflow System Integration
@@ -907,7 +907,7 @@ claude-flow taskmaster execute-all --shared-memory-namespace project_x
 
 ```bash
 # Convert TaskMaster tasks to workflow
-claude-flow taskmaster to-workflow --output project-workflow.json
+./claude-flow taskmaster to-workflow --output project-workflow.json
 
 # Execute as workflow with checkpoints
 claude-flow workflow execute project-workflow.json --checkpoint
@@ -920,7 +920,7 @@ claude-flow workflow execute project-workflow.json --checkpoint
 
 ```bash
 # Define SPARC chains for complex tasks
-claude-flow taskmaster generate project.prd --sparc-chains
+./claude-flow taskmaster generate project.prd --sparc-chains
 
 # Example chain: spec-pseudocode → architect → code → tdd
 ```
@@ -935,7 +935,7 @@ claude-flow taskmaster generate project.prd --sparc-chains
 claude-flow agent train --from-taskmaster-history
 
 # Improved agent selection based on past performance
-claude-flow taskmaster execute-all --smart-agent-selection
+./claude-flow taskmaster execute-all --smart-agent-selection
 ```
 
 ### Multi-Project Coordination
@@ -945,7 +945,7 @@ claude-flow taskmaster execute-all --smart-agent-selection
 
 ```bash
 # Link projects with dependencies
-claude-flow taskmaster link project-a.prd project-b.prd
+./claude-flow taskmaster link project-a.prd project-b.prd
 
 # Execute with cross-project coordination
 claude-flow swarm --multi-project --resolve-dependencies
@@ -961,10 +961,10 @@ claude-flow swarm --multi-project --resolve-dependencies
 claude-flow server start --enable-taskmaster
 
 # Team members can claim tasks
-claude-flow taskmaster claim task-001 --assignee @developer1
+./claude-flow taskmaster claim task-001 --assignee @developer1
 
 # Real-time status updates
-claude-flow taskmaster watch --team
+./claude-flow taskmaster watch --team
 ```
 
 ### Advanced Analytics Integration
@@ -974,10 +974,10 @@ claude-flow taskmaster watch --team
 
 ```bash
 # Generate project insights
-claude-flow taskmaster analytics --prd project.prd
+./claude-flow taskmaster analytics --prd project.prd
 
 # Predictive completion estimates
-claude-flow taskmaster estimate --use-historical-data
+./claude-flow taskmaster estimate --use-historical-data
 ```
 
 ### Template Evolution System
@@ -987,10 +987,10 @@ claude-flow taskmaster estimate --use-historical-data
 
 ```bash
 # Extract template from completed project
-claude-flow taskmaster extract-template --from-completed project-x
+./claude-flow taskmaster extract-template --from-completed project-x
 
 # Apply evolved template to new project
-claude-flow taskmaster generate new-project.prd --template evolved-web-app
+./claude-flow taskmaster generate new-project.prd --template evolved-web-app
 ```
 
 ## Future Features
@@ -1094,33 +1094,33 @@ TaskMaster is a practical tool for converting PRDs into structured tasks with SP
 
 ```bash
 # 1. Generate tasks from PRD with SPARC mapping
-claude-flow taskmaster generate product-spec.prd --ai --sparc-mapping
+./claude-flow taskmaster generate product-spec.prd --ai --sparc-mapping
 
 # 2. Optimize task execution order
-claude-flow taskmaster optimize --save
+./claude-flow taskmaster optimize --save
 
 # 3. Execute all tasks using swarm mode
-claude-flow taskmaster execute-all --parallel --max-agents 5
+./claude-flow taskmaster execute-all --parallel --max-agents 5
 
 # 4. Monitor progress in real-time
-claude-flow taskmaster monitor
+./claude-flow taskmaster monitor
 ```
 
 ### Advanced Workflow: Filtered Execution with Custom Config
 
 ```bash
 # 1. Check recommended configuration
-claude-flow taskmaster config recommend 50 high
+./claude-flow taskmaster config recommend 50 high
 
 # 2. Update configuration
-claude-flow taskmaster config set execution.maxConcurrentTasks 10
-claude-flow taskmaster config set prioritization.algorithm dependencies
+./claude-flow taskmaster config set execution.maxConcurrentTasks 10
+./claude-flow taskmaster config set prioritization.algorithm dependencies
 
 # 3. Execute only high-priority tasks
-claude-flow taskmaster execute-all --filter priority=high,status=pending
+./claude-flow taskmaster execute-all --filter priority=high,status=pending
 
 # 4. Monitor with custom intervals
-claude-flow taskmaster monitor --interval 2 --sync-interval 10
+./claude-flow taskmaster monitor --interval 2 --sync-interval 10
 ```
 
 ### Integration with Swarm Mode
@@ -1140,23 +1140,23 @@ claude-flow swarm start --taskmaster-file optimized-tasks.json
 
 ```bash
 # View current configuration
-claude-flow taskmaster config show
+./claude-flow taskmaster config show
 
 # Export configuration for team sharing
-claude-flow taskmaster config export team-config.json
+./claude-flow taskmaster config export team-config.json
 
 # Import configuration
-claude-flow taskmaster config import team-config.json
+./claude-flow taskmaster config import team-config.json
 
 # Reset to defaults
-claude-flow taskmaster config reset
+./claude-flow taskmaster config reset
 ```
 
 ### Task Optimization Examples
 
 ```bash
 # Optimize with visualization
-claude-flow taskmaster optimize product-spec.prd
+./claude-flow taskmaster optimize product-spec.prd
 
 # Output shows:
 # - Execution phases with parallelization opportunities
@@ -1165,7 +1165,7 @@ claude-flow taskmaster optimize product-spec.prd
 # - Dependency bottlenecks
 
 # Save optimized order
-claude-flow taskmaster optimize --save --output optimized-tasks.json
+./claude-flow taskmaster optimize --save --output optimized-tasks.json
 ```
 
 The gap between documentation claims and reality is significant. Focus on these core capabilities for the best experience with TaskMaster.

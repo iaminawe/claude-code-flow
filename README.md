@@ -412,6 +412,40 @@ Claude Code slash commands available after init:
 ./claude-flow mcp tools
 ```
 
+## 📋 **TaskMaster Integration** 
+
+TaskMaster provides intelligent PRD (Product Requirements Document) parsing and task generation with SPARC methodology mapping:
+
+### **TaskMaster Commands**
+```bash
+# Generate tasks from PRD with SPARC mapping
+./claude-flow taskmaster generate requirements.prd --sparc-mapping
+
+# Optimize task execution order
+./claude-flow taskmaster optimize --save
+
+# Execute tasks in parallel
+./claude-flow taskmaster execute-all --parallel --max-agents 10
+
+# Monitor execution in real-time
+./claude-flow taskmaster monitor
+
+# Configuration management
+./claude-flow taskmaster config show
+./claude-flow taskmaster config set execution.maxConcurrentTasks 10
+
+# Integration with Swarm mode
+./claude-flow swarm start --taskmaster --max-agents 8
+```
+
+### **TaskMaster Features**
+- **PRD Parsing**: Automatic extraction of requirements from markdown documents
+- **Task Generation**: Hierarchical task breakdown with dependencies
+- **SPARC Mapping**: Automatic assignment of development phases
+- **Parallel Execution**: Intelligent scheduling with dependency management
+- **Real-time Monitoring**: Live dashboard with progress tracking
+- **Configuration**: Flexible settings for optimization
+
 ## 🚀 **SPARC Development Methodology**
 
 Claude-Flow integrates the **SPARC** (Specification, Pseudocode, Architecture, Refinement, Completion) methodology for systematic AI-assisted development:

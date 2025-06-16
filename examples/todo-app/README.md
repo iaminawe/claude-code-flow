@@ -12,23 +12,23 @@ This example demonstrates building a complete React todo application using:
 
 ```bash
 # Generate tasks from PRD
-claude-flow taskmaster generate todo-app.prd --sparc-mapping
+./claude-flow taskmaster generate todo-app.prd --sparc-mapping
 
 # Optimize execution order
-claude-flow taskmaster optimize --save
+./claude-flow taskmaster optimize --save
 
 # View optimization results
-claude-flow taskmaster list
+./claude-flow taskmaster list
 ```
 
 ### 2. Configure for Optimal Performance
 
 ```bash
 # Get recommendations for your task count
-claude-flow taskmaster config recommend 31 medium
+./claude-flow taskmaster config recommend 31 medium
 
 # Update configuration
-claude-flow taskmaster config set execution.maxConcurrentTasks 7
+./claude-flow taskmaster config set execution.maxConcurrentTasks 7
 ```
 
 ### 3. Execute Tasks
@@ -36,19 +36,19 @@ claude-flow taskmaster config set execution.maxConcurrentTasks 7
 #### Option A: Using TaskMaster Commands
 ```bash
 # Execute all tasks in parallel
-claude-flow taskmaster execute-all --parallel
+./claude-flow taskmaster execute-all --parallel
 
 # Monitor progress in another terminal
-claude-flow taskmaster monitor
+./claude-flow taskmaster monitor
 ```
 
 #### Option B: Using Swarm Mode
 ```bash
 # Start swarm with TaskMaster integration
-claude-flow swarm start --taskmaster --max-agents 7
+./claude-flow swarm start --taskmaster --max-agents 7
 
 # Or use optimized task file
-claude-flow swarm start --taskmaster-file tasks-optimized.json
+./claude-flow swarm start --taskmaster-file tasks-optimized.json
 ```
 
 ### 4. Build the App with SPARC
@@ -96,7 +96,7 @@ todo-app/
 
 ### Real-time Dashboard
 ```bash
-claude-flow taskmaster monitor
+./claude-flow taskmaster monitor
 ```
 
 Shows:
@@ -108,10 +108,10 @@ Shows:
 ### Execution Status
 ```bash
 # Check specific execution
-claude-flow taskmaster execute-status <execution-id>
+./claude-flow taskmaster execute-status <execution-id>
 
 # View all executions
-claude-flow swarm status
+./claude-flow swarm status
 ```
 
 ## 🔧 Configuration Options
@@ -163,7 +163,7 @@ This demonstrates:
 ### Task Analysis
 ```bash
 # Analyze task complexity
-claude-flow taskmaster optimize todo-app.prd
+./claude-flow taskmaster optimize todo-app.prd
 
 # View recommendations
 # - Parallelization opportunities
@@ -174,8 +174,8 @@ claude-flow taskmaster optimize todo-app.prd
 ### Configuration Tuning
 ```bash
 # Apply performance optimizations
-claude-flow taskmaster config set optimization.adaptiveConcurrency true
-claude-flow taskmaster config set monitoring.metricsCollection true
+./claude-flow taskmaster config set optimization.adaptiveConcurrency true
+./claude-flow taskmaster config set monitoring.metricsCollection true
 ```
 
 ## 🔄 Workflow Examples
@@ -183,7 +183,7 @@ claude-flow taskmaster config set monitoring.metricsCollection true
 ### High-Priority Fast Track
 ```bash
 # Execute only high-priority tasks first
-claude-flow taskmaster execute-all \
+./claude-flow taskmaster execute-all \
   --filter priority=high \
   --parallel \
   --max-agents 10
@@ -192,11 +192,11 @@ claude-flow taskmaster execute-all \
 ### Sequential Architecture First
 ```bash
 # Run architecture tasks before implementation
-claude-flow taskmaster execute-all \
+./claude-flow taskmaster execute-all \
   --filter sparc_mode=architect
   
 # Then run implementation
-claude-flow taskmaster execute-all \
+./claude-flow taskmaster execute-all \
   --filter sparc_mode=code \
   --parallel
 ```
@@ -204,11 +204,11 @@ claude-flow taskmaster execute-all \
 ### Test-Driven Approach
 ```bash
 # Generate tests first
-claude-flow taskmaster execute-all \
+./claude-flow taskmaster execute-all \
   --filter sparc_mode=tdd
   
 # Then implement to pass tests
-claude-flow taskmaster execute-all \
+./claude-flow taskmaster execute-all \
   --filter sparc_mode=code
 ```
 

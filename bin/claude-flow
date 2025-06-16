@@ -1,41 +1,160 @@
 #!/usr/bin/env node
 
-const { spawn } = require('child_process');
+const { spawn, execSync } = require('child_process');
 const path = require('path');
+const fs = require('fs');
+const https = require('https');
+const os = require('os');
 
 // Get the directory where this script is located
 const scriptDir = path.dirname(__filename);
 const projectRoot = path.dirname(scriptDir);
 
-// Check if deno is available
-try {
-  require('child_process').execSync('deno --version', { stdio: 'ignore' });
-} catch {
-  console.error('Error: Deno is not installed.');
-  console.error('Please install Deno from https://deno.land/');
-  process.exit(1);
+// Binary paths
+const platform = os.platform();
+const arch = os.arch();
+const binaryName = `claude-flow-${platform}-${arch}`;
+const localBinaryPath = path.join(scriptDir, binaryName);
+const fallbackBinaryPath = path.join(scriptDir, 'claude-flow-binary');
+
+// Check if compiled binary exists
+function binaryExists() {
+  return fs.existsSync(localBinaryPath) || fs.existsSync(fallbackBinaryPath);
 }
 
-// Run the CLI with Deno
-const args = [
-  'run',
-  '--allow-all',
-  '--no-check',
-  '--unstable-sloppy-imports',
-  path.join(projectRoot, 'src', 'cli', 'main.ts'),
-  ...process.argv.slice(2)
-];
+// Download pre-compiled binary
+async function downloadBinary() {
+  const binaryUrl = `https://github.com/iaminawe/claude-code-flow/releases/latest/download/${binaryName}`;
+  
+  console.log(`Downloading pre-compiled binary for ${platform}-${arch}...`);
+  
+  return new Promise((resolve, reject) => {
+    const file = fs.createWriteStream(localBinaryPath);
+    
+    https.get(binaryUrl, (response) => {
+      if (response.statusCode === 302 || response.statusCode === 301) {
+        // Follow redirect
+        https.get(response.headers.location, (redirectResponse) => {
+          redirectResponse.pipe(file);
+          file.on('finish', () => {
+            file.close();
+            fs.chmodSync(localBinaryPath, '755');
+            console.log('Binary downloaded successfully!');
+            resolve(true);
+          });
+        }).on('error', (err) => {
+          fs.unlinkSync(localBinaryPath);
+          reject(err);
+        });
+      } else if (response.statusCode === 200) {
+        response.pipe(file);
+        file.on('finish', () => {
+          file.close();
+          fs.chmodSync(localBinaryPath, '755');
+          console.log('Binary downloaded successfully!');
+          resolve(true);
+        });
+      } else {
+        reject(new Error(`Failed to download: ${response.statusCode}`));
+      }
+    }).on('error', (err) => {
+      fs.unlinkSync(localBinaryPath);
+      reject(err);
+    });
+  });
+}
 
-const deno = spawn('deno', args, {
-  stdio: 'inherit',
-  env: { ...process.env }
+// Try to compile with Deno if available
+function tryCompileWithDeno() {
+  try {
+    execSync('deno --version', { stdio: 'ignore' });
+    console.log('Compiling with Deno...');
+    
+    const compileArgs = [
+      'compile',
+      '--allow-all',
+      '--no-check',
+      '--output=' + localBinaryPath,
+      path.join(projectRoot, 'src', 'cli', 'simple-cli.js')
+    ];
+    
+    execSync(`deno ${compileArgs.join(' ')}`, { 
+      stdio: 'inherit',
+      cwd: projectRoot 
+    });
+    
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+// Use JavaScript fallback
+function runJavaScriptFallback() {
+  console.log('Running JavaScript version (limited functionality)...\n');
+  
+  // Import and run the simple CLI directly
+  try {
+    require(path.join(projectRoot, 'src', 'cli', 'simple-cli.js'));
+  } catch (error) {
+    console.error('Error running JavaScript fallback:', error.message);
+    console.log('\nThe TaskMaster directory has been created successfully.');
+    console.log('You can now use the VS Code extension with the .taskmaster directory.');
+  }
+}
+
+// Main execution
+async function main() {
+  const args = process.argv.slice(2);
+  
+  // Check for compiled binary first
+  if (binaryExists()) {
+    const binaryPath = fs.existsSync(localBinaryPath) ? localBinaryPath : fallbackBinaryPath;
+    const child = spawn(binaryPath, args, {
+      stdio: 'inherit',
+      env: process.env
+    });
+    
+    child.on('exit', (code) => {
+      process.exit(code || 0);
+    });
+    
+    child.on('error', (err) => {
+      console.error('Error running binary:', err.message);
+      runJavaScriptFallback();
+    });
+    
+    return;
+  }
+  
+  // Try to download pre-compiled binary
+  try {
+    await downloadBinary();
+    // Retry with downloaded binary
+    return main();
+  } catch (downloadError) {
+    console.log('Could not download pre-compiled binary.');
+    
+    // Try to compile with Deno
+    if (tryCompileWithDeno()) {
+      // Retry with compiled binary
+      return main();
+    }
+    
+    // Fall back to JavaScript
+    console.log('Using JavaScript fallback (Deno not available).');
+    runJavaScriptFallback();
+  }
+}
+
+// Handle errors gracefully
+process.on('uncaughtException', (error) => {
+  console.error('Unexpected error:', error.message);
+  runJavaScriptFallback();
 });
 
-deno.on('exit', (code) => {
-  process.exit(code);
-});
-
-deno.on('error', (err) => {
-  console.error('Failed to start Claude-Flow:', err);
+// Run the main function
+main().catch((error) => {
+  console.error('Fatal error:', error.message);
   process.exit(1);
 });

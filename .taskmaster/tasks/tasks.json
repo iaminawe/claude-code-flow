@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "tasks": [],
+  "metadata": {
+    "createdAt": "2025-06-16T22:47:48.059Z",
+    "updatedAt": "2025-06-16T22:47:48.059Z",
+    "source": "taskmaster-claude-flow",
+    "sparcMappings": {
+      "architecture": "architect",
+      "implementation": "code",
+      "testing": "tdd",
+      "security": "security-review",
+      "documentation": "docs-writer",
+      "database": "backend-only",
+      "frontend": "frontend-only",
+      "api": "api-only",
+      "integration": "integration",
+      "debugging": "debug",
+      "optimization": "refinement-optimization-mode"
+    }
+  }
+}

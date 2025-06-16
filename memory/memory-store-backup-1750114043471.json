@@ -1,0 +1,138 @@
+{
+  "default": [
+    {
+      "key": "research_findings",
+      "value": "Important research about authentication patterns",
+      "namespace": "default",
+      "timestamp": 1749614503887
+    },
+    {
+      "key": "previous_work",
+      "value": "Completed user authentication module with JWT",
+      "namespace": "default",
+      "timestamp": 1749614509644
+    },
+    {
+      "key": "test_key",
+      "value": "This is a test value",
+      "namespace": "default",
+      "timestamp": 1749614834714
+    },
+    {
+      "key": "code_requirements",
+      "value": "Simple Calculator App Requirements:\n1. Basic arithmetic operations: addition (+), subtraction (-), multiplication (*), division (/)\n2. Support for decimal numbers\n3. Clear/reset functionality\n4. Error handling for division by zero\n5. Command-line interface for easy interaction\n6. Modular, testable code structure\n7. Support for operation chaining (e.g., 2 + 3 * 4)\n8. Memory functions (store, recall, clear)\nTarget: Node.js application with clean architecture",
+      "namespace": "default",
+      "timestamp": 1749667276110
+    },
+    {
+      "key": "code_pseudocode",
+      "value": "Calculator Pseudocode:\n\n1. Expression Parser:\n   - tokenize(expression) -> [tokens]\n   - parse tokens following order of operations\n   - evaluate expression tree\n\n2. Calculator Core:\n   - add(a, b) -> a + b\n   - subtract(a, b) -> a - b\n   - multiply(a, b) -> a * b\n   - divide(a, b) -> check b != 0, then a / b\n   \n3. Memory Management:\n   - memory = 0\n   - memoryStore(value) -> memory = value\n   - memoryRecall() -> return memory\n   - memoryClear() -> memory = 0\n\n4. Main Interface:\n   - prompt user for expression\n   - parse and evaluate\n   - display result\n   - handle errors gracefully",
+      "namespace": "default",
+      "timestamp": 1749667293563
+    },
+    {
+      "key": "code_architecture",
+      "value": "Calculator Architecture:\n\ncalculator-app/\n├── package.json         # Node.js project config\n├── README.md           # Project documentation\n├── src/\n│   ├── index.js        # Main entry point\n│   ├── core/\n│   │   ├── Calculator.js     # Core calculator operations\n│   │   └── ExpressionParser.js  # Expression parsing logic\n│   └── utils/\n│       └── validators.js     # Input validation utilities\n├── tests/\n│   ├── Calculator.test.js\n│   └── ExpressionParser.test.js\n└── docs/\n    └── usage.md        # Usage examples\n\nKey Design Decisions:\n- Separation of concerns: parsing vs calculation\n- Modular design for easy testing\n- No hardcoded values\n- Clean error handling",
+      "namespace": "default",
+      "timestamp": 1749667316258
+    },
+    {
+      "key": "code_implementation",
+      "value": "Created hello world shell script in /hello-world/hello.sh. Script is executable and displays hostname, date, and user info. Ready for SSH execution.",
+      "namespace": "default",
+      "timestamp": 1749674078738
+    },
+    {
+      "key": "test-key",
+      "value": "Test value from CLI test",
+      "namespace": "default",
+      "timestamp": 1749836389246
+    }
+  ],
+  "taskmaster_prds": [],
+  "taskmaster_tasks": [
+    {
+      "key": "tasks_6f867aa6-55dc-441e-9c36-35e1fc52c9bf",
+      "value": "[{\"id\":\"c26955f9-d888-46f7-8e82-b6354504fa36\",\"title\":\"Design TaskMaster-Swarm Integration PRD architecture\",\"description\":\"Create comprehensive architectural design for TaskMaster-Swarm Integration PRD\",\"type\":\"architecture\",\"priority\":\"high\",\"status\":\"completed\",\"assignee\":null,\"sparc_mode\":\"architect\",\"subtasks\":[{\"id\":\"215c6d7c-d0c8-4e05-87c9-4d3e17b76d82\",\"title\":\"System design\",\"description\":\"Create high-level system architecture\",\"type\":\"design\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"architect\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"08173c53-aab8-402f-bafd-43c0d498be78\",\"title\":\"Database design\",\"description\":\"Design database schema and relationships\",\"type\":\"database\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"backend-only\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"3a01b04e-0f1d-44db-bc59-2e4994a299bc\",\"title\":\"API design\",\"description\":\"Design RESTful API endpoints\",\"type\":\"api\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"api-only\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"fb086e5a-2daa-446f-a87d-6339b4304870\",\"title\":\"Security design\",\"description\":\"Design security architecture\",\"type\":\"security\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"security-review\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"}],\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"updatedAt\":\"2025-06-16T21:37:57.558Z\"},{\"id\":\"7c3fdba1-3809-49db-a47a-e16d9e9b5d04\",\"title\":\"All commands implemented\",\"description\":\"All commands implemented\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"completed\",\"assignee\":null,\"sparc_mode\":\"code\",\"subtasks\":[{\"id\":\"b8326dfa-a108-4e04-8388-8eb084228cd4\",\"title\":\"Test: All commands implemented\",\"description\":\"Write tests for All commands implemented\",\"type\":\"testing\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"tdd\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"}],\"metadata\":{\"featureId\":\"a00dbb37-103e-4610-95de-6082c589734c\",\"category\":\"Milestone 3: Full Feature Set (End of Week 3)\"},\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"c26955f9-d888-46f7-8e82-b6354504fa36\"],\"updatedAt\":\"2025-06-16T21:42:40.601Z\"},{\"id\":\"b35ea96d-4356-4f61-9be4-9cd8da366c74\",\"title\":\"Status sync functional\",\"description\":\"Status sync functional\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"completed\",\"assignee\":null,\"sparc_mode\":\"code\",\"subtasks\":[],\"metadata\":{\"featureId\":\"7caa8c32-1157-4721-8758-05de6790be05\",\"category\":\"Milestone 3: Full Feature Set (End of Week 3)\"},\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"c26955f9-d888-46f7-8e82-b6354504fa36\"],\"updatedAt\":\"2025-06-16T21:52:46.585Z\"},{\"id\":\"0e093782-4ebc-4119-ad80-9930893198cc\",\"title\":\"Error handling complete\",\"description\":\"Error handling complete\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"code\",\"subtasks\":[{\"id\":\"6eef353e-53a5-4bb9-a95b-64cfa84d7fea\",\"title\":\"Test: Error handling complete\",\"description\":\"Write tests for Error handling complete\",\"type\":\"testing\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"tdd\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"}],\"metadata\":{\"featureId\":\"6f2bf709-4db7-498f-92f0-bee6a8ecee5d\",\"category\":\"Milestone 3: Full Feature Set (End of Week 3)\"},\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"c26955f9-d888-46f7-8e82-b6354504fa36\"]},{\"id\":\"222b4304-6924-4491-84ac-1186a51cc9bb\",\"title\":\"All TaskMaster tasks can be\",\"description\":\"All TaskMaster tasks can be executed via swarm\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"code\",\"subtasks\":[],\"metadata\":{\"featureId\":\"5a1b1bea-99b1-4583-912d-08ee3dcf7833\",\"category\":\"Functionality\"},\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"c26955f9-d888-46f7-8e82-b6354504fa36\"]},{\"id\":\"fc3ff255-e9c2-44f4-a8ab-ab18cdbe4fcc\",\"title\":\"Parallel execution respects dependencies\",\"description\":\"Parallel execution respects dependencies\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"code\",\"subtasks\":[],\"metadata\":{\"featureId\":\"5e41f842-2173-478b-af38-925de5dc692b\",\"category\":\"Functionality\"},\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"c26955f9-d888-46f7-8e82-b6354504fa36\"]},{\"id\":\"f8c69127-d1ef-4ca2-bb4e-4c2046dd26f8\",\"title\":\"Progress monitoring provides real-time updates\",\"description\":\"Progress monitoring provides real-time updates\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"code\",\"subtasks\":[],\"metadata\":{\"featureId\":\"6482502a-752b-4a90-883e-b0cbb7442169\",\"category\":\"Functionality\"},\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"c26955f9-d888-46f7-8e82-b6354504fa36\"]},{\"id\":\"3108f08e-8535-47bc-9dc4-a109042ddcc7\",\"title\":\"Configuration allows customization\",\"description\":\"Configuration allows customization\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"code\",\"subtasks\":[],\"metadata\":{\"featureId\":\"30e1d367-5c5c-49c0-a411-7b6166fa7e79\",\"category\":\"Functionality\"},\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"c26955f9-d888-46f7-8e82-b6354504fa36\"]},{\"id\":\"58c8064b-7424-4bb8-bddd-13fffbdac0bd\",\"title\":\"Implement technical requirements\",\"description\":\"Address all technical requirements\",\"type\":\"technical\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"architect\",\"subtasks\":[{\"id\":\"bc9d4923-fa2b-42db-959e-9f5a0479002d\",\"title\":\"**Complexity**: Integration touches multiple systems\",\"description\":\"**Complexity**: Integration touches multiple systems\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"00bd7936-4ac7-480f-825c-10b9acbcf9b1\",\"title\":\"**Mitigation**: Incremental implementation with testing\",\"description\":\"**Mitigation**: Incremental implementation with testing\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"b2b00ff3-3fc9-449a-b871-bac1ae209154\",\"title\":\"API key protection for AI...\",\"description\":\"API key protection for AI services\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"}],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"a6593b3b-82d5-4175-96f0-a59ab5ee15c4\",\"title\":\"Implement functional requirements\",\"description\":\"Address all functional requirements\",\"type\":\"functional\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"code\",\"subtasks\":[{\"id\":\"6cd51e22-8e57-4ab6-b7fb-e8555488d569\",\"title\":\"Support for up to 50...\",\"description\":\"Support for up to 50 concurrent agent executions\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"88739fde-2cff-4455-8286-60ec7a89f246\",\"title\":\"Task assignment latency < 100ms\",\"description\":\"Task assignment latency < 100ms\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"752efd63-ac12-450c-ae70-9e40fc72d297\",\"title\":\"Status update propagation < 500ms\",\"description\":\"Status update propagation < 500ms\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"5ed8761c-2567-42b9-867d-dbebb4c387f3\",\"title\":\"Dashboard refresh rate >= 1Hz\",\"description\":\"Dashboard refresh rate >= 1Hz\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"0013bec0-4698-4a26-9ae4-613af2cd7229\",\"title\":\"Secure agent-to-orchestrator communication\",\"description\":\"Secure agent-to-orchestrator communication\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"c5c7e771-6b42-48e1-880a-eba74e63bf1c\",\"title\":\"Task isolation between projects\",\"description\":\"Task isolation between projects\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"cfa466c0-c101-4f72-b55a-ad67d20bd6d9\",\"title\":\"Audit logging of all operations\",\"description\":\"Audit logging of all operations\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"f21ab103-5d3e-40f2-940a-a913a952fba3\",\"title\":\"Large projects (500+ tasks) execute...\",\"description\":\"Large projects (500+ tasks) execute efficiently\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"78cc77af-a77a-4558-9171-dac65db1fed0\",\"title\":\"Agent utilization > 80% during...\",\"description\":\"Agent utilization > 80% during parallel execution\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"c37e0d80-f04b-4da8-bc82-d3ce92b560a3\",\"title\":\"Status updates have minimal latency\",\"description\":\"Status updates have minimal latency\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"a6188afc-6911-4df2-8c57-acdbf1107dc9\",\"title\":\"System scales to available resources\",\"description\":\"System scales to available resources\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"7c65e057-1460-4698-aa17-4d651dffc641\",\"title\":\"**Bottlenecks**: Task assignment could slow...\",\"description\":\"**Bottlenecks**: Task assignment could slow down\",\"type\":\"implementation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"7107a289-b595-45af-a17d-8583c7f3943a\",\"title\":\"**Mitigation**: Optimize critical paths, add...\",\"description\":\"**Mitigation**: Optimize critical paths, add caching\",\"type\":\"implementation\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"}],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"039cbe52-40ee-46b2-b05f-9ce55db4a9ec\",\"title\":\"Comprehensive testing for TaskMaster-Swarm Integration PRD\",\"description\":\"Implement full test coverage\",\"type\":\"testing\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"tdd\",\"subtasks\":[{\"id\":\"bbeed9ac-f40d-4e66-a426-7f06f6b66c76\",\"title\":\"Unit tests\",\"description\":\"Write unit tests for all components\",\"type\":\"testing\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"tdd\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"a7d94bfe-241c-425b-8c1b-606c851084d3\",\"title\":\"Integration tests\",\"description\":\"Test component interactions\",\"type\":\"testing\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"tdd\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"17f03f00-58a8-4d0b-8328-b8ebcf1dd6f5\",\"title\":\"E2E tests\",\"description\":\"End-to-end user journey tests\",\"type\":\"testing\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"tdd\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"cd72169f-abdd-4b98-a559-2e4e3fa0411a\",\"title\":\"Performance tests\",\"description\":\"Load and stress testing\",\"type\":\"testing\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"tdd\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"beeaa35f-00d9-4e69-b360-b520bb4ff656\",\"title\":\"Security tests\",\"description\":\"Security vulnerability testing\",\"type\":\"testing\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"security-review\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"}],\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"7c3fdba1-3809-49db-a47a-e16d9e9b5d04\",\"b35ea96d-4356-4f61-9be4-9cd8da366c74\",\"0e093782-4ebc-4119-ad80-9930893198cc\",\"222b4304-6924-4491-84ac-1186a51cc9bb\",\"fc3ff255-e9c2-44f4-a8ab-ab18cdbe4fcc\",\"f8c69127-d1ef-4ca2-bb4e-4c2046dd26f8\",\"3108f08e-8535-47bc-9dc4-a109042ddcc7\"]},{\"id\":\"1ee32bed-23a4-4a5d-bda7-374bebc161a3\",\"title\":\"Documentation for TaskMaster-Swarm Integration PRD\",\"description\":\"Create comprehensive documentation\",\"type\":\"documentation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"docs-writer\",\"subtasks\":[{\"id\":\"974cc2c5-0342-4018-818d-e315bd35b0ab\",\"title\":\"API documentation\",\"description\":\"Document all API endpoints\",\"type\":\"documentation\",\"priority\":\"high\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"docs-writer\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"12407dd0-02bd-431a-a975-2aab9893f13c\",\"title\":\"User guide\",\"description\":\"Create end-user documentation\",\"type\":\"documentation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"docs-writer\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"b92491f4-bc25-403d-b80b-06a21580f1ad\",\"title\":\"Developer guide\",\"description\":\"Technical documentation for developers\",\"type\":\"documentation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"docs-writer\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"},{\"id\":\"d3e722be-6918-4c87-82ab-91eeef0eaf92\",\"title\":\"Deployment guide\",\"description\":\"Installation and deployment instructions\",\"type\":\"documentation\",\"priority\":\"medium\",\"status\":\"pending\",\"assignee\":null,\"sparc_mode\":\"devops\",\"subtasks\":[],\"createdAt\":\"2025-06-16T21:34:44.880Z\"}],\"createdAt\":\"2025-06-16T21:34:44.880Z\",\"dependencies\":[\"7c3fdba1-3809-49db-a47a-e16d9e9b5d04\"]}]",
+      "namespace": "taskmaster_tasks",
+      "timestamp": 1750110766589
+    }
+  ],
+  "[object Object]": [
+    {
+      "key": "config",
+      "value": "taskmaster_swarm_config",
+      "namespace": {
+        "execution": {
+          "defaultParallel": true,
+          "maxConcurrentTasks": 5,
+          "taskTimeout": 300000,
+          "retryAttempts": 3,
+          "retryDelay": 5000
+        },
+        "agentSelection": {
+          "preferredAgentTypes": {
+            "architect": [
+              "coordinator",
+              "analyzer"
+            ],
+            "code": [
+              "developer",
+              "coder"
+            ],
+            "tdd": [
+              "tester",
+              "developer"
+            ],
+            "debug": [
+              "debugger",
+              "analyzer"
+            ],
+            "docs-writer": [
+              "documenter",
+              "writer"
+            ],
+            "security-review": [
+              "security",
+              "analyzer"
+            ]
+          },
+          "agentLoadBalancing": true,
+          "maxAgentsPerType": 3
+        },
+        "prioritization": {
+          "algorithm": "smart",
+          "priorityWeights": {
+            "high": 100,
+            "medium": 50,
+            "low": 10
+          },
+          "considerDeadlines": true
+        },
+        "monitoring": {
+          "enableDetailedLogging": false,
+          "progressUpdateInterval": 1000,
+          "metricsCollection": true,
+          "alertThresholds": {
+            "taskDurationWarning": 600000,
+            "failureRateAlert": 0.2,
+            "queueSizeWarning": 50
+          }
+        },
+        "sync": {
+          "autoSync": true,
+          "syncInterval": 5000,
+          "conflictResolution": "orchestrator",
+          "syncOnTaskComplete": true
+        },
+        "optimization": {
+          "enableSmartScheduling": true,
+          "predictiveAgentAssignment": false,
+          "adaptiveConcurrency": true,
+          "learningEnabled": false
+        }
+      },
+      "timestamp": 1750113174666
+    }
+  ]
+}

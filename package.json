@@ -1,16 +1,18 @@
 {
   "name": "claude-flow",
-  "version": "1.0.50",
-  "description": "Advanced AI agent orchestration system for Claude Code",
+  "version": "1.1.3",
+  "description": "Advanced AI agent orchestration with TaskMaster integration and BatchTool optimization",
   "main": "src/cli/main.ts",
   "bin": {
     "claude-flow": "./bin/claude-flow"
   },
   "scripts": {
-    "postinstall": "node scripts/install.js",
+    "postinstall": "node scripts/install-enhanced.js",
     "build": "PATH=\"/home/codespace/.deno/bin:$PATH\" deno compile --allow-all --no-check --output=bin/claude-flow src/cli/main.ts",
+    "build:all": "node scripts/build-all-platforms.js",
     "build:simple": "PATH=\"/home/codespace/.deno/bin:$PATH\" deno compile --allow-all --no-check --output=bin/claude-flow-simple src/cli/simple-cli.ts",
-    "test": "deno task test"
+    "test": "deno task test",
+    "prepublishOnly": "echo 'Ready to publish cross-platform binaries'"
   },
   "keywords": [
     "claude",
@@ -19,39 +21,53 @@
     "orchestration",
     "mcp",
     "workflow",
-    "automation"
+    "automation",
+    "taskmaster",
+    "sparc",
+    "enterprise",
+    "autonomous",
+    "vscode-extension"
   ],
   "author": "rUv",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ruvnet/claude-code-flow.git"
+    "url": "https://github.com/iaminawe/claude-code-flow.git"
   },
   "bugs": {
-    "url": "https://github.com/ruvnet/claude-code-flow/issues"
+    "url": "https://github.com/iaminawe/claude-code-flow/issues"
   },
-  "homepage": "https://github.com/ruvnet/claude-code-flow#readme",
+  "homepage": "https://github.com/iaminawe/claude-code-flow#readme",
   "engines": {
     "node": ">=16.0.0"
   },
   "files": [
-    "bin/claude-flow",
-    "bin/claude-flow-swarm",
-    "bin/claude-flow-swarm-ui",
-    "bin/claude-flow-swarm-monitor",
+    "bin/",
     "src/",
+    ".taskmaster/",
+    ".claude/",
+    ".roo/",
+    ".roomodes",
     "swarm-demo.ts",
     "swarm-demo-enhanced.ts",
-    "scripts/install.js",
+    "scripts/install-enhanced.js",
+    "scripts/build-all-platforms.js",
     "scripts/swarm-blessed-ui.js",
     "scripts/swarm-simple.js",
     "scripts/swarm-example.sh",
     "README.md",
     "LICENSE",
+    "CLAUDE.md",
     "deno.json",
     "SWARM_TTY_SOLUTION.md",
-    "SWARM_VISIBILITY.md"
+    "SWARM_VISIBILITY.md",
+    "BINARY_DISTRIBUTION.md",
+    "PUBLISHING.md"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "blessed": "^0.1.81",
     "node-pty": "^1.0.0"

@@ -1,225 +1,205 @@
 ---
 name: claude-flow-swarm
-description: Coordinate multi-agent swarms with batchtools optimization for complex tasks
+description: Coordinate multi-agent swarms for complex tasks
 ---
 
-# Claude-Flow Swarm Coordination (Batchtools Optimized)
+# 🐝 Claude-Flow Swarm Coordination
 
-Swarm mode with batchtools enables massively parallel multi-agent coordination for complex tasks with enhanced efficiency.
+Advanced multi-agent coordination system with timeout-free execution, distributed memory sharing, and intelligent load balancing.
 
-## Enhanced Basic Usage
+## Basic Usage
 ```bash
-# Traditional single swarm
-npx claude-flow swarm "your complex task" --strategy <type> [options]
-
-# Batch swarm operations
-npx claude-flow swarm batch --tasks "frontend:dev,backend:dev,database:architect" --parallel
+./claude-flow swarm "your complex task" --strategy <type> [options]
 ```
 
-## Parallel Strategy Execution
+## 🎯 Swarm Strategies
+- **auto** - Automatic strategy selection based on task analysis
+- **development** - Code implementation with review and testing
+- **research** - Information gathering and synthesis
+- **analysis** - Data processing and pattern identification
+- **testing** - Comprehensive quality assurance
+- **optimization** - Performance tuning and refactoring
+- **maintenance** - System updates and bug fixes
+
+## 🤖 Agent Types
+- **coordinator** - Plans and delegates tasks to other agents
+- **developer** - Writes code and implements solutions
+- **researcher** - Gathers and analyzes information
+- **analyzer** - Identifies patterns and generates insights
+- **tester** - Creates and runs tests for quality assurance
+- **reviewer** - Performs code and design reviews
+- **documenter** - Creates documentation and guides
+- **monitor** - Tracks performance and system health
+- **specialist** - Domain-specific expert agents
+
+## 🔄 Coordination Modes
+- **centralized** - Single coordinator manages all agents (default)
+- **distributed** - Multiple coordinators share management
+- **hierarchical** - Tree structure with nested coordination
+- **mesh** - Peer-to-peer agent collaboration
+- **hybrid** - Mixed coordination strategies
+
+## ⚙️ Common Options
+- `--strategy <type>` - Execution strategy
+- `--mode <type>` - Coordination mode
+- `--max-agents <n>` - Maximum concurrent agents (default: 5)
+- `--timeout <minutes>` - Timeout in minutes (default: 60)
+- `--background` - Run in background for tasks > 30 minutes
+- `--monitor` - Enable real-time monitoring
+- `--ui` - Launch terminal UI interface
+- `--parallel` - Enable parallel execution
+- `--distributed` - Enable distributed coordination
+- `--review` - Enable peer review process
+- `--testing` - Include automated testing
+- `--encryption` - Enable data encryption
+- `--verbose` - Detailed logging output
+- `--dry-run` - Show configuration without executing
+
+## 🌟 Examples
+
+### Development Swarm with Review
 ```bash
-# Execute multiple strategies concurrently
-npx claude-flow swarm multi-strategy --config '{
-  "frontend": { "strategy": "development", "agents": 3 },
-  "backend": { "strategy": "development", "agents": 4 },
-  "testing": { "strategy": "testing", "agents": 2 },
-  "docs": { "strategy": "documentation", "agents": 1 }
-}' --parallel --monitor
+./claude-flow swarm "Build e-commerce REST API" \
+  --strategy development \
+  --monitor \
+  --review \
+  --testing
 ```
 
-## Enhanced Strategies with Batch Operations
-- `development` - Parallel code implementation across modules
-- `research` - Concurrent information gathering from multiple sources
-- `analysis` - Parallel data processing pipelines
-- `testing` - Concurrent test suite execution
-- `optimization` - Parallel performance analysis
-- `maintenance` - Batch system updates
-- `security` - Parallel vulnerability scanning
-- `deployment` - Concurrent multi-environment deployment
-
-## Advanced Batch Options
-- `--parallel-tasks <n>` - Number of concurrent tasks
-- `--batch-size <n>` - Task batch size for processing
-- `--pipeline` - Enable pipeline parallelization
-- `--shard` - Distribute work across shards
-- `--replicate <n>` - Replicate critical tasks
-- `--failover` - Enable automatic failover
-- `--load-balance` - Dynamic load balancing
-- `--auto-scale` - Automatic agent scaling
-
-## Batch Examples
-
-### Parallel Development Swarm
+### Long-Running Research Swarm
 ```bash
-# Develop multiple microservices concurrently
-npx claude-flow swarm batch-dev --services '{
-  "auth-service": { "agents": 3, "priority": "high" },
-  "user-service": { "agents": 2, "priority": "medium" },
-  "order-service": { "agents": 3, "priority": "high" },
-  "payment-service": { "agents": 2, "priority": "critical" }
-}' --parallel --monitor --auto-scale
+./claude-flow swarm "Analyze AI market trends 2024-2025" \
+  --strategy research \
+  --background \
+  --distributed \
+  --max-agents 8
 ```
 
-### Distributed Research Swarm
+### Performance Optimization Swarm
 ```bash
-# Parallel research across multiple domains
-npx claude-flow swarm batch-research --topics '{
-  "market-analysis": { "sources": ["web", "apis", "databases"] },
-  "competitor-research": { "sources": ["web", "reports"] },
-  "technology-trends": { "sources": ["papers", "blogs", "news"] }
-}' --distributed --aggregate --real-time
+./claude-flow swarm "Optimize database queries and API performance" \
+  --strategy optimization \
+  --testing \
+  --parallel \
+  --monitor
 ```
 
-### Massive Testing Swarm
+### Enterprise Development Swarm
 ```bash
-# Execute comprehensive parallel testing
-npx claude-flow swarm batch-test --suites '{
-  "unit": { "parallel": 10, "shards": 5 },
-  "integration": { "parallel": 5, "environments": ["dev", "staging"] },
-  "e2e": { "parallel": 3, "browsers": ["chrome", "firefox", "safari"] },
-  "performance": { "parallel": 2, "loads": [100, 1000, 10000] }
-}' --concurrent --report
+./claude-flow swarm "Implement secure payment processing system" \
+  --strategy development \
+  --mode distributed \
+  --max-agents 10 \
+  --parallel \
+  --monitor \
+  --review \
+  --testing \
+  --encryption \
+  --verbose
 ```
 
-## Pipeline Operations
-
-### Development Pipeline
+### Testing and QA Swarm
 ```bash
-# Create development pipeline with parallel stages
-npx claude-flow swarm pipeline --config '{
-  "stages": [
-    { "name": "design", "parallel": ["api", "database", "ui"] },
-    { "name": "implement", "parallel": ["services", "controllers", "models"] },
-    { "name": "test", "parallel": ["unit", "integration", "e2e"] },
-    { "name": "deploy", "sequential": ["staging", "production"] }
-  ]
-}' --monitor --checkpoint
+./claude-flow swarm "Comprehensive security audit and testing" \
+  --strategy testing \
+  --review \
+  --verbose \
+  --max-agents 6
 ```
 
-### Analysis Pipeline
+## 📊 Monitoring and Control
+
+### Real-time monitoring:
 ```bash
-# Parallel data analysis pipeline
-npx claude-flow swarm analyze-pipeline --stages '{
-  "collect": { "parallel": 5, "sources": ["logs", "metrics", "events"] },
-  "process": { "parallel": 3, "operations": ["clean", "transform", "enrich"] },
-  "analyze": { "parallel": 4, "methods": ["statistical", "ml", "pattern"] },
-  "report": { "parallel": 2, "formats": ["dashboard", "pdf", "api"] }
-}'
+# Monitor swarm activity
+./claude-flow monitor
+
+# Monitor specific component
+./claude-flow monitor --focus swarm
 ```
 
-## Distributed Coordination
-
-### Multi-Region Deployment
+### Check swarm status:
 ```bash
-# Deploy across regions in parallel
-npx claude-flow swarm deploy-multi --regions '{
-  "us-east": { "services": 10, "priority": 1 },
-  "eu-west": { "services": 10, "priority": 1 },
-  "asia-pac": { "services": 10, "priority": 2 }
-}' --parallel --health-check --rollback-enabled
+# Overall system status
+./claude-flow status
+
+# Detailed swarm status
+./claude-flow status --verbose
 ```
 
-### Federated Learning
+### View agent activity:
 ```bash
-# Coordinate distributed model training
-npx claude-flow swarm federated-train --nodes 20 --parallel --aggregate-method "secure"
+# List all agents
+./claude-flow agent list
+
+# Agent details
+./claude-flow agent info <agent-id>
 ```
 
-## Advanced Monitoring & Control
+## 💾 Memory Integration
 
-### Real-time Batch Monitoring
+Swarms automatically use distributed memory for collaboration:
+
 ```bash
-# Monitor all swarm operations
-npx claude-flow swarm monitor-batch --metrics '{
-  "performance": ["latency", "throughput", "cpu", "memory"],
-  "progress": ["tasks", "completions", "failures"],
-  "agents": ["active", "idle", "failed"]
-}' --dashboard --alerts
+# Store swarm objectives
+./claude-flow memory store "swarm_objective" "Build scalable API" --namespace swarm
+
+# Query swarm progress
+./claude-flow memory query "swarm_progress" --namespace swarm
+
+# Export swarm memory
+./claude-flow memory export swarm-results.json --namespace swarm
 ```
 
-### Dynamic Resource Management
+## 🎯 Key Features
+
+### Timeout-Free Execution
+- Background mode for long-running tasks
+- State persistence across sessions
+- Automatic checkpoint recovery
+
+### Work Stealing & Load Balancing
+- Dynamic task redistribution
+- Automatic agent scaling
+- Resource-aware scheduling
+
+### Circuit Breakers & Fault Tolerance
+- Automatic retry with exponential backoff
+- Graceful degradation
+- Health monitoring and recovery
+
+### Real-Time Collaboration
+- Cross-agent communication
+- Shared memory access
+- Event-driven coordination
+
+### Enterprise Security
+- Role-based access control
+- Audit logging
+- Data encryption
+- Input validation
+
+## 🔧 Advanced Configuration
+
+### Dry run to preview:
 ```bash
-# Auto-scale based on load
-npx claude-flow swarm auto-manage --rules '{
-  "scale-up": { "cpu": ">80%", "queue": ">100" },
-  "scale-down": { "cpu": "<20%", "queue": "<10" },
-  "rebalance": { "interval": "5m" }
-}'
+./claude-flow swarm "Test task" --dry-run --strategy development
 ```
 
-## Batch Optimization Features
-
-### Work Distribution
+### Custom quality thresholds:
 ```bash
-# Intelligent work distribution
-npx claude-flow swarm distribute --algorithm "weighted" --factors '{
-  "agent-capacity": 0.4,
-  "task-complexity": 0.3,
-  "priority": 0.3
-}'
+./claude-flow swarm "High quality API" \
+  --strategy development \
+  --quality-threshold 0.95
 ```
 
-### Failure Handling
-```bash
-# Resilient batch execution
-npx claude-flow swarm batch-execute --resilient '{
-  "retry": { "max": 3, "backoff": "exponential" },
-  "timeout": { "task": "5m", "total": "1h" },
-  "circuit-breaker": { "threshold": 5, "reset": "30s" }
-}'
-```
+### Scheduling algorithms:
+- FIFO (First In, First Out)
+- Priority-based
+- Deadline-driven
+- Shortest Job First
+- Critical Path
+- Resource-aware
+- Adaptive
 
-## Performance Optimizations
-
-### Caching Strategy
-```bash
-# Enable intelligent caching
-npx claude-flow swarm batch --cache '{
-  "results": { "ttl": "1h", "size": "1GB" },
-  "artifacts": { "ttl": "24h", "size": "10GB" },
-  "models": { "ttl": "7d", "persistent": true }
-}'
-```
-
-### Network Optimization
-```bash
-# Optimize network communication
-npx claude-flow swarm optimize-network --compression "gzip" --batching 100 --keepalive
-```
-
-## Complex Workflow Examples
-
-### Full-Stack Application Development
-```bash
-# Orchestrate complete application development
-npx claude-flow swarm full-stack --project "e-commerce" --parallel-components '{
-  "frontend": { "framework": "react", "agents": 3 },
-  "backend": { "framework": "node", "agents": 4 },
-  "mobile": { "platforms": ["ios", "android"], "agents": 4 },
-  "infrastructure": { "provider": "aws", "agents": 2 },
-  "testing": { "coverage": "95%", "agents": 3 },
-  "documentation": { "types": ["api", "user", "dev"], "agents": 2 }
-}' --integrated --continuous
-```
-
-### Data Pipeline Processing
-```bash
-# Massive parallel data processing
-npx claude-flow swarm data-pipeline --config '{
-  "ingestion": { "parallel": 10, "sources": 50 },
-  "transformation": { "parallel": 20, "operations": 15 },
-  "validation": { "parallel": 5, "rules": 100 },
-  "storage": { "parallel": 3, "destinations": 5 }
-}' --stream --checkpoint --monitor
-```
-
-### Security Audit Swarm
-```bash
-# Comprehensive security analysis
-npx claude-flow swarm security-audit --parallel-scans '{
-  "code": { "tools": ["sast", "dependencies"], "agents": 5 },
-  "infrastructure": { "tools": ["network", "config"], "agents": 3 },
-  "runtime": { "tools": ["dast", "fuzzing"], "agents": 4 },
-  "compliance": { "standards": ["owasp", "pci"], "agents": 2 }
-}' --report --remediate
-```
+For detailed documentation, see: https://github.com/ruvnet/claude-code-flow/docs/swarm-system.md

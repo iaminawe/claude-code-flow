@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "syncMode": "real-time",
+  "conflictResolution": "last-write-wins",
+  "autoSync": true,
+  "port": 5173,
+  "host": "localhost",
+  "currentProjectId": "063c1a5a-5f42-4e96-a936-8560d99d3381"
+}

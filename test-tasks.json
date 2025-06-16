@@ -1,0 +1,1771 @@
+[
+  {
+    "id": "d0f37dce-a015-4b14-8fe8-7ff5799e6d76",
+    "title": "Design AI-Powered Project Management Platform architecture",
+    "description": "Create comprehensive architectural design for AI-Powered Project Management Platform",
+    "type": "architecture",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "architect",
+    "subtasks": [
+      {
+        "id": "14555f43-4127-432b-a26f-2464fe6b780f",
+        "title": "System design",
+        "description": "Create high-level system architecture",
+        "type": "design",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "architect",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      },
+      {
+        "id": "2cb28d2d-71bb-4aca-8530-cebfebc6376c",
+        "title": "Database design",
+        "description": "Design database schema and relationships",
+        "type": "database",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "backend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      },
+      {
+        "id": "9f99c727-c71d-426e-9787-3f6a45ee1e44",
+        "title": "API design",
+        "description": "Design RESTful API endpoints",
+        "type": "api",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "api-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      },
+      {
+        "id": "ca8265cc-4493-4abd-982d-d64283525faf",
+        "title": "Security design",
+        "description": "Design security architecture",
+        "type": "security",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "security-review",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "createdAt": "2025-06-16T19:05:55.528Z"
+  },
+  {
+    "id": "a2af4bb8-8dba-4934-a1cb-0022b400f50a",
+    "title": "**Must have**",
+    "description": "**Must have**: AI-powered task creation from natural language descriptions",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "23e078ab-06cc-4aa9-802e-ffa048e3723e",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "80843603-a25b-4a04-a984-a0896049ea2b",
+    "title": "**Must have**",
+    "description": "**Must have**: Automatic task prioritization based on dependencies and deadlines",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "e4c4854f-bb3a-43f6-8d2c-132c6920f666",
+        "title": "Test: **Must have**",
+        "description": "Write tests for **Must have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "c3c4dfe9-2acd-4e3e-8160-f2686466345d",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "e45f5fe2-7daf-4658-a836-a1b9843a30bb",
+    "title": "**Must have**",
+    "description": "**Must have**: Smart task assignment considering team member skills, workload, and availability",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "547c12ce-cff9-41fa-ab8b-2f4be8cb1233",
+        "title": "Test: **Must have**",
+        "description": "Write tests for **Must have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "3d702f1f-15dc-4f15-84ec-c6f3c5d3a48f",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "627700ec-e705-4cab-aa00-b8832a6ded29",
+    "title": "**Should have**",
+    "description": "**Should have**: Task effort estimation using historical data and ML models",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "55b11a91-5286-4201-9142-54b497707cc2",
+        "title": "Backend: **Should have**",
+        "description": "Implement backend logic for **Should have**",
+        "type": "backend",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "backend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      },
+      {
+        "id": "a22e9fde-a7cb-474a-acab-d902ad5b25a4",
+        "title": "Test: **Should have**",
+        "description": "Write tests for **Should have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "92f7e39c-c3c8-4fab-a4a0-2ec59c8c0af6",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "1a37b7f4-411a-4a5e-b612-9cd4713c8021",
+    "title": "**Nice to have**",
+    "description": "**Nice to have**: Voice-based task creation and updates",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "0e12400b-7e9b-451e-b46a-4a8af4e27f9d",
+        "title": "Test: **Nice to have**",
+        "description": "Write tests for **Nice to have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "51521c44-485d-4206-90c8-f8463c9f2f69",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "a60274c5-fa14-442c-8198-febbc10fcd0e",
+    "title": "**Critical**",
+    "description": "**Critical**: Real-time project health monitoring with risk indicators",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "41f169a4-a0fb-4111-9dea-22ce0f402f36",
+        "title": "Test: **Critical**",
+        "description": "Write tests for **Critical**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "132d78bb-0e10-4b63-a549-3ff6eafb27c8",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "19ce9d87-9b8d-4626-b0a2-3da67f30ff1a",
+    "title": "**Critical**",
+    "description": "**Critical**: Timeline prediction with confidence intervals",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "0c87e2fc-a0eb-40f3-84c5-f95ab9d2ca52",
+        "title": "Test: **Critical**",
+        "description": "Write tests for **Critical**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "37a522cf-0787-4d28-9ac0-f3d84bd67229",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "7e868a4b-6b88-4662-990c-67fde7a0aedc",
+    "title": "**Must have**",
+    "description": "**Must have**: Budget burn rate analysis and forecasting",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "a24c0338-a0bf-4b0b-8302-ce3fe7d72232",
+        "title": "Test: **Must have**",
+        "description": "Write tests for **Must have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "0479f4a3-5185-489d-a9b0-1d6762a6c3cc",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "05765786-1e94-4b37-a64c-f748884ef341",
+    "title": "**Should have**",
+    "description": "**Should have**: Team performance metrics and optimization suggestions",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "0e6a2ce1-b212-4ef5-a376-cea3d0add0e7",
+        "title": "Frontend: **Should have**",
+        "description": "Implement UI for **Should have**",
+        "type": "frontend",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "frontend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      },
+      {
+        "id": "58ec2b58-ff6f-41fe-8856-8ed03c9365a8",
+        "title": "Test: **Should have**",
+        "description": "Write tests for **Should have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "b489cabd-0c16-4ef3-8e61-e26e284b9e25",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "204080af-adad-4ed3-be90-ab16a1b934c8",
+    "title": "**Nice to have**",
+    "description": "**Nice to have**: Customizable AI-generated reports",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "85360d51-24d2-4edf-a17f-0cc17c3286fd",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "51e16f42-1e91-4a43-8228-0ade28731d79",
+    "title": "**Essential**",
+    "description": "**Essential**: Real-time messaging with context-aware AI assistance",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "71d01319-fc6a-4e3c-b18b-09222931bda6",
+        "title": "Test: **Essential**",
+        "description": "Write tests for **Essential**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "b58a41ab-8746-46b0-8f4c-9c40bc99e7fd",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "f14ff83d-2a2f-4124-9cfc-c4fcd1bc45d8",
+    "title": "**Must have**",
+    "description": "**Must have**: Automated meeting scheduling based on team availability",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "49a954bf-63fe-432a-ae31-52abdce827e4",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "5067be12-fa5c-4bfb-b3ce-fe48768cdab6",
+    "title": "**Must have**",
+    "description": "**Must have**: AI-generated meeting summaries and action items",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "b24ae160-324e-464b-9e01-8caecd6a7fed",
+        "title": "Test: **Must have**",
+        "description": "Write tests for **Must have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "6fff0605-5ce6-48ae-9991-6d1933048aaf",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "31d88d7c-e1b3-41c2-adfd-23f741b8ce62",
+    "title": "**Should have**",
+    "description": "**Should have**: Sentiment analysis for team communication",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "e23dae87-5200-4653-b378-dc6e4fd283cc",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "4cbf087a-7d05-4972-8e37-7849a8208862",
+    "title": "**Could have**",
+    "description": "**Could have**: Virtual AI project assistant",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "eaf045a7-bb83-4e69-8ffb-1802ec41a445",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "8c7204df-ac0e-4496-8a53-02a1decd1cb2",
+    "title": "**Critical**",
+    "description": "**Critical**: REST API for third-party integrations",
+    "type": "api",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "api-only",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "e2b18549-1f96-4dd0-a657-58d3c75c6dda",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z"
+  },
+  {
+    "id": "7cfe0d83-f4b3-4f33-ae7b-5a395b0e4b48",
+    "title": "**Must have**",
+    "description": "**Must have**: GitHub/GitLab integration for development tracking",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "2b9add03-e7c7-449f-86da-550d74d6e2a5",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "4ae2e881-105c-43c3-a34b-81f3de6509ed",
+    "title": "**Must have**",
+    "description": "**Must have**: Slack/Teams integration for notifications",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "049149cf-a59c-445c-8c5e-ea8fc18a838e",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "d5ae5149-4ed5-41c8-86f6-a08a9acb58b0",
+    "title": "**Should have**",
+    "description": "**Should have**: Jira/Asana data import and sync",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "76bc5509-fd9e-4e9f-8194-299f554a1215",
+        "title": "Backend: **Should have**",
+        "description": "Implement backend logic for **Should have**",
+        "type": "backend",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "backend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      },
+      {
+        "id": "ff873189-bad6-4c66-9c39-95feaffa781d",
+        "title": "Test: **Should have**",
+        "description": "Write tests for **Should have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "f6f828b5-e260-4517-b6c6-31e672283320",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "e253c6f9-ee61-418d-abff-da007a769a96",
+    "title": "**Nice to have**",
+    "description": "**Nice to have**: Custom webhook support",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "fd183996-423f-40a6-946d-c6d66068afbf",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "b187cd51-c852-44b9-b9e8-b5ed2ef89e0a",
+    "title": "**Must have**",
+    "description": "**Must have**: AI-powered task creation from natural language descriptions",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "e16dfa88-3820-4753-b644-dab603a48495",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "75ef9cc2-36d1-4937-9cda-59f2901474bb",
+    "title": "**Must have**",
+    "description": "**Must have**: Automatic task prioritization based on dependencies and deadlines",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "af65e0f2-c9eb-412c-9762-296fb10662e4",
+        "title": "Test: **Must have**",
+        "description": "Write tests for **Must have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "c1b40d73-34b7-4c3a-802b-adb79ac2f527",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "bc2f9447-90e1-458a-bfd8-8f2d65a36624",
+    "title": "**Must have**",
+    "description": "**Must have**: Smart task assignment considering team member skills, workload, and availability",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "497e153a-0e75-4dfb-8408-05c37306d0b5",
+        "title": "Test: **Must have**",
+        "description": "Write tests for **Must have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "8cb77e3a-2383-4d4c-89e8-a017ec919da0",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "c101b552-3f09-4708-ba94-44e69ada65cb",
+    "title": "**Should have**",
+    "description": "**Should have**: Task effort estimation using historical data and ML models",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "ce1b4870-6131-456e-9294-8774343d9da8",
+        "title": "Backend: **Should have**",
+        "description": "Implement backend logic for **Should have**",
+        "type": "backend",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "backend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      },
+      {
+        "id": "844f0729-609f-4fb3-8f3d-1a0e91ec5607",
+        "title": "Test: **Should have**",
+        "description": "Write tests for **Should have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "7fc9e261-f167-4e3e-8a49-7cdcf7ecb86c",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "c81a56aa-8582-488e-b5e9-07976d10a3e0",
+    "title": "**Nice to have**",
+    "description": "**Nice to have**: Voice-based task creation and updates",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "342a740a-6084-4cfd-a6ac-e074584f235c",
+        "title": "Test: **Nice to have**",
+        "description": "Write tests for **Nice to have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "ef664f85-7441-40e8-af12-56aaf7756f85",
+      "category": "Feature 1: Intelligent Task Management"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "8a203448-98f9-41e3-8064-9be4b82ba68f",
+    "title": "**Critical**",
+    "description": "**Critical**: Real-time project health monitoring with risk indicators",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "61e335fd-023e-4019-a572-fa6d00d13fc3",
+        "title": "Test: **Critical**",
+        "description": "Write tests for **Critical**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "6652834f-dc90-4253-925d-bd79dc9cf396",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "0b9b322d-efb9-4cb9-a1be-4bd3b977d28a",
+    "title": "**Critical**",
+    "description": "**Critical**: Timeline prediction with confidence intervals",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "ae3eed32-d95d-463d-b560-65822d65917c",
+        "title": "Test: **Critical**",
+        "description": "Write tests for **Critical**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "f361335c-3cc5-42a3-8dbe-95b2b9b1c148",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "44fa0a03-a517-4aa4-93ad-4577ccb3243a",
+    "title": "**Must have**",
+    "description": "**Must have**: Budget burn rate analysis and forecasting",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "4c0cfc93-4c25-45f2-8274-f0a220396ef9",
+        "title": "Test: **Must have**",
+        "description": "Write tests for **Must have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "97a8f186-2d6a-41c5-aec8-b93303d1bbf6",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "b28e0509-0deb-466b-a597-00accea48dce",
+    "title": "**Should have**",
+    "description": "**Should have**: Team performance metrics and optimization suggestions",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "ffba2624-b72b-4305-a403-f1f95b711227",
+        "title": "Frontend: **Should have**",
+        "description": "Implement UI for **Should have**",
+        "type": "frontend",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "frontend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      },
+      {
+        "id": "edde6486-71a7-4da1-b914-605ff9bf88bb",
+        "title": "Test: **Should have**",
+        "description": "Write tests for **Should have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "47393481-2fef-49e9-a50c-836fd5b2f8c9",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "565c3901-6811-45bc-b95d-70553bbf28b2",
+    "title": "**Nice to have**",
+    "description": "**Nice to have**: Customizable AI-generated reports",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "f9e14b14-4270-4136-a6c5-fdf811d44d16",
+      "category": "Feature 2: Predictive Analytics Dashboard"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "7730266e-a802-47ea-83f9-f1a354f97ad3",
+    "title": "**Essential**",
+    "description": "**Essential**: Real-time messaging with context-aware AI assistance",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "4c7b88ae-1b07-4031-92c2-6e6aa1d83997",
+        "title": "Test: **Essential**",
+        "description": "Write tests for **Essential**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.528Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "73bcc5db-8401-4ac8-bee2-a9f70886db43",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "d9c3f25d-b090-4f89-b499-eab0e089e1a7",
+    "title": "**Must have**",
+    "description": "**Must have**: Automated meeting scheduling based on team availability",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "7734f52b-2a43-4b49-8fb0-79897c4025a2",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "1e2bcb56-1a47-4e76-bd16-94a9862ccc2d",
+    "title": "**Must have**",
+    "description": "**Must have**: AI-generated meeting summaries and action items",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "c9984460-615c-4764-ab8a-58410b8b1b22",
+        "title": "Test: **Must have**",
+        "description": "Write tests for **Must have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "4e9f46a2-17f8-4940-8385-7b677ccde36e",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.528Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "d45d40c8-3e0b-441f-8ca3-cc337bf5b6b3",
+    "title": "**Should have**",
+    "description": "**Should have**: Sentiment analysis for team communication",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "1017efee-1751-481a-8675-02e8fbb4389d",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "6eb95a5f-d4ce-48ed-8b8c-908444a1a685",
+    "title": "**Could have**",
+    "description": "**Could have**: Virtual AI project assistant",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "5d6bbdb6-de95-47fb-acec-3a073ea72774",
+      "category": "Feature 3: Team Collaboration Hub"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "e8f02ffd-ddaa-4a7a-8eab-c3d9f709c28f",
+    "title": "**Critical**",
+    "description": "**Critical**: REST API for third-party integrations",
+    "type": "api",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "api-only",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "f6978be8-e3af-4823-89f6-2f5ef5487a28",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z"
+  },
+  {
+    "id": "7bf66cb9-409f-41de-8095-a127795da18a",
+    "title": "**Must have**",
+    "description": "**Must have**: GitHub/GitLab integration for development tracking",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "1af9e8e5-e5a5-4276-bc08-060181879b5c",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "8f64b35a-0956-49ff-b361-2d19f4655b81",
+    "title": "**Must have**",
+    "description": "**Must have**: Slack/Teams integration for notifications",
+    "type": "implementation",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "940f2063-7282-4aa5-a211-198d47dd05dc",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "5490d395-86bf-42b4-a926-bae6a95126e0",
+    "title": "**Should have**",
+    "description": "**Should have**: Jira/Asana data import and sync",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "b0fb241e-7031-4042-bc5f-cb3ca8f7c2d8",
+        "title": "Backend: **Should have**",
+        "description": "Implement backend logic for **Should have**",
+        "type": "backend",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "backend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "88003d7c-b50d-4706-906f-ff6f591b6f11",
+        "title": "Test: **Should have**",
+        "description": "Write tests for **Should have**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "5f0c5897-afa5-4e20-b221-88fbe2b7289d",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "8e27c5f2-c8e4-47f1-8d6b-7d763831e613",
+    "title": "**Nice to have**",
+    "description": "**Nice to have**: Custom webhook support",
+    "type": "implementation",
+    "priority": "low",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "86050dc5-ef52-43db-98a3-fc42ef207d0e",
+      "category": "Feature 4: Integration Framework"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "eaf601ef-f968-40bc-bb25-9534b8059289",
+    "title": "**Architecture**",
+    "description": "**Architecture**: Microservices architecture with event-driven communication",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "d8497cf4-bb52-4c69-bcc8-5d714d24eb1e",
+        "title": "API: **Architecture**",
+        "description": "Create API endpoints for **Architecture**",
+        "type": "api",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "api-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "9b7f583d-d865-4095-ac36-b660787bcd77",
+        "title": "Test: **Architecture**",
+        "description": "Write tests for **Architecture**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "685a2683-be24-4413-988e-25c0ccc35808",
+      "category": "Technical Requirements"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "d1721955-c8fa-48f7-9559-28e0f7554dd5",
+    "title": "**Frontend**",
+    "description": "**Frontend**: React with TypeScript, responsive design for mobile/desktop",
+    "type": "frontend",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "frontend-only",
+    "subtasks": [
+      {
+        "id": "cd6e77b5-ec68-476b-8583-564f75f2212b",
+        "title": "Test: **Frontend**",
+        "description": "Write tests for **Frontend**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "411d1c28-d467-4943-9f2a-8eb784c2923e",
+      "category": "Technical Requirements"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z"
+  },
+  {
+    "id": "118cbef0-e15a-420f-a6ab-5a8543c5c3b5",
+    "title": "**Backend**",
+    "description": "**Backend**: Node.js with Express, GraphQL API",
+    "type": "api",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "api-only",
+    "subtasks": [
+      {
+        "id": "cba07be7-f4b7-4856-98e4-a1c8de02eb2e",
+        "title": "Backend: **Backend**",
+        "description": "Implement backend logic for **Backend**",
+        "type": "backend",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "backend-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "00364b01-f07f-419f-87cf-eb5725d432cd",
+        "title": "API: **Backend**",
+        "description": "Create API endpoints for **Backend**",
+        "type": "api",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "api-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "2c37462d-0373-484f-8340-65414988c0ac",
+        "title": "Test: **Backend**",
+        "description": "Write tests for **Backend**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "8055c73d-e4aa-49f5-8109-2dc202889830",
+      "category": "Technical Requirements"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z"
+  },
+  {
+    "id": "04458dc8-9b1e-4823-beb2-f473b51b9d60",
+    "title": "**Database**",
+    "description": "**Database**: PostgreSQL for structured data, Redis for caching",
+    "type": "database",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "backend-only",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "463654c3-80f1-443a-b3bd-d7deed414540",
+      "category": "Technical Requirements"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z"
+  },
+  {
+    "id": "457a6221-7f2e-4cda-8dbb-c3705694d016",
+    "title": "**AI/ML**",
+    "description": "**AI/ML**: Python services with TensorFlow/PyTorch for ML models",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "69f48513-619d-4bcb-9e3e-3352e963e8e4",
+        "title": "API: **AI/ML**",
+        "description": "Create API endpoints for **AI/ML**",
+        "type": "api",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "api-only",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "cbb11ed9-f835-4cb6-9603-b673c4706d2e",
+        "title": "Test: **AI/ML**",
+        "description": "Write tests for **AI/ML**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "73ef3c3b-ac93-4904-9516-6e6e89b7e8bc",
+      "category": "Technical Requirements"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "a10ea80f-c5f8-4602-8d19-27b01a601972",
+    "title": "**Infrastructure**",
+    "description": "**Infrastructure**: Kubernetes deployment on AWS with auto-scaling",
+    "type": "implementation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "01afed3b-2c65-4347-b5d7-658ce9ad64ba",
+        "title": "Test: **Infrastructure**",
+        "description": "Write tests for **Infrastructure**",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "metadata": {
+      "featureId": "0a198248-90f8-4ba5-bd73-bf8ab100b2e3",
+      "category": "Technical Requirements"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "d0f37dce-a015-4b14-8fe8-7ff5799e6d76"
+    ]
+  },
+  {
+    "id": "7c76c878-f592-4c04-959e-50c8bde6cc3f",
+    "title": "**Security**",
+    "description": "**Security**: JWT authentication, end-to-end encryption, RBAC",
+    "type": "security",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "security-review",
+    "subtasks": [],
+    "metadata": {
+      "featureId": "5c9bf200-7c59-49f9-a252-12f15f589b17",
+      "category": "Technical Requirements"
+    },
+    "createdAt": "2025-06-16T19:05:55.529Z"
+  },
+  {
+    "id": "c3407a32-422e-45ae-95c5-fdb3a9e965ee",
+    "title": "Implement functional requirements",
+    "description": "Address all functional requirements",
+    "type": "functional",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "code",
+    "subtasks": [
+      {
+        "id": "7954dc3c-b19b-475f-be3e-3c067258a34d",
+        "title": "Page load time < 2...",
+        "description": "Page load time < 2 seconds",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "47cf1325-4f80-4cb5-bdea-e2d61cf49ea6",
+        "title": "Support 10,000 concurrent users",
+        "description": "Support 10,000 concurrent users",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "e9aa0cbc-b31c-4da8-9020-c32c87800bdb",
+        "title": "99.9% uptime SLA",
+        "description": "99.9% uptime SLA",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "317164e6-38b0-4a2d-a4bb-08bdada0deaa",
+        "title": "SOC 2 Type II compliance",
+        "description": "SOC 2 Type II compliance",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "26f9731f-5911-4c1d-8652-bd3e787fb0af",
+        "title": "GDPR compliant data handling",
+        "description": "GDPR compliant data handling",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "f882eea2-38fa-48a0-a913-ab0e62dc48a8",
+        "title": "Encrypted data at rest and...",
+        "description": "Encrypted data at rest and in transit",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "b6f6e8af-ed89-4196-96da-c51d6159f856",
+        "title": "**Timeline**: MVP must be delivered...",
+        "description": "**Timeline**: MVP must be delivered within 6 months",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "d4a4e293-50d7-45da-912d-77a80274e748",
+        "title": "**Budget**: Total development budget of...",
+        "description": "**Budget**: Total development budget of $500,000",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "2d8fb7e5-71df-45c7-977f-fe0c7f5d10bb",
+        "title": "**Team**: Maximum team size of...",
+        "description": "**Team**: Maximum team size of 15 developers",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "ff145d0a-8c35-4714-971b-d2769e869a32",
+        "title": "**Regulatory**: Must comply with GDPR...",
+        "description": "**Regulatory**: Must comply with GDPR and CCPA",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "81f0e92f-2a40-43c2-b348-b4a4b9a7f3fd",
+        "title": "**Technical**: Must support IE11 for...",
+        "description": "**Technical**: Must support IE11 for enterprise clients",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "createdAt": "2025-06-16T19:05:55.529Z"
+  },
+  {
+    "id": "340ef89d-f996-40bf-b33e-16219c8badae",
+    "title": "Implement technical requirements",
+    "description": "Address all technical requirements",
+    "type": "technical",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "architect",
+    "subtasks": [
+      {
+        "id": "aae5429c-dbd4-4815-a706-f2b976c42cf0",
+        "title": "API response time < 200ms...",
+        "description": "API response time < 200ms for 95% of requests",
+        "type": "implementation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "createdAt": "2025-06-16T19:05:55.529Z"
+  },
+  {
+    "id": "c14339fe-9644-49aa-8693-750817315932",
+    "title": "Implement non-functional requirements",
+    "description": "Address all non-functional requirements",
+    "type": "non-functional",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "refinement-optimization-mode",
+    "subtasks": [
+      {
+        "id": "d81ce538-64e4-4f29-9261-e177fbc95a27",
+        "title": "Regular security audits",
+        "description": "Regular security audits",
+        "type": "optimization",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "createdAt": "2025-06-16T19:05:55.529Z"
+  },
+  {
+    "id": "5892b981-675f-4074-b577-ba8506bf1c8a",
+    "title": "Comprehensive testing for AI-Powered Project Management Platform",
+    "description": "Implement full test coverage",
+    "type": "testing",
+    "priority": "high",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "tdd",
+    "subtasks": [
+      {
+        "id": "9e2a6021-bff6-436a-ba6f-d8bbd19adb33",
+        "title": "Unit tests",
+        "description": "Write unit tests for all components",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "438e8e3c-5516-4c58-b156-fb9deed9c8cf",
+        "title": "Integration tests",
+        "description": "Test component interactions",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "4bacee7e-97a3-43c1-8e1d-9a7f8d08f632",
+        "title": "E2E tests",
+        "description": "End-to-end user journey tests",
+        "type": "testing",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "9654deec-cb32-4f05-80eb-1fbb2ebfa684",
+        "title": "Performance tests",
+        "description": "Load and stress testing",
+        "type": "testing",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "tdd",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "da6f8a35-9af4-4edf-a84e-b20175155bb7",
+        "title": "Security tests",
+        "description": "Security vulnerability testing",
+        "type": "testing",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "security-review",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "a2af4bb8-8dba-4934-a1cb-0022b400f50a",
+      "80843603-a25b-4a04-a984-a0896049ea2b",
+      "e45f5fe2-7daf-4658-a836-a1b9843a30bb",
+      "627700ec-e705-4cab-aa00-b8832a6ded29",
+      "1a37b7f4-411a-4a5e-b612-9cd4713c8021",
+      "a60274c5-fa14-442c-8198-febbc10fcd0e",
+      "19ce9d87-9b8d-4626-b0a2-3da67f30ff1a",
+      "7e868a4b-6b88-4662-990c-67fde7a0aedc",
+      "05765786-1e94-4b37-a64c-f748884ef341",
+      "204080af-adad-4ed3-be90-ab16a1b934c8",
+      "51e16f42-1e91-4a43-8228-0ade28731d79",
+      "f14ff83d-2a2f-4124-9cfc-c4fcd1bc45d8",
+      "5067be12-fa5c-4bfb-b3ce-fe48768cdab6",
+      "31d88d7c-e1b3-41c2-adfd-23f741b8ce62",
+      "4cbf087a-7d05-4972-8e37-7849a8208862",
+      "7cfe0d83-f4b3-4f33-ae7b-5a395b0e4b48",
+      "4ae2e881-105c-43c3-a34b-81f3de6509ed",
+      "d5ae5149-4ed5-41c8-86f6-a08a9acb58b0",
+      "e253c6f9-ee61-418d-abff-da007a769a96",
+      "b187cd51-c852-44b9-b9e8-b5ed2ef89e0a",
+      "75ef9cc2-36d1-4937-9cda-59f2901474bb",
+      "bc2f9447-90e1-458a-bfd8-8f2d65a36624",
+      "c101b552-3f09-4708-ba94-44e69ada65cb",
+      "c81a56aa-8582-488e-b5e9-07976d10a3e0",
+      "8a203448-98f9-41e3-8064-9be4b82ba68f",
+      "0b9b322d-efb9-4cb9-a1be-4bd3b977d28a",
+      "44fa0a03-a517-4aa4-93ad-4577ccb3243a",
+      "b28e0509-0deb-466b-a597-00accea48dce",
+      "565c3901-6811-45bc-b95d-70553bbf28b2",
+      "7730266e-a802-47ea-83f9-f1a354f97ad3",
+      "d9c3f25d-b090-4f89-b499-eab0e089e1a7",
+      "1e2bcb56-1a47-4e76-bd16-94a9862ccc2d",
+      "d45d40c8-3e0b-441f-8ca3-cc337bf5b6b3",
+      "6eb95a5f-d4ce-48ed-8b8c-908444a1a685",
+      "7bf66cb9-409f-41de-8095-a127795da18a",
+      "8f64b35a-0956-49ff-b361-2d19f4655b81",
+      "5490d395-86bf-42b4-a926-bae6a95126e0",
+      "8e27c5f2-c8e4-47f1-8d6b-7d763831e613",
+      "eaf601ef-f968-40bc-bb25-9534b8059289",
+      "457a6221-7f2e-4cda-8dbb-c3705694d016",
+      "a10ea80f-c5f8-4602-8d19-27b01a601972"
+    ]
+  },
+  {
+    "id": "8d964553-c5f9-460a-89b6-8674bac96734",
+    "title": "Documentation for AI-Powered Project Management Platform",
+    "description": "Create comprehensive documentation",
+    "type": "documentation",
+    "priority": "medium",
+    "status": "pending",
+    "assignee": null,
+    "sparc_mode": "docs-writer",
+    "subtasks": [
+      {
+        "id": "0a5c94bc-f77c-4c2c-9f3a-81d05398ca74",
+        "title": "API documentation",
+        "description": "Document all API endpoints",
+        "type": "documentation",
+        "priority": "high",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "docs-writer",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "1a7e7c77-c66d-4f9f-bec4-502fc8b3c203",
+        "title": "User guide",
+        "description": "Create end-user documentation",
+        "type": "documentation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "docs-writer",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "950460d8-c2c5-4e2a-8a1b-3d6c3c69e5f0",
+        "title": "Developer guide",
+        "description": "Technical documentation for developers",
+        "type": "documentation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "docs-writer",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      },
+      {
+        "id": "09ebdfa1-91cd-413b-b8be-4187ce5def15",
+        "title": "Deployment guide",
+        "description": "Installation and deployment instructions",
+        "type": "documentation",
+        "priority": "medium",
+        "status": "pending",
+        "assignee": null,
+        "sparc_mode": "devops",
+        "subtasks": [],
+        "createdAt": "2025-06-16T19:05:55.529Z"
+      }
+    ],
+    "createdAt": "2025-06-16T19:05:55.529Z",
+    "dependencies": [
+      "a2af4bb8-8dba-4934-a1cb-0022b400f50a"
+    ]
+  }
+]

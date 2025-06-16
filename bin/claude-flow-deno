@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Claude-Flow Deno wrapper script
+
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+
+# Run the TypeScript file directly with Deno
+exec deno run --allow-all "$PROJECT_ROOT/src/cli/main.ts" "$@"

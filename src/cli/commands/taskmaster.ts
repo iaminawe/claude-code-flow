@@ -178,6 +178,15 @@ async function handleGenerate(prdPath: string | undefined, options: any): Promis
     
     await Deno.writeTextFile(outputPath, outputContent);
     info(`Tasks written to: ${outputPath}`);
+    
+    // Also sync to shared storage for VS Code
+    try {
+      const { syncTasksToSharedStorage } = await import("../../integrations/taskmaster/services/sync-tasks.ts");
+      await syncTasksToSharedStorage();
+      info("Tasks synced to .taskmaster directory for VS Code extension");
+    } catch (syncErr) {
+      warning("Could not sync to VS Code storage: " + syncErr);
+    }
   } catch (err) {
     error(`Failed to generate tasks: ${err instanceof Error ? err.message : String(err)}`);
   }
@@ -187,6 +196,10 @@ async function handleSync(options: any): Promise<void> {
   info("Syncing TaskMaster data...");
   
   try {
+    // First, sync tasks from memory to shared storage
+    const { syncTasksToSharedStorage } = await import("../../integrations/taskmaster/services/sync-tasks.ts");
+    const tasks = await syncTasksToSharedStorage();
+    
     const taskmaster = new TaskMasterDenoBridge();
     
     if (options.verbose) {

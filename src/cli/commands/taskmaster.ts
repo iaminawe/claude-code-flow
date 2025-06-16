@@ -85,6 +85,19 @@ export async function taskmasterAction(ctx: CommandContext): Promise<void> {
         await handleMonitor(options);
         break;
 
+      case "config":
+        await handleConfig(args.slice(1), options);
+        break;
+
+      case "optimize":
+        await handleOptimize(args[1], options);
+        break;
+
+      case "projects":
+        const { handleProjects } = await import("./taskmaster-projects.ts");
+        await handleProjects(args.slice(1), options);
+        break;
+
       case "help":
         showTaskmasterHelp();
         break;
@@ -702,6 +715,28 @@ function showTaskmasterHelp(): void {
   console.log(`    ${gray("--sync-interval <s>   Status sync interval (default: 5)")}`);
   console.log();
   
+  // Configuration & Optimization
+  console.log(`  ${cyan("config show")}             Display current configuration`);
+  console.log(`  ${cyan("config set")} <key> <val>  Update configuration value`);
+  console.log(`    ${gray("Example: config set execution.maxConcurrentTasks 10")}`);
+  console.log(`  ${cyan("config reset")}            Reset to default configuration`);
+  console.log(`  ${cyan("config export")} [file]    Export configuration`);
+  console.log(`  ${cyan("config import")} <file>    Import configuration`);
+  console.log(`  ${cyan("config recommend")} <n>    Get recommended settings for n tasks`);
+  console.log();
+  
+  console.log(`  ${cyan("optimize")} [prd-file]     Optimize task execution order`);
+  console.log(`    ${gray("Options:")}`);
+  console.log(`    ${gray("--save                Save optimized order")}`);
+  console.log(`    ${gray("--output <file>       Output file for optimized tasks")}`);
+  console.log();
+  
+  // Project commands
+  console.log(`  ${cyan("projects list")}           List all TaskMaster projects`);
+  console.log(`  ${cyan("projects select")}         Select a project to filter tasks`);
+  console.log(`  ${cyan("projects current")}        Show current project selection`);
+  console.log();
+  
   // Sync commands
   console.log(`  ${cyan("sync")}                    Sync with VS Code extension`);
   console.log(`    ${gray("Options:")}`);
@@ -970,5 +1005,165 @@ async function handleMonitor(options: any): Promise<void> {
     
   } catch (err) {
     error(`Failed to start monitor: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
+async function handleConfig(args: string[], options: any): Promise<void> {
+  const action = args[0] || 'show';
+  
+  try {
+    const { IntegrationConfigService } = await import("../../integrations/taskmaster/services/integration-config.ts");
+    const configService = new IntegrationConfigService();
+    await configService.initialize();
+    
+    switch (action) {
+      case 'show':
+        const config = configService.getConfig();
+        console.log();
+        console.log(bold(cyan("TaskMaster-Swarm Integration Configuration")));
+        console.log();
+        console.log(JSON.stringify(config, null, 2));
+        break;
+        
+      case 'set':
+        if (args.length < 3) {
+          error("Usage: taskmaster config set <section>.<key> <value>");
+          return;
+        }
+        const [section, key] = args[1].split('.');
+        const value = args[2];
+        
+        // Parse value (handle boolean and numbers)
+        let parsedValue: any = value;
+        if (value === 'true') parsedValue = true;
+        else if (value === 'false') parsedValue = false;
+        else if (!isNaN(Number(value))) parsedValue = Number(value);
+        
+        await configService.updateSection(section as any, { [key]: parsedValue });
+        success(`Configuration updated: ${section}.${key} = ${parsedValue}`);
+        break;
+        
+      case 'reset':
+        await configService.resetToDefault();
+        success("Configuration reset to defaults");
+        break;
+        
+      case 'export':
+        const exportPath = args[1] || 'taskmaster-config.json';
+        await configService.exportConfig(exportPath);
+        success(`Configuration exported to: ${exportPath}`);
+        break;
+        
+      case 'import':
+        if (!args[1]) {
+          error("Config file path required");
+          return;
+        }
+        await configService.importConfig(args[1]);
+        success(`Configuration imported from: ${args[1]}`);
+        break;
+        
+      case 'recommend':
+        const taskCount = parseInt(args[1] || '10');
+        const complexity = args[2] as any || 'medium';
+        const recommendations = configService.getRecommendedSettings(taskCount, complexity);
+        console.log();
+        console.log(bold(cyan("Recommended Configuration")));
+        console.log(`For ${taskCount} tasks with ${complexity} complexity:`);
+        console.log();
+        console.log(JSON.stringify(recommendations, null, 2));
+        break;
+        
+      default:
+        error(`Unknown config action: ${action}`);
+        console.log("Available actions: show, set, reset, export, import, recommend");
+    }
+  } catch (err) {
+    error(`Config command failed: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
+async function handleOptimize(prdPath: string | undefined, options: any): Promise<void> {
+  try {
+    const { TaskOptimizer } = await import("../../integrations/taskmaster/services/task-optimizer.ts");
+    const optimizer = new TaskOptimizer();
+    await optimizer.initialize();
+    
+    // Get tasks to optimize
+    let tasks: any[] = [];
+    
+    if (prdPath) {
+      info(`Optimizing tasks from PRD: ${prdPath}`);
+      // Generate tasks from PRD
+      const taskmaster = new TaskMasterDenoBridge();
+      tasks = await taskmaster.generateTasks(prdPath, { sparcMapping: true });
+    } else {
+      // Get stored tasks
+      info("Optimizing stored tasks...");
+      const taskmaster = new TaskMasterDenoBridge();
+      const storedTasks = await taskmaster.getStoredTasks();
+      if (storedTasks.length === 0) {
+        error("No tasks found to optimize");
+        return;
+      }
+      // Get tasks from memory (simplified)
+      const memory = await import("./memory.ts");
+      const memoryManager = new memory.SimpleMemoryManager();
+      const recentTasks = await memoryManager.query('tasks', 'taskmaster_tasks');
+      if (recentTasks.length > 0) {
+        tasks = recentTasks[recentTasks.length - 1].value as any[];
+      }
+    }
+    
+    if (tasks.length === 0) {
+      error("No tasks to optimize");
+      return;
+    }
+    
+    // Optimize tasks
+    const result = await optimizer.optimizeTasks(tasks);
+    
+    console.log();
+    console.log(bold(cyan("Task Optimization Results")));
+    console.log();
+    console.log(bold("Execution Plan:"));
+    console.log(`  Total Phases: ${result.executionPlan.phases.length}`);
+    console.log(`  Estimated Duration: ${Math.round(result.executionPlan.estimatedDuration / 60000)} minutes`);
+    console.log(`  Parallelization Factor: ${(result.executionPlan.parallelizationFactor * 100).toFixed(1)}%`);
+    console.log();
+    
+    // Show phases
+    console.log(bold("Execution Phases:"));
+    result.executionPlan.phases.forEach(phase => {
+      console.log(`\n  Phase ${phase.phaseNumber}: ${phase.tasks.length} tasks`);
+      console.log(`    Parallel: ${phase.canRunParallel ? green('Yes') : yellow('No')}`);
+      console.log(`    Duration: ${Math.round(phase.estimatedDuration / 60000)} minutes`);
+      console.log(`    Tasks:`);
+      phase.tasks.slice(0, 5).forEach(task => {
+        console.log(`      - ${task.title} [${task.priority}]`);
+      });
+      if (phase.tasks.length > 5) {
+        console.log(`      ... and ${phase.tasks.length - 5} more`);
+      }
+    });
+    
+    // Show recommendations
+    if (result.recommendations.length > 0) {
+      console.log();
+      console.log(bold("Optimization Recommendations:"));
+      result.recommendations.forEach((rec, index) => {
+        console.log(`  ${index + 1}. ${rec}`);
+      });
+    }
+    
+    // Save optimized order if requested
+    if (options.save) {
+      const outputPath = options.output || 'taskmaster-optimized.json';
+      await Deno.writeTextFile(outputPath, JSON.stringify(result.tasks, null, 2));
+      success(`Optimized task order saved to: ${outputPath}`);
+    }
+    
+  } catch (err) {
+    error(`Optimization failed: ${err instanceof Error ? err.message : String(err)}`);
   }
 }

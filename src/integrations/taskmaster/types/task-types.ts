@@ -16,6 +16,8 @@ export interface TaskMasterTask {
   assignee?: string;
   createdAt: Date;
   updatedAt: Date;
+  projectId?: string;
+  projectTitle?: string;
   metadata?: {
     prd_section?: string;
     complexity?: number;

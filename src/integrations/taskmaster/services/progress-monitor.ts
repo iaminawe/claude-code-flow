@@ -3,7 +3,7 @@
  * Real-time tracking of task execution across all agents
  */
 
-import { EventEmitter } from '../../cli/commands/start/event-emitter.ts';
+import { EventEmitter } from '../../../cli/commands/start/event-emitter.ts';
 import { TaskMasterDenoBridge } from '../deno-bridge.ts';
 import type { Task as TaskMasterTask } from '../types/task-types.ts';
 

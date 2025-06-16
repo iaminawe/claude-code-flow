@@ -3,7 +3,7 @@
  * Keeps TaskMaster and Orchestrator task statuses in sync
  */
 
-import { EventEmitter } from '../../cli/commands/start/event-emitter.ts';
+import { EventEmitter } from '../../../cli/commands/start/event-emitter.ts';
 import { TaskMasterDenoBridge } from '../deno-bridge.ts';
 import { TaskMasterOrchestratorAdapter } from '../adapters/orchestrator-adapter.ts';
 

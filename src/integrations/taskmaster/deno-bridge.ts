@@ -34,6 +34,8 @@ interface TaskMasterTask {
   updatedAt?: string;
   createdAt?: string;
   dependencies?: string[];
+  projectId?: string;
+  projectTitle?: string;
   metadata?: Record<string, any>;
 }
 

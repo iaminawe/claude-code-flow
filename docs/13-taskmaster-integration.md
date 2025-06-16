@@ -997,13 +997,53 @@ claude-flow taskmaster generate new-project.prd --template evolved-web-app
 
 These features are planned but NOT currently available:
 
-### Near-term (Implementable)
-- **TaskMaster-Swarm Bridge**: Execute TaskMaster tasks via swarm orchestration
-- **SPARC Mode Mapping**: Automatic agent assignment based on task type
-- **Parallel Execution**: Multiple agents working on independent tasks
-- **Memory Integration**: Shared context across all agents
-- **Workflow Conversion**: Transform task lists into executable workflows
-- **Progress Monitoring**: Real-time dashboards for multi-agent execution
+### Completed Features (v2 Integration)
+
+✅ **TaskMaster-Swarm Bridge**: Execute TaskMaster tasks via swarm orchestration
+- Full orchestrator adapter implementation
+- Bi-directional task format conversion
+- Real-time execution tracking
+
+✅ **SPARC Mode Mapping**: Automatic agent assignment based on task type
+- Complete agent type mapping service
+- Capability-based agent selection
+- Tool requirement analysis
+
+✅ **Parallel Execution**: Multiple agents working on independent tasks
+- TaskMaster swarm strategy implementation
+- Dependency-aware task scheduling
+- Configurable concurrency limits
+
+✅ **Memory Integration**: Shared context across all agents
+- Unified memory access for all components
+- Task state persistence
+- Configuration storage
+
+✅ **Progress Monitoring**: Real-time dashboards for multi-agent execution
+- Live execution dashboard with ANSI formatting
+- Task progress tracking
+- Agent utilization metrics
+- Completion time estimates
+
+✅ **Status Synchronization**: Keep systems in sync
+- Bi-directional status updates
+- Conflict resolution
+- Queued update management
+
+✅ **Configuration & Optimization**: Advanced task execution control
+- Comprehensive configuration service
+- Task optimization with multiple algorithms
+- Execution plan generation
+- Performance recommendations
+
+✅ **Enhanced CLI Integration**: Full command-line support
+- `execute` - Single task execution
+- `execute-all` - Bulk task execution with filters
+- `monitor` - Real-time execution dashboard
+- `config` - Configuration management
+- `optimize` - Task optimization and planning
+
+### Near-term (Remaining)
 - Complete VS Code sync integration
 - Multiple AI provider support
 - Template system completion
@@ -1047,6 +1087,86 @@ TaskMaster is a practical tool for converting PRDs into structured tasks with SP
 - Enhancing tasks with AI when configured with Anthropic API
 - Exporting tasks in multiple formats for team use
 - Storing tasks persistently in memory
+
+## v2 Integration Usage Examples
+
+### Basic Workflow: PRD to Parallel Execution
+
+```bash
+# 1. Generate tasks from PRD with SPARC mapping
+claude-flow taskmaster generate product-spec.prd --ai --sparc-mapping
+
+# 2. Optimize task execution order
+claude-flow taskmaster optimize --save
+
+# 3. Execute all tasks using swarm mode
+claude-flow taskmaster execute-all --parallel --max-agents 5
+
+# 4. Monitor progress in real-time
+claude-flow taskmaster monitor
+```
+
+### Advanced Workflow: Filtered Execution with Custom Config
+
+```bash
+# 1. Check recommended configuration
+claude-flow taskmaster config recommend 50 high
+
+# 2. Update configuration
+claude-flow taskmaster config set execution.maxConcurrentTasks 10
+claude-flow taskmaster config set prioritization.algorithm dependencies
+
+# 3. Execute only high-priority tasks
+claude-flow taskmaster execute-all --filter priority=high,status=pending
+
+# 4. Monitor with custom intervals
+claude-flow taskmaster monitor --interval 2 --sync-interval 10
+```
+
+### Integration with Swarm Mode
+
+```bash
+# Use TaskMaster tasks directly in swarm mode
+claude-flow swarm start --taskmaster --max-agents 8
+
+# Or use a specific PRD
+claude-flow swarm start --taskmaster-prd requirements.prd
+
+# Or use exported task file
+claude-flow swarm start --taskmaster-file optimized-tasks.json
+```
+
+### Configuration Management
+
+```bash
+# View current configuration
+claude-flow taskmaster config show
+
+# Export configuration for team sharing
+claude-flow taskmaster config export team-config.json
+
+# Import configuration
+claude-flow taskmaster config import team-config.json
+
+# Reset to defaults
+claude-flow taskmaster config reset
+```
+
+### Task Optimization Examples
+
+```bash
+# Optimize with visualization
+claude-flow taskmaster optimize product-spec.prd
+
+# Output shows:
+# - Execution phases with parallelization opportunities
+# - Estimated completion times
+# - Optimization recommendations
+# - Dependency bottlenecks
+
+# Save optimized order
+claude-flow taskmaster optimize --save --output optimized-tasks.json
+```
 
 The gap between documentation claims and reality is significant. Focus on these core capabilities for the best experience with TaskMaster.
 

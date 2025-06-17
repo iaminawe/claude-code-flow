@@ -73,11 +73,8 @@ export class AIService {
           model: this.model,
           max_tokens: request.maxTokens || 4096,
           temperature: request.temperature || 0.3,
+          ...(request.systemPrompt ? { system: request.systemPrompt } : {}),
           messages: [
-            ...(request.systemPrompt ? [{
-              role: 'system',
-              content: request.systemPrompt
-            }] : []),
             {
               role: 'user',
               content: request.prompt

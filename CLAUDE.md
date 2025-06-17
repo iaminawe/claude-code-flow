@@ -117,6 +117,41 @@ export ANTHROPIC_API_KEY='your-api-key'
 ./claude-flow swarm start --taskmaster-prd project.prd --ui
 ```
 
+## AI Enhancement Configuration
+
+### Setting up Anthropic API
+```bash
+# Create .env file in project root
+cat > .env << EOF
+ANTHROPIC_API_KEY=your-api-key-here
+EOF
+
+# Or export in your shell
+export ANTHROPIC_API_KEY='sk-ant-...'
+
+# Verify AI is working
+./claude-flow taskmaster ai-status
+```
+
+### AI-Enhanced Features
+- **PRD Analysis**: Claude analyzes requirements and extracts key features
+- **Task Generation**: Intelligent task breakdown with detailed descriptions
+- **SPARC Mapping**: AI suggests appropriate SPARC modes for each task
+- **Subtask Creation**: Automatic generation of relevant subtasks
+- **Priority Assignment**: Smart prioritization based on dependencies
+
+### Using AI Features
+```bash
+# Generate tasks with AI enhancement
+./claude-flow taskmaster generate project.prd --ai
+
+# The --ai flag enables:
+# - Enhanced task descriptions
+# - Better SPARC mode selection
+# - Intelligent subtask generation
+# - Effort estimation
+```
+
 ## Performance Optimizations (BatchTool + TaskMaster v1.1.4)
 
 ### Parallel Execution Features

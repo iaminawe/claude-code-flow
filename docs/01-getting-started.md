@@ -216,6 +216,34 @@ claude-flow config set orchestrator.maxConcurrentAgents 15
 claude-flow config init --force
 ```
 
+## AI Enhancement Setup (Optional)
+
+Claude-Flow integrates with Anthropic's Claude API to provide AI-enhanced features for task generation and PRD analysis.
+
+### Configure API Key
+```bash
+# Option 1: Environment variable
+export ANTHROPIC_API_KEY='sk-ant-...'
+
+# Option 2: Create .env file
+echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
+
+# Verify AI is configured
+claude-flow taskmaster ai-status
+```
+
+### AI-Enhanced TaskMaster
+```bash
+# Generate tasks from PRD with AI enhancement
+claude-flow taskmaster generate project.prd --ai
+
+# This provides:
+# - Intelligent task descriptions
+# - SPARC mode suggestions
+# - Effort estimation
+# - Dependency detection
+```
+
 ## Next Steps
 
 1. **Explore the Architecture**: Read [02-architecture-overview.md](./02-architecture-overview.md) to understand how Claude-Flow works

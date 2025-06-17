@@ -360,8 +360,10 @@ When configured with an Anthropic API key, TaskMaster provides enhanced capabili
    # Option A: Environment Variable (Recommended)
    export ANTHROPIC_API_KEY='sk-ant-...'
    
-   # Option B: Command-line Flag
-   ./claude-flow taskmaster generate prd.md --ai --api-key 'your-key'
+   # Option B: Create .env file in project root
+   echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
+   
+   # Note: The --api-key flag is not currently implemented
    ```
 
 3. **Verify Setup**

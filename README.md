@@ -296,19 +296,30 @@ EOF
 
 ### Configure Anthropic API
 ```bash
-# Set API key for AI features
+# Option 1: Set API key in environment
 export ANTHROPIC_API_KEY='sk-ant-...'
+
+# Option 2: Add to .env file in project root
+echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
 
 # Verify AI configuration
 ./claude-flow taskmaster ai-status
 
 # Generate with AI enhancement
-./claude-flow taskmaster generate project.prd --ai --detailed --enhance
+./claude-flow taskmaster generate project.prd --ai
 ```
+
+### AI Features
+When AI is enabled, TaskMaster provides:
+- **Enhanced Task Descriptions**: Detailed, context-aware task descriptions
+- **SPARC Mode Suggestions**: Intelligent mapping to appropriate development phases
+- **Effort Estimation**: AI-based time and complexity estimates
+- **Dependency Detection**: Smart identification of task relationships
+- **Acceptance Criteria**: Generated test criteria for each task
 
 ### AI vs Non-AI Comparison
 - **Without AI**: Basic pattern matching and keyword extraction
-- **With AI**: Intelligent task descriptions, effort estimation, and dependency detection
+- **With AI**: Claude-powered analysis with comprehensive task enhancement
 
 ## 📁 **Project Structure**
 

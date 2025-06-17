@@ -48,7 +48,7 @@ test-full-init
 
 swarm-runs
 coordination/
-swarm-coordination/swarm/agents/
+swarm-coordination/swarm/
 .claude/logs/.env
 QUICKSTART-TODO.md
 

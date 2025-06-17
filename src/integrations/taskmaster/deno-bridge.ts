@@ -55,7 +55,7 @@ export class TaskMasterDenoBridge {
   protected prdParser: PRDParserService;
   protected taskGenerator: SmartTaskGeneratorService;
   protected eventEmitter: EventEmitter;
-  protected memory: SimpleMemoryManager;
+  public memory: SimpleMemoryManager;
 
   constructor() {
     this.eventEmitter = new EventEmitter();
@@ -379,18 +379,23 @@ export class TaskMasterDenoBridge {
   }
   
   async getTaskById(taskId: string): Promise<TaskMasterTask | null> {
-    const taskEntries = await this.memory.query('tasks_', 'taskmaster_tasks');
-    
-    for (const entry of taskEntries) {
-      const tasks = JSON.parse(entry.value) as TaskMasterTask[];
-      const task = tasks.find(t => t.id === taskId);
+    try {
+      const taskEntries = await this.memory.query('tasks_', 'taskmaster_tasks');
       
-      if (task) {
-        return task;
+      for (const entry of taskEntries) {
+        const tasks = JSON.parse(entry.value) as TaskMasterTask[];
+        const task = tasks.find(t => t.id === taskId);
+        
+        if (task) {
+          return task;
+        }
       }
+      
+      return null;
+    } catch (error) {
+      console.error(`Error in getTaskById for ${taskId}:`, error);
+      return null;
     }
-    
-    return null;
   }
   
   async exportTasks(format: 'json' | 'markdown' | 'csv' = 'json'): Promise<string> {
@@ -470,33 +475,6 @@ export class TaskMasterDenoBridge {
     ]);
     
     return [headers.join(','), ...rows.map(row => row.join(','))].join('\n');
-  }
-
-  async getTaskById(taskId: string): Promise<TaskMasterTask | null> {
-    // First check in recently generated tasks
-    const recentTasks = await this.memory.query('tasks', 'taskmaster_tasks');
-    for (const entry of recentTasks) {
-      const tasks = entry.value as TaskMasterTask[];
-      const found = this.findTaskInTree(tasks, taskId);
-      if (found) return found;
-    }
-    
-    // Check in stored task files
-    try {
-      const files = await Deno.readDir('./');
-      for await (const file of files) {
-        if (file.name.endsWith('-tasks.json')) {
-          const content = await Deno.readTextFile(file.name);
-          const tasks = JSON.parse(content) as TaskMasterTask[];
-          const found = this.findTaskInTree(tasks, taskId);
-          if (found) return found;
-        }
-      }
-    } catch {
-      // Ignore file read errors
-    }
-    
-    return null;
   }
   
   private findTaskInTree(tasks: TaskMasterTask[], taskId: string): TaskMasterTask | null {

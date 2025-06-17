@@ -223,16 +223,36 @@ export class TaskMasterOrchestratorAdapter {
   private async fetchTaskMasterTask(taskId: string): Promise<TaskMasterTask | null> {
     try {
       const task = await this.taskmaster.getTaskById(taskId);
+      if (!task) {
+        console.error(`Task ${taskId} not found in taskmaster.getTaskById`);
+      }
       return task;
-    } catch {
+    } catch (error) {
+      console.error(`Error fetching task ${taskId}:`, error);
       return null;
     }
   }
 
   private async fetchAllTasks(): Promise<TaskMasterTask[]> {
-    // This would need to be implemented in TaskMasterDenoBridge
-    // For now, return empty array
-    return [];
+    try {
+      // Get all tasks from memory storage
+      const allTasks: TaskMasterTask[] = [];
+      const taskEntries = await this.taskmaster.memory.query('tasks_', 'taskmaster_tasks');
+      
+      for (const entry of taskEntries) {
+        try {
+          const tasks = JSON.parse(entry.value) as TaskMasterTask[];
+          allTasks.push(...tasks);
+        } catch (e) {
+          console.error(`Failed to parse tasks from ${entry.key}:`, e);
+        }
+      }
+      
+      return allTasks;
+    } catch (error) {
+      console.error('Error fetching all tasks:', error);
+      return [];
+    }
   }
 
   private enhanceWithSparcMapping(

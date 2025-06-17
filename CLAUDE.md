@@ -216,23 +216,41 @@ export ANTHROPIC_API_KEY='sk-ant-...'
 
 ## Real-Time Monitoring
 
+### Enhanced Monitor with TaskMaster Integration (v1.1.5)
+The monitor command now displays both Swarm and TaskMaster tasks in a unified dashboard:
+
+```bash
+# Run the enhanced monitor
+./claude-flow monitor
+
+# Monitor features:
+# - TaskMaster Progress section with overall progress bar
+# - Task statistics (completed/running/queued/failed)
+# - Source column showing TM (TaskMaster) or SW (Swarm)
+# - TaskMaster component health in Components section
+# - Real-time updates every 2 seconds
+```
+
 ### Multi-Terminal Setup
 ```bash
 # Terminal 1: Execute with UI
 ./claude-flow swarm start --taskmaster --ui
 
-# Terminal 2: TaskMaster monitor
-./claude-flow taskmaster monitor
-
-# Terminal 3: System monitor
+# Terminal 2: System monitor (shows both Swarm and TaskMaster tasks)
 ./claude-flow monitor
+
+# Terminal 3: TaskMaster-specific monitor (optional)
+./claude-flow taskmaster monitor
 ```
 
 ### Dashboard Features
-- Task progress and completion tracking
-- Agent utilization and performance metrics
-- Real-time sync status
-- Error highlighting and debugging
+- **Unified Task View**: Both Swarm and TaskMaster tasks in one display
+- **TaskMaster Progress**: Dedicated section showing task statistics and progress
+- **Source Indicators**: Clear TM/SW labels to identify task origin
+- **Component Health**: TaskMaster component status alongside other systems
+- **Agent Utilization**: Real-time agent performance metrics
+- **Performance Graphs**: CPU and memory usage over time
+- **Event Timeline**: Recent system events and task completions
 
 ## Configuration Files
 
@@ -262,12 +280,13 @@ export ANTHROPIC_API_KEY='sk-ant-...'
 
 ## Troubleshooting
 
-### Common Issues (v1.1.5 - Swarm-TaskMaster Integration Fixed!)
+### Common Issues (v1.1.5 - Enhanced Monitor & Swarm-TaskMaster Integration!)
 - **Mode not found**: ✅ Fixed - `.roomodes` parsing now works correctly
 - **Task execution fails**: ✅ Fixed - Duplicate `getTaskById` resolved, use UUID from task list
 - **Bulk execution returns 0 tasks**: ✅ Fixed - `fetchAllTasks` implemented
 - **Swarm not executing TaskMaster tasks**: ✅ Fixed - Swarm now properly loads and executes TaskMaster tasks
-- **TaskMaster monitor shows 0 tasks with swarm**: ✅ Expected behavior - use `./claude-flow monitor` for swarm execution
+- **TaskMaster monitor shows 0 tasks with swarm**: ✅ Fixed - Use `./claude-flow monitor` for unified monitoring
+- **Monitor shows TaskMaster section**: ✅ Added - Enhanced monitor displays both Swarm and TaskMaster tasks
 - **Memory persistence**: Ensure `memory/` directory has write permissions
 - **Tool access**: Verify required tools are available for the selected mode
 - **Performance issues**: Check BatchTool settings in `.roomodes` metadata

@@ -1,21 +1,27 @@
-# Simple Test Application
+# Test Swarm Execution
 
 ## Overview
-Build a simple task management application to test the TaskMaster + BatchTool integration.
+A simple test project to verify swarm-TaskMaster integration is working correctly.
 
 ## Requirements
-- Create a basic task list
-- Add task creation functionality
-- Implement task completion
-- Add basic styling
 
-## Technical Stack
-- Frontend: HTML/CSS/JavaScript
-- No backend required
-- Local storage for persistence
+### Feature 1: Basic Test
+- Create a simple test file with "Hello Swarm" content
+- Priority: High
+- Type: Implementation
 
-## Tasks
-1. Create HTML structure
-2. Add CSS styling
-3. Implement JavaScript functionality
-4. Test the application
+### Feature 2: Verification
+- Verify the test file was created successfully  
+- Priority: High
+- Type: Testing
+
+## Technical Specifications
+- Use simple file operations
+- No external dependencies
+- Quick execution time
+
+## Success Criteria
+- Test file is created successfully
+- Content is correct
+- Swarm completes without errors
+EOF < /dev/null

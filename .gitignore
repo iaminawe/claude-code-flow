@@ -48,3 +48,6 @@ test-full-init
 swarm-runs
 coordination/
 .claude/logs/.env
+
+# TaskMaster execution tracking
+.taskmaster/executions/

@@ -40,6 +40,7 @@ claude-flow.config.json
 *.tmp
 *.temp
 .cache/
+bin/*.tmp-*
 
 package
 test-init
@@ -49,5 +50,10 @@ swarm-runs
 coordination/
 .claude/logs/.env
 
-# TaskMaster execution tracking
+# TaskMaster
 .taskmaster/executions/
+.taskmaster/tasks/
+.taskmaster/logs/
+.taskmaster/state.json
+taskmaster-*.json
+taskmaster-*.prd

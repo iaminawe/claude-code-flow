@@ -25,7 +25,24 @@ async function loadSparcConfig(): Promise<SparcConfig> {
   try {
     const configPath = ".roomodes";
     const content = await Deno.readTextFile(configPath);
-    sparcConfig = JSON.parse(content);
+    const rawConfig = JSON.parse(content);
+    
+    // Convert .roomodes format to SparcConfig format
+    const modes: SparcMode[] = [];
+    if (rawConfig.modes) {
+      for (const [slug, mode] of Object.entries(rawConfig.modes)) {
+        modes.push({
+          slug,
+          name: (mode as any).name || slug,
+          roleDefinition: (mode as any).description || '',
+          customInstructions: '',
+          groups: ['sparc'],
+          source: 'roomodes'
+        });
+      }
+    }
+    
+    sparcConfig = { customModes: modes };
     return sparcConfig!;
   } catch (error) {
     throw new Error(`Failed to load SPARC configuration: ${error.message}`);

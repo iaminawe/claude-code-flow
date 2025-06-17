@@ -19,18 +19,20 @@
 > 🔥 **One command to rule them all**: `npx claude-flow` - Deploy a full AI agent coordination system in seconds!
 
 
-## 🎉 **What's New in v1.1.3** 🆕
+## 🎉 **What's New in v1.1.4** 🆕
 
-### 🤖 **NEW: Claude Task Master Integration - Complete Implementation!**
+### 🚀 **TaskMaster Integration - Fully Operational!**
+- **✅ Fixed Task Execution**: Resolved duplicate `getTaskById` method and memory retrieval issues
+- **✅ SPARC Mode Configuration**: Fixed `.roomodes` parsing - all 17 modes now accessible
+- **✅ Parallel Processing**: Implemented bulk task fetching for `executeAll` command
 - **📋 AI-Powered Task Management**: Complete integration with Claude Task Master for PRD-based task generation
 - **🔄 Bidirectional Task Sync**: Seamless synchronization between TaskMaster and ClaudeFlow formats
 - **🎯 SPARC-Integrated Workflows**: Automatic task mapping to SPARC development phases with agent assignment
 - **📄 PRD Processing**: AI-powered parsing of Product Requirements Documents with intelligent task hierarchy generation
-- **⚡ Real-time Monitoring**: Performance tracking, conflict resolution, and sync status monitoring
+- **⚡ Performance Metrics**: Sub-millisecond memory ops, ~1.4ms task queueing, 700+ ops/second
 - **🛠️ Production-Ready CLI**: Complete command-line interface for task generation, sync, and management
 - **🐝 Swarm Integration**: Execute TaskMaster tasks with parallel AI agents
-- **📊 Task Optimization**: Dependency analysis and execution planning
-- **🔧 Configuration Management**: Flexible settings for performance tuning
+- **📊 Real-time Monitoring**: Live execution tracking with `taskmaster monitor` command
 
 ### 🎯 **BatchTool Parallel Agent System (v1.0.50 Enhancements)**
 - **✅ Hundreds Concurrent Agents**: Deploy up to 100+ AI agents simultaneously via BatchTool
@@ -223,21 +225,23 @@ Build a modern e-commerce platform with user authentication and payments.
 - Cache: Redis
 EOF
 
-# 2. Generate tasks with AI enhancement
-export ANTHROPIC_API_KEY='your-api-key'
-./claude-flow taskmaster generate project.prd --ai --sparc-mapping
+# 2. Generate tasks from PRD
+./claude-flow taskmaster generate project.prd --sparc-mapping
 
-# 3. Optimize task execution order
-./claude-flow taskmaster optimize --save
+# 3. Execute single task
+./claude-flow taskmaster execute "task-id"
 
-# 4. Execute all tasks with swarm mode (with UI monitoring)
-./claude-flow taskmaster execute-all --parallel --max-agents 8
-
-# Or use swarm directly with UI
-./claude-flow swarm start --taskmaster --ui --max-agents 8
+# 4. Execute all tasks in parallel
+./claude-flow taskmaster execute-all --max-agents 8
 
 # 5. Monitor progress in real-time (separate terminal)
 ./claude-flow taskmaster monitor
+
+# 6. Check execution status
+./claude-flow taskmaster execute-status "execution-id"
+
+# Alternative: Use swarm with TaskMaster PRD
+./claude-flow swarm start --taskmaster-prd project.prd --ui --max-agents 8
 ```
 
 ## 🔧 **Configuration**

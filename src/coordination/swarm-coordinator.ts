@@ -73,6 +73,7 @@ export class SwarmCoordinator extends EventEmitter {
   private agents: Map<string, SwarmAgent>;
   private objectives: Map<string, SwarmObjective>;
   private tasks: Map<string, SwarmTask>;
+  private taskQueue: string[];
   private monitor?: SwarmMonitor;
   private scheduler?: AdvancedTaskScheduler;
   private memoryManager: MemoryManager;
@@ -108,6 +109,7 @@ export class SwarmCoordinator extends EventEmitter {
     this.agents = new Map();
     this.objectives = new Map();
     this.tasks = new Map();
+    this.taskQueue = [];
     this.backgroundWorkers = new Map();
 
     // Create event bus for memory manager
@@ -254,9 +256,19 @@ export class SwarmCoordinator extends EventEmitter {
     // Check for TaskMaster objective
     let objective: SwarmObjective;
     if (strategy === 'taskmaster' && (globalThis as any).__taskmasterObjective) {
-      objective = (globalThis as any).__taskmasterObjective;
-      objective.id = objectiveId;
-      this.logger.info(`Using TaskMaster objective with ${objective.tasks.length} pre-loaded tasks`);
+      const tmObjective = (globalThis as any).__taskmasterObjective;
+      // Convert TaskMaster objective to SwarmObjective
+      objective = {
+        id: objectiveId,
+        description,
+        strategy: 'taskmaster' as any,
+        tasks: [], // Will be populated from tmObjective.tasks later
+        status: 'planning',
+        createdAt: new Date()
+      };
+      // Store the TaskMaster tasks in metadata for later processing
+      (objective as any).taskmasterTasks = tmObjective.tasks;
+      this.logger.info(`Using TaskMaster objective with ${tmObjective.tasks.length} pre-loaded tasks`);
     } else {
       objective = {
         id: objectiveId,
@@ -819,7 +831,103 @@ export class SwarmCoordinator extends EventEmitter {
     this.logger.info(`Executing objective: ${objectiveId}`);
     this.emit('objective:started', objective);
 
+    // For TaskMaster objectives, we need to create SwarmTasks from the pre-loaded tasks
+    const taskmasterTasks = (objective as any).taskmasterTasks;
+    console.log(`[DEBUG] Objective strategy: ${objective.strategy}, Has taskmasterTasks: ${!!taskmasterTasks}, Task count: ${taskmasterTasks?.length || 0}`);
+    console.log(`[DEBUG] First task:`, taskmasterTasks?.[0]);
+    
+    if (objective.strategy === 'taskmaster' as any && taskmasterTasks && taskmasterTasks.length > 0) {
+      this.logger.info(`Creating ${taskmasterTasks.length} swarm tasks from TaskMaster objective`);
+      
+      for (const taskDef of taskmasterTasks) {
+        const swarmTask: SwarmTask = {
+          id: taskDef.id || generateId('task'),
+          objectiveId,
+          type: taskDef.type as any || 'execution',
+          description: taskDef.description || taskDef.name || 'Task',
+          status: 'pending',
+          priority: taskDef.priority || 0,
+          createdAt: new Date(),
+          dependencies: taskDef.constraints?.dependencies || [],
+          metadata: taskDef.metadata
+        };
+        
+        this.tasks.set(swarmTask.id, swarmTask);
+        this.emit('task:created', swarmTask);
+        
+        // If no dependencies, add to ready queue
+        if (swarmTask.dependencies.length === 0) {
+          this.taskQueue.push(swarmTask.id);
+        }
+      }
+      
+      this.logger.info(`Created ${taskmasterTasks.length} tasks, ${this.taskQueue.length} ready for execution`);
+      
+      // Log task details
+      console.log(`[DEBUG] Task queue contents:`, this.taskQueue.slice(0, 5));
+      console.log(`[DEBUG] Total tasks in system:`, this.tasks.size);
+      console.log(`[DEBUG] Agent statuses:`, Array.from(this.agents.values()).map(a => ({ id: a.id, status: a.status, type: a.type })));
+      
+      // Trigger task assignment
+      await this.assignPendingTasks();
+      
+      console.log(`[DEBUG] After assignment - Tasks running:`, Array.from(this.tasks.values()).filter(t => t.status === 'running').length);
+    }
+    
     // Tasks will be processed by background workers
+  }
+
+  private async assignPendingTasks(): Promise<void> {
+    // Get idle agents
+    const idleAgents = Array.from(this.agents.values()).filter(a => a.status === 'idle');
+    
+    if (idleAgents.length === 0 || this.taskQueue.length === 0) {
+      return;
+    }
+    
+    // Assign tasks to idle agents
+    while (this.taskQueue.length > 0 && idleAgents.length > 0) {
+      const taskId = this.taskQueue.shift()!;
+      const task = this.tasks.get(taskId);
+      
+      if (!task || task.status !== 'pending') {
+        continue;
+      }
+      
+      // Find suitable agent based on task type
+      const suitableAgent = idleAgents.find(agent => {
+        // Match agent type to task requirements
+        if (task.metadata?.agentType) {
+          return agent.type === task.metadata.agentType;
+        }
+        // Default matching based on task type
+        switch (task.type) {
+          case 'research':
+            return agent.type === 'researcher';
+          case 'implementation':
+          case 'architecture':
+            return agent.type === 'developer';
+          case 'analysis':
+          case 'testing':
+            return agent.type === 'analyzer';
+          default:
+            return agent.type === 'coordinator';
+        }
+      }) || idleAgents[0]; // Fallback to any idle agent
+      
+      if (suitableAgent) {
+        try {
+          await this.assignTask(taskId, suitableAgent.id);
+          // Remove from idle list
+          const index = idleAgents.indexOf(suitableAgent);
+          if (index > -1) {
+            idleAgents.splice(index, 1);
+          }
+        } catch (error) {
+          this.logger.error(`Failed to assign task ${taskId}: ${error}`);
+        }
+      }
+    }
   }
 
   getObjectiveStatus(objectiveId: string): SwarmObjective | undefined {

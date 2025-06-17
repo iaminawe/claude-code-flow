@@ -621,25 +621,59 @@ function getAgentTypesForStrategy(strategy: string): ('researcher' | 'developer'
   }
 }
 
-function getCapabilitiesForType(type: string): string[] {
+function getCapabilitiesForType(type: string): any {
+  // Return proper AgentCapabilities object instead of string array
+  const capabilities: any = {
+    codeGeneration: false,
+    testing: false,
+    documentation: false,
+    debugging: false,
+    research: false,
+    dataAnalysis: false,
+    planning: false,
+    review: false
+  };
+
   switch (type) {
     case 'researcher':
-      return ['web-search', 'data-collection', 'analysis', 'documentation'];
+      capabilities.research = true;
+      capabilities.dataAnalysis = true;
+      capabilities.documentation = true;
+      break;
     case 'developer':
-      return ['coding', 'testing', 'debugging', 'architecture'];
+      capabilities.codeGeneration = true;
+      capabilities.testing = true;
+      capabilities.debugging = true;
+      capabilities.documentation = true;
+      break;
     case 'analyzer':
-      return ['data-analysis', 'visualization', 'reporting', 'insights'];
+      capabilities.dataAnalysis = true;
+      capabilities.documentation = true;
+      capabilities.research = true;
+      break;
     case 'reviewer':
-      return ['code-review', 'quality-assurance', 'validation', 'testing'];
+      capabilities.review = true;
+      capabilities.testing = true;
+      capabilities.documentation = true;
+      break;
     case 'coordinator':
-      return ['planning', 'coordination', 'task-management', 'communication'];
+      capabilities.planning = true;
+      capabilities.documentation = true;
+      capabilities.review = true;
+      break;
     default:
-      return ['general'];
+      // Enable all capabilities for general type
+      Object.keys(capabilities).forEach(key => {
+        capabilities[key] = true;
+      });
   }
+
+  return capabilities;
 }
 
 async function waitForObjectiveCompletion(coordinator: any, objectiveId: string, options: any): Promise<void> {
   return new Promise((resolve) => {
+    let lastLogTime = Date.now();
     const checkInterval = setInterval(() => {
       const objective = coordinator.getObjectiveStatus(objectiveId);
       
@@ -655,10 +689,13 @@ async function waitForObjectiveCompletion(coordinator: any, objectiveId: string,
         return;
       }
 
-      // Show progress if verbose
-      if (options.verbose) {
+      // Show progress every 5 seconds or if verbose
+      const now = Date.now();
+      if (options.verbose || now - lastLogTime > 5000) {
         const swarmStatus = coordinator.getSwarmStatus();
-        console.log(`Progress: ${swarmStatus.tasks.completed}/${swarmStatus.tasks.total} tasks completed`);
+        console.log(`[${new Date().toLocaleTimeString()}] Status: ${objective.status}, Tasks: ${swarmStatus.tasks.completed}/${swarmStatus.tasks.total} completed, ${swarmStatus.tasks.running} running, ${swarmStatus.tasks.pending} pending`);
+        console.log(`  Agents: ${swarmStatus.agents.busy} busy, ${swarmStatus.agents.idle} idle`);
+        lastLogTime = now;
       }
     }, 5000); // Check every 5 seconds
 

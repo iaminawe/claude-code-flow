@@ -118,13 +118,27 @@ export class TaskMasterStrategy implements SwarmStrategy {
   }
 
   private async loadTasksFromMemory(): Promise<TaskMasterTask[]> {
-    // Try to load from the most recent task file
+    // Try to load from TaskMaster's storage location
     try {
+      // First try the standard TaskMaster location
+      const taskmasterPath = '.taskmaster/tasks/tasks.json';
+      try {
+        const content = await Deno.readTextFile(taskmasterPath);
+        const data = JSON.parse(content);
+        if (data.tasks && Array.isArray(data.tasks)) {
+          console.log(`Loaded ${data.tasks.length} tasks from TaskMaster storage`);
+          return data.tasks as TaskMasterTask[];
+        }
+      } catch {
+        // TaskMaster file not found, try fallback
+      }
+
+      // Fallback to looking for exported task files in root
       const files = await Deno.readDir('./');
       const taskFiles: string[] = [];
       
       for await (const file of files) {
-        if (file.name.endsWith('-tasks.json')) {
+        if (file.name.endsWith('-tasks.json') || file.name === 'taskmaster-export.json') {
           taskFiles.push(file.name);
         }
       }
@@ -133,7 +147,14 @@ export class TaskMasterStrategy implements SwarmStrategy {
         // Sort by modification time and get the most recent
         const mostRecent = taskFiles.sort().pop()!;
         const content = await Deno.readTextFile(mostRecent);
-        return JSON.parse(content) as TaskMasterTask[];
+        const data = JSON.parse(content);
+        
+        // Handle both direct task array and wrapped format
+        if (Array.isArray(data)) {
+          return data as TaskMasterTask[];
+        } else if (data.tasks && Array.isArray(data.tasks)) {
+          return data.tasks as TaskMasterTask[];
+        }
       }
     } catch (error) {
       console.error('Failed to load tasks from memory:', error);

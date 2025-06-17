@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "tasks": [
+    {
+      "id": "task-1",
+      "title": "Create test file 1",
+      "description": "Create a simple test file",
+      "type": "code",
+      "priority": "high",
+      "status": "pending",
+      "sparcPhase": "code"
+    },
+    {
+      "id": "task-2", 
+      "title": "Create test file 2",
+      "description": "Create another test file",
+      "type": "code",
+      "priority": "high",
+      "status": "pending",
+      "sparcPhase": "code"
+    },
+    {
+      "id": "task-3",
+      "title": "Create test file 3",
+      "description": "Create third test file",
+      "type": "code", 
+      "priority": "medium",
+      "status": "pending",
+      "sparcPhase": "code"
+    },
+    {
+      "id": "task-4",
+      "title": "Create test file 4",
+      "description": "Create fourth test file",
+      "type": "code",
+      "priority": "medium", 
+      "status": "pending",
+      "sparcPhase": "code"
+    },
+    {
+      "id": "task-5",
+      "title": "Create test file 5", 
+      "description": "Create fifth test file",
+      "type": "code",
+      "priority": "low",
+      "status": "pending",
+      "sparcPhase": "code"
+    }
+  ]
+}

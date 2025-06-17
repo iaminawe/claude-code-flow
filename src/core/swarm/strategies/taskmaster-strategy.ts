@@ -145,7 +145,26 @@ export class TaskMasterStrategy implements SwarmStrategy {
   private async loadTasksFromFile(filename: string): Promise<TaskMasterTask[]> {
     try {
       const content = await Deno.readTextFile(filename);
-      return JSON.parse(content) as TaskMasterTask[];
+      
+      // Check if it's a JSON file (task export)
+      if (filename.endsWith('.json')) {
+        const data = JSON.parse(content);
+        // Handle both direct task array and wrapped format
+        if (Array.isArray(data)) {
+          return data as TaskMasterTask[];
+        } else if (data.tasks && Array.isArray(data.tasks)) {
+          return data.tasks as TaskMasterTask[];
+        }
+      } 
+      // If it's a PRD file, we need to generate tasks first
+      else if (filename.endsWith('.prd') || filename.endsWith('.md')) {
+        console.log('Generating tasks from PRD file...');
+        // Use TaskMaster to generate tasks from PRD
+        const tasks = await this.taskmaster.generateTasksFromPRD(filename);
+        return tasks;
+      }
+      
+      throw new Error('Unsupported file format. Use .json (exported tasks) or .prd (PRD document)');
     } catch (error) {
       console.error(`Failed to load tasks from file ${filename}:`, error);
       return [];

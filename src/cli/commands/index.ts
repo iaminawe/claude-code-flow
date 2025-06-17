@@ -10,7 +10,7 @@ import { JsonPersistenceManager } from "../../core/json-persistence.ts";
 import { swarmAction } from "./swarm.ts";
 import { SimpleMemoryManager } from "./memory.ts";
 import { sparcAction } from "./sparc.ts";
-import { createMigrateCommand } from "./migrate.ts";
+// import { createMigrateCommand } from "./migrate.ts"; // Temporarily disabled due to import issues
 import { taskmasterAction } from "./taskmaster.ts";
 
 let orchestrator: Orchestrator | null = null;
@@ -1399,9 +1399,9 @@ Now, please proceed with the task: ${task}`;
     action: sparcAction,
   });
 
-  // Migration command
-  const migrateCmd = createMigrateCommand();
-  cli.command(migrateCmd);
+  // Migration command (temporarily disabled due to import issues)
+  // const migrateCmd = createMigrateCommand();
+  // cli.command(migrateCmd);
 
   // TaskMaster command
   cli.command({

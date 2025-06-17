@@ -48,7 +48,11 @@ export class BackgroundExecutor extends EventEmitter {
 
   constructor(config: Partial<BackgroundExecutorConfig> = {}) {
     super();
-    this.logger = new Logger('BackgroundExecutor');
+    this.logger = new Logger({
+      level: 'info',
+      format: 'json',
+      destination: 'console'
+    }, { component: 'BackgroundExecutor' });
     this.config = {
       maxConcurrentTasks: 5,
       defaultTimeout: 300000, // 5 minutes

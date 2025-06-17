@@ -177,6 +177,10 @@ export class TaskMasterDenoBridge {
     return 'other';
   }
 
+  async generateTasksFromPRD(prdPath: string, options?: GenerateOptions): Promise<TaskMasterTask[]> {
+    return this.generateTasks(prdPath, options);
+  }
+
   async generateTasks(prdPath: string, options?: GenerateOptions): Promise<TaskMasterTask[]> {
     try {
       // First parse the PRD to get the parsed data

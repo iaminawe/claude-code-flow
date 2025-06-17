@@ -145,6 +145,7 @@ export async function swarmAction(ctx: CommandContext) {
         } else {
           console.log('  No dependencies');
         }
+        console.log('\n✅ Dry run completed successfully!');
         return;
       }
       
@@ -173,6 +174,11 @@ export async function swarmAction(ctx: CommandContext) {
     console.log(`Coordinator: ${options.coordinator}`);
     console.log(`Memory Namespace: ${options.memoryNamespace}`);
     console.log(`Timeout: ${options.timeout} minutes`);
+    return;
+  }
+  
+  // Exit early if this was a dry run (TaskMaster dry run already returned above)
+  if (options.dryRun) {
     return;
   }
   
@@ -219,6 +225,9 @@ export async function swarmAction(ctx: CommandContext) {
     success(`🐝 Initializing Claude Swarm: ${swarmId}`);
     console.log(`📋 Objective: ${objective}`);
     console.log(`🎯 Strategy: ${options.strategy}`);
+  } else {
+    // Exit early for dry-run mode - don't initialize anything
+    return;
   }
   
   try {

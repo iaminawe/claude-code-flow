@@ -1,0 +1,14 @@
+# Simple Test Project
+
+## Overview
+A minimal test project to verify TaskMaster and Swarm integration.
+
+## Requirements
+- Create a basic HTML page
+- Add simple styling
+- Include basic JavaScript
+
+## Features
+1. **Homepage** - Display welcome message
+2. **Styling** - Add CSS for appearance
+3. **Interactivity** - Add basic JavaScript

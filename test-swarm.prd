@@ -1,0 +1,21 @@
+# Simple Test Application
+
+## Overview
+Build a simple task management application to test the TaskMaster + BatchTool integration.
+
+## Requirements
+- Create a basic task list
+- Add task creation functionality
+- Implement task completion
+- Add basic styling
+
+## Technical Stack
+- Frontend: HTML/CSS/JavaScript
+- No backend required
+- Local storage for persistence
+
+## Tasks
+1. Create HTML structure
+2. Add CSS styling
+3. Implement JavaScript functionality
+4. Test the application

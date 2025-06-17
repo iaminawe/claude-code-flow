@@ -1,7 +1,9 @@
 import { EventEmitter } from 'node:events';
-import { Logger } from '../core/logger.ts';
+import { Logger, ILogger } from '../core/logger.ts';
 import { MemoryManager } from './manager.ts';
 import { generateId } from '../utils/helpers.ts';
+import { IEventBus } from '../core/event-bus.ts';
+import { MemoryConfig, MemoryEntry } from '../utils/types.ts';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
@@ -17,6 +19,11 @@ export interface SwarmMemoryEntry {
     tags?: string[];
     priority?: number;
     shareLevel?: 'private' | 'team' | 'public';
+    originalId?: string;
+    sharedFrom?: string;
+    sharedTo?: string;
+    sharedAt?: Date;
+    [key: string]: any;
   };
 }
 
@@ -64,12 +71,17 @@ export class SwarmMemoryManager extends EventEmitter {
   private entries: Map<string, SwarmMemoryEntry>;
   private knowledgeBases: Map<string, SwarmKnowledgeBase>;
   private agentMemories: Map<string, Set<string>>; // agentId -> set of entry IDs
-  private syncTimer?: NodeJS.Timeout;
+  private syncTimer: number | undefined;
   private isInitialized: boolean = false;
+  private eventBus: IEventBus;
 
   constructor(config: Partial<SwarmMemoryConfig> = {}) {
     super();
-    this.logger = new Logger('SwarmMemoryManager');
+    this.logger = new Logger({
+      level: 'info',
+      format: 'json',
+      destination: 'console'
+    });
     this.config = {
       namespace: 'swarm',
       enableDistribution: true,
@@ -87,11 +99,39 @@ export class SwarmMemoryManager extends EventEmitter {
     this.knowledgeBases = new Map();
     this.agentMemories = new Map();
 
-    this.baseMemory = new MemoryManager({
-      namespace: this.config.namespace,
-      enableBackup: true,
-      backupInterval: 300000 // 5 minutes
-    });
+    // Create a simple event bus for the memory manager
+    this.eventBus = {
+      emit: (event: string, data?: unknown) => {
+        this.emit(event, data);
+      },
+      on: (event: string, handler: (data: unknown) => void) => {
+        this.on(event, handler);
+      },
+      off: (event: string, handler: (data: unknown) => void) => {
+        this.off(event, handler);
+      },
+      once: (event: string, handler: (data: unknown) => void) => {
+        this.once(event, handler);
+      }
+    };
+
+    // Create memory config that matches what MemoryManager expects
+    const memoryConfig: MemoryConfig = {
+      backend: 'markdown' as const,
+      markdownDir: this.config.persistencePath,
+      cacheSizeMB: 50,
+      retentionDays: 30,
+      syncInterval: this.config.syncInterval,
+      conflictResolution: 'last-write' as const
+    };
+
+    console.log('SwarmMemoryManager: Creating MemoryManager with config:', memoryConfig);
+
+    this.baseMemory = new MemoryManager(
+      memoryConfig,
+      this.eventBus,
+      this.logger
+    );
   }
 
   async initialize(): Promise<void> {
@@ -112,7 +152,7 @@ export class SwarmMemoryManager extends EventEmitter {
     if (this.config.syncInterval > 0) {
       this.syncTimer = setInterval(() => {
         this.syncMemoryState();
-      }, this.config.syncInterval);
+      }, this.config.syncInterval) as unknown as number;
     }
 
     this.isInitialized = true;
@@ -166,17 +206,24 @@ export class SwarmMemoryManager extends EventEmitter {
     this.agentMemories.get(agentId)!.add(entryId);
 
     // Store in base memory for persistence
-    await this.baseMemory.remember({
-      namespace: this.config.namespace,
-      key: `entry:${entryId}`,
+    const memoryEntry: MemoryEntry = {
+      id: entryId,
+      agentId,
+      sessionId: 'swarm',
+      type: 'artifact',
       content: JSON.stringify(entry),
-      metadata: {
+      context: {
         type: 'swarm-memory',
-        agentId,
         entryType: type,
         shareLevel: entry.metadata.shareLevel
-      }
-    });
+      },
+      timestamp: new Date(),
+      tags: entry.metadata.tags || [],
+      version: 1,
+      metadata: entry.metadata
+    };
+    
+    await this.baseMemory.store(memoryEntry);
 
     this.logger.debug(`Agent ${agentId} remembered: ${type} - ${entryId}`);
     this.emit('memory:added', entry);

@@ -8,6 +8,7 @@ import { TaskMasterDenoBridge } from '../deno-bridge.ts';
 import { AgentMappingService } from '../services/agent-mapping-service.ts';
 import { TaskMasterProgressMonitor } from '../services/progress-monitor.ts';
 import { TaskMasterStatusSync } from '../services/status-sync.ts';
+import { ExecutionStorage } from '../services/execution-storage.ts';
 import type { Task as TaskMasterTask } from '../types/task-types.ts';
 import type { Task as ClaudeFlowTask } from '../../../core/types/task.types.ts';
 
@@ -35,6 +36,7 @@ export class TaskMasterOrchestratorAdapter {
   private taskmaster: TaskMasterDenoBridge;
   private progressMonitor: TaskMasterProgressMonitor;
   private statusSync: TaskMasterStatusSync;
+  private executionStorage: ExecutionStorage;
 
   constructor() {
     this.taskAdapter = new TaskAdapter();
@@ -42,6 +44,7 @@ export class TaskMasterOrchestratorAdapter {
     this.taskmaster = new TaskMasterDenoBridge();
     this.progressMonitor = new TaskMasterProgressMonitor(this.taskmaster);
     this.statusSync = new TaskMasterStatusSync(this.taskmaster, this);
+    this.executionStorage = new ExecutionStorage();
   }
 
   /**
@@ -77,11 +80,30 @@ export class TaskMasterOrchestratorAdapter {
       // 5. Submit to orchestrator (placeholder for now)
       const executionId = this.generateExecutionId();
       
+      // Save execution to storage
+      await this.executionStorage.saveExecution({
+        executionId,
+        taskId,
+        status: 'queued',
+        mode: 'single',
+        startTime: new Date().toISOString(),
+        metadata: {
+          taskTitle: tmTask.title,
+          taskType: tmTask.type,
+          priority: tmTask.priority,
+          sparcMode: tmTask.sparc_mode,
+          agentType: options?.agentType || 'auto'
+        }
+      });
+      
       // Track execution in progress monitor
       this.progressMonitor.trackExecution(taskId, executionId);
       
       // Update task status in TaskMaster
       await this.taskmaster.updateTaskStatus(taskId, 'in_progress');
+      
+      // Update execution status to running
+      await this.executionStorage.updateExecutionStatus(executionId, 'running');
       
       // Queue status sync
       this.statusSync.queueStatusUpdate(taskId, 'in_progress', 'orchestrator');
@@ -175,11 +197,26 @@ export class TaskMasterOrchestratorAdapter {
    * Get execution status
    */
   async getExecutionStatus(executionId: string): Promise<any> {
-    // Placeholder implementation
+    const execution = await this.executionStorage.getExecution(executionId);
+    
+    if (!execution) {
+      return {
+        executionId,
+        status: 'unknown',
+        message: 'Execution not found'
+      };
+    }
+    
     return {
-      executionId,
-      status: 'unknown',
-      message: 'Status tracking not yet implemented'
+      executionId: execution.executionId,
+      status: execution.status,
+      mode: execution.mode,
+      startTime: execution.startTime,
+      endTime: execution.endTime,
+      progress: execution.progress,
+      metadata: execution.metadata,
+      logs: execution.logs,
+      error: execution.error
     };
   }
 

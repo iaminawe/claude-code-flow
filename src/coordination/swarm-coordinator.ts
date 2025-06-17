@@ -250,21 +250,30 @@ export class SwarmCoordinator extends EventEmitter {
 
   async createObjective(description: string, strategy: SwarmObjective['strategy'] = 'auto'): Promise<string> {
     const objectiveId = generateId('objective');
-    const objective: SwarmObjective = {
-      id: objectiveId,
-      description,
-      strategy,
-      tasks: [],
-      status: 'planning',
-      createdAt: new Date()
-    };
+    
+    // Check for TaskMaster objective
+    let objective: SwarmObjective;
+    if (strategy === 'taskmaster' && (globalThis as any).__taskmasterObjective) {
+      objective = (globalThis as any).__taskmasterObjective;
+      objective.id = objectiveId;
+      this.logger.info(`Using TaskMaster objective with ${objective.tasks.length} pre-loaded tasks`);
+    } else {
+      objective = {
+        id: objectiveId,
+        description,
+        strategy,
+        tasks: [],
+        status: 'planning',
+        createdAt: new Date()
+      };
+      
+      // Decompose objective into tasks
+      const tasks = await this.decomposeObjective(objective);
+      objective.tasks = tasks;
+    }
 
     this.objectives.set(objectiveId, objective);
     this.logger.info(`Created objective: ${objectiveId} - ${description}`);
-
-    // Decompose objective into tasks
-    const tasks = await this.decomposeObjective(objective);
-    objective.tasks = tasks;
 
     // Store in memory
     const memoryEntry: MemoryEntry = {
@@ -276,7 +285,7 @@ export class SwarmCoordinator extends EventEmitter {
       context: {
         type: 'objective',
         strategy,
-        taskCount: tasks.length
+        taskCount: objective.tasks.length
       },
       timestamp: new Date(),
       tags: ['swarm', 'objective'],

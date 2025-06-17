@@ -115,7 +115,17 @@ export ANTHROPIC_API_KEY='your-api-key'
 
 # Direct PRD execution
 ./claude-flow swarm start --taskmaster-prd project.prd --ui
+
+# Execute from specific TaskMaster file
+./claude-flow swarm start --taskmaster-file taskmaster-output.json --ui --max-agents 8
 ```
+
+#### Important: Swarm-TaskMaster Monitoring
+When using `--taskmaster` with swarm:
+- Tasks are converted to swarm format and executed by the swarm coordinator
+- The swarm executes tasks independently without updating TaskMaster's tracking
+- **Use `./claude-flow monitor` to monitor swarm execution, NOT `taskmaster monitor`**
+- TaskMaster monitor only tracks TaskMaster's own execution queue
 
 ## AI Enhancement Configuration
 
@@ -252,10 +262,12 @@ export ANTHROPIC_API_KEY='sk-ant-...'
 
 ## Troubleshooting
 
-### Common Issues (v1.1.4 - Most Issues Fixed!)
+### Common Issues (v1.1.5 - Swarm-TaskMaster Integration Fixed!)
 - **Mode not found**: ✅ Fixed - `.roomodes` parsing now works correctly
 - **Task execution fails**: ✅ Fixed - Duplicate `getTaskById` resolved, use UUID from task list
 - **Bulk execution returns 0 tasks**: ✅ Fixed - `fetchAllTasks` implemented
+- **Swarm not executing TaskMaster tasks**: ✅ Fixed - Swarm now properly loads and executes TaskMaster tasks
+- **TaskMaster monitor shows 0 tasks with swarm**: ✅ Expected behavior - use `./claude-flow monitor` for swarm execution
 - **Memory persistence**: Ensure `memory/` directory has write permissions
 - **Tool access**: Verify required tools are available for the selected mode
 - **Performance issues**: Check BatchTool settings in `.roomodes` metadata

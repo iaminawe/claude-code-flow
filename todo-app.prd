@@ -1,0 +1,24 @@
+# Simple Todo List Application
+
+## Overview
+A minimal todo list application with core CRUD functionality for managing tasks.
+
+## Requirements
+
+### Core Features
+- Add new todo items
+- Mark todos as complete/incomplete
+- Delete todo items
+- View all todos with status
+
+### Technical Requirements
+- Clean, modular architecture
+- Test-driven development
+- Simple UI (CLI or basic web)
+- Persistent storage (file-based)
+
+### User Stories
+- As a user, I want to add tasks to my todo list
+- As a user, I want to mark tasks as complete
+- As a user, I want to delete tasks I no longer need
+- As a user, I want to see all my tasks and their status

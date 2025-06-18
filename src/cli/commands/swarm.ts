@@ -16,14 +16,20 @@ export async function swarmAction(ctx: CommandContext) {
     return;
   }
   
-  // The objective should be all the non-flag arguments joined together
-  const objective = ctx.args.join(' ').trim();
+  // Check if TaskMaster mode is requested
+  const isTaskMaster = ctx.flags.taskmaster || ctx.flags.tm;
+  const taskmasterPRD = ctx.flags['taskmaster-prd'];
+  const taskmasterFile = ctx.flags['taskmaster-file'];
   
-  if (!objective) {
-    error("Usage: swarm <objective>");
+  let objective = ctx.args.join(' ').trim();
+  
+  if (!objective && !isTaskMaster && !taskmasterPRD && !taskmasterFile) {
+    error("Usage: swarm <objective> [options]");
     console.log("\nExamples:");
     console.log('  claude-flow swarm "Build a REST API"');
     console.log('  claude-flow swarm "Research cloud architecture"');
+    console.log('  claude-flow swarm --taskmaster                  # Execute TaskMaster tasks from memory');
+    console.log('  claude-flow swarm --taskmaster-prd project.prd  # Execute from PRD file');
     console.log("\nOptions:");
     console.log('  --dry-run              Show configuration without executing');
     console.log('  --strategy <type>      Strategy: auto, research, development, analysis');
@@ -38,6 +44,11 @@ export async function swarmAction(ctx: CommandContext) {
     console.log('  --distributed          Enable distributed coordination');
     console.log('  --memory-namespace     Memory namespace for swarm (default: swarm)');
     console.log('  --persistence          Enable task persistence (default: true)');
+    console.log('\nTaskMaster Options:');
+    console.log('  --taskmaster, --tm     Execute TaskMaster tasks from memory');
+    console.log('  --taskmaster-prd <prd> Execute tasks from specific PRD file');
+    console.log('  --taskmaster-file <f>  Execute tasks from JSON file');
+    console.log('  --filter <key=val>     Filter tasks (priority=high,status=pending)');
     return;
   }
   
@@ -63,7 +74,93 @@ export async function swarmAction(ctx: CommandContext) {
   
   const swarmId = generateId('swarm');
   
-  if (options.dryRun) {
+  // Handle TaskMaster integration
+  if (isTaskMaster || taskmasterPRD || taskmasterFile) {
+    try {
+      const { TaskMasterStrategy } = await import('../../core/swarm/strategies/taskmaster-strategy.ts');
+      const tmStrategy = new TaskMasterStrategy();
+      
+      // Build TaskMaster input configuration
+      let tmInput;
+      if (taskmasterPRD) {
+        tmInput = {
+          source: 'file' as const,
+          prdFile: taskmasterPRD
+        };
+        objective = `Execute TaskMaster tasks from ${taskmasterPRD}`;
+      } else if (taskmasterFile) {
+        tmInput = {
+          source: 'file' as const,
+          prdFile: taskmasterFile
+        };
+        objective = `Execute TaskMaster tasks from ${taskmasterFile}`;
+      } else {
+        tmInput = {
+          source: 'memory' as const
+        };
+        objective = 'Execute TaskMaster tasks from memory';
+      }
+      
+      // Add filter if provided
+      if (ctx.flags.filter) {
+        const filter: any = {};
+        const filterParts = (ctx.flags.filter as string).split(',');
+        for (const part of filterParts) {
+          const [key, value] = part.split('=');
+          filter[key] = value;
+        }
+        tmInput.filter = filter;
+      }
+      
+      info('Loading TaskMaster tasks...');
+      const tmObjective = await tmStrategy.createObjective(tmInput);
+      
+      success(`Loaded ${tmObjective.tasks.length} TaskMaster tasks`);
+      
+      if (options.dryRun) {
+        warning('DRY RUN - TaskMaster Configuration:');
+        console.log(`Swarm ID: ${swarmId}`);
+        console.log(`Objective: ${objective}`);
+        console.log(`Total Tasks: ${tmObjective.tasks.length}`);
+        console.log(`Strategy: TaskMaster`);
+        console.log(`Source: ${tmInput.source}`);
+        if (tmInput.filter) {
+          console.log(`Filter: ${JSON.stringify(tmInput.filter)}`);
+        }
+        console.log(`Max Agents: ${options.maxAgents}`);
+        console.log(`Parallel: ${options.parallel}`);
+        console.log('\nTasks:');
+        tmObjective.tasks.slice(0, 5).forEach((task, i) => {
+          console.log(`  ${i + 1}. ${task.name} [Priority: ${task.priority}]`);
+          if (task.metadata?.sparcMode) {
+            console.log(`     SPARC Mode: ${task.metadata.sparcMode}`);
+          }
+        });
+        if (tmObjective.tasks.length > 5) {
+          console.log(`  ... and ${tmObjective.tasks.length - 5} more tasks`);
+        }
+        console.log('\nDependencies:');
+        if (tmObjective.constraints?.dependencies && tmObjective.constraints.dependencies.length > 0) {
+          console.log(`  ${tmObjective.constraints.dependencies.length} task dependencies defined`);
+        } else {
+          console.log('  No dependencies');
+        }
+        return;
+      }
+      
+      // Override strategy to use TaskMaster tasks
+      options.strategy = 'taskmaster' as any;
+      
+      // Store the TaskMaster objective for the coordinator
+      (globalThis as any).__taskmasterObjective = tmObjective;
+      
+    } catch (err) {
+      error(`Failed to load TaskMaster tasks: ${err instanceof Error ? err.message : String(err)}`);
+      return;
+    }
+  }
+  
+  if (options.dryRun && !isTaskMaster) {
     warning('DRY RUN - Swarm Configuration:');
     console.log(`Swarm ID: ${swarmId}`);
     console.log(`Objective: ${objective}`);
@@ -117,9 +214,12 @@ export async function swarmAction(ctx: CommandContext) {
     }
   }
   
-  success(`🐝 Initializing Claude Swarm: ${swarmId}`);
-  console.log(`📋 Objective: ${objective}`);
-  console.log(`🎯 Strategy: ${options.strategy}`);
+  // Skip initialization if we're in dry-run mode
+  if (!options.dryRun) {
+    success(`🐝 Initializing Claude Swarm: ${swarmId}`);
+    console.log(`📋 Objective: ${objective}`);
+    console.log(`🎯 Strategy: ${options.strategy}`);
+  }
   
   try {
     // Initialize swarm coordination system

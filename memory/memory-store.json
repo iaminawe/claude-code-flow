@@ -90,5 +90,84 @@
       "namespace": "default",
       "timestamp": 1750109707314
     }
+  ],
+  "taskmaster_prds": [],
+  "taskmaster_tasks": [],
+  "[object Object]": [
+    {
+      "key": "config",
+      "value": "taskmaster_swarm_config",
+      "namespace": {
+        "execution": {
+          "defaultParallel": true,
+          "maxConcurrentTasks": 5,
+          "taskTimeout": 300000,
+          "retryAttempts": 3,
+          "retryDelay": 5000
+        },
+        "agentSelection": {
+          "preferredAgentTypes": {
+            "architect": [
+              "coordinator",
+              "analyzer"
+            ],
+            "code": [
+              "developer",
+              "coder"
+            ],
+            "tdd": [
+              "tester",
+              "developer"
+            ],
+            "debug": [
+              "debugger",
+              "analyzer"
+            ],
+            "docs-writer": [
+              "documenter",
+              "writer"
+            ],
+            "security-review": [
+              "security",
+              "analyzer"
+            ]
+          },
+          "agentLoadBalancing": true,
+          "maxAgentsPerType": 3
+        },
+        "prioritization": {
+          "algorithm": "smart",
+          "priorityWeights": {
+            "high": 100,
+            "medium": 50,
+            "low": 10
+          },
+          "considerDeadlines": true
+        },
+        "monitoring": {
+          "enableDetailedLogging": false,
+          "progressUpdateInterval": 1000,
+          "metricsCollection": true,
+          "alertThresholds": {
+            "taskDurationWarning": 600000,
+            "failureRateAlert": 0.2,
+            "queueSizeWarning": 50
+          }
+        },
+        "sync": {
+          "autoSync": true,
+          "syncInterval": 5000,
+          "conflictResolution": "orchestrator",
+          "syncOnTaskComplete": true
+        },
+        "optimization": {
+          "enableSmartScheduling": true,
+          "predictiveAgentAssignment": false,
+          "adaptiveConcurrency": true,
+          "learningEnabled": false
+        }
+      },
+      "timestamp": 1750113174666
+    }
   ]
 }

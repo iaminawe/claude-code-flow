@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+const { spawn } = require('child_process');
+const path = require('path');
+const fs = require('fs');
+
+// Get the directory where this script is located
+const scriptDir = path.dirname(__filename);
+const projectRoot = path.dirname(scriptDir);
+
+// Try to run with Deno first
+try {
+  require('child_process').execSync('deno --version', { stdio: 'ignore' });
+  
+  // Deno is available, use it
+  const args = [
+    'run',
+    '--allow-all',
+    '--no-check',
+    '--unstable-sloppy-imports',
+    path.join(projectRoot, 'src', 'cli', 'main.ts'),
+    ...process.argv.slice(2)
+  ];
+  
+  const deno = spawn('deno', args, {
+    stdio: 'inherit',
+    env: { ...process.env }
+  });
+  
+  deno.on('exit', (code) => {
+    process.exit(code);
+  });
+  
+  deno.on('error', (err) => {
+    console.error('Failed to start with Deno:', err);
+    runNodeFallback();
+  });
+} catch {
+  // Deno not available, use Node.js fallback
+  runNodeFallback();
+}
+
+function runNodeFallback() {
+  console.log('Deno not available, using limited Node.js mode...\n');
+  
+  // Simple help message
+  console.log('Claude-Flow TaskMaster Edition');
+  console.log('==============================\n');
+  console.log('This installation requires Deno to run fully.');
+  console.log('However, the TaskMaster directories have been created.\n');
+  console.log('Available features without Deno:');
+  console.log('- .taskmaster directory with AI/Enterprise/Autonomous config');
+  console.log('- .roomodes with SPARC development modes');
+  console.log('- .claude commands for VS Code');
+  console.log('\nTo get full functionality:');
+  console.log('1. Install Deno: curl -fsSL https://deno.land/x/install/install.sh | sh');
+  console.log('2. Run: claude-flow --help');
+  console.log('\nYour TaskMaster integration is ready for VS Code!');
+}

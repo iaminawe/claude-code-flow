@@ -9,13 +9,9 @@ import { FakeTime } from "https://deno.land/std@0.220.0/testing/time.ts";
 import { spy, stub } from "https://deno.land/std@0.220.0/testing/mock.ts";
 
 import { 
-  AsyncTestUtils, 
-  TestAssertions,
-  MockFactory,
-  FileSystemTestUtils
-} from '../../utils/test-utils.ts';
-import { generateCLITestScenarios } from '../../fixtures/generators.ts';
-import { setupTestEnv, cleanupTestEnv, TEST_CONFIG } from '../../test.config.ts';
+  AsyncTestUtils,
+  PerformanceTestUtils
+} from '../../test.utils.ts';
 
 // Mock CLI infrastructure
 interface CLICommand {
@@ -73,7 +69,7 @@ class MockCLI {
       this.context.exitCode = exitCode;
       return exitCode;
     } catch (error) {
-      this.stderr(`Error: ${error.message}`);
+      this.stderr(`Error: ${error instanceof Error ? error.message : String(error)}`);
       return 1;
     }
   }
@@ -746,10 +742,10 @@ describe('CLI Commands - Comprehensive Tests', () => {
           name: 'agent',
           description: 'Manage agents',
           options: [
-            { name: 'action', type: 'string', required: true },
-            { name: 'name', type: 'string' },
+            { name: 'action', description: 'Action to perform', type: 'string', required: true },
+            { name: 'name', description: 'Agent name', type: 'string' },
           ],
-          handler: async (args) => {
+          handler: async (args: any) => {
             cli.stdout(`Agent ${args.action} ${args.name || ''}`);
             return 0;
           },
@@ -758,10 +754,10 @@ describe('CLI Commands - Comprehensive Tests', () => {
           name: 'task',
           description: 'Manage tasks',
           options: [
-            { name: 'action', type: 'string', required: true },
-            { name: 'command', type: 'string' },
+            { name: 'action', description: 'Action to perform', type: 'string', required: true },
+            { name: 'command', description: 'Command to execute', type: 'string' },
           ],
-          handler: async (args) => {
+          handler: async (args: any) => {
             cli.stdout(`Task ${args.action} ${args.command || ''}`);
             return 0;
           },
@@ -844,8 +840,8 @@ describe('CLI Commands - Comprehensive Tests', () => {
           name: 'agent',
           description: 'Manage agents',
           options: [
-            { name: 'action', type: 'string', required: true },
-            { name: 'name', type: 'string' },
+            { name: 'action', description: 'Action to perform', type: 'string', required: true },
+            { name: 'name', description: 'Agent name', type: 'string' },
           ],
           handler: async (args) => {
             await AsyncTestUtils.delay(Math.random() * 100); // Simulate processing time
@@ -858,8 +854,8 @@ describe('CLI Commands - Comprehensive Tests', () => {
           name: 'task',
           description: 'Manage tasks',
           options: [
-            { name: 'action', type: 'string', required: true },
-            { name: 'command', type: 'string' },
+            { name: 'action', description: 'Action to perform', type: 'string', required: true },
+            { name: 'command', description: 'Command to execute', type: 'string' },
           ],
           handler: async (args) => {
             await AsyncTestUtils.delay(Math.random() * 100); // Simulate processing time
@@ -918,8 +914,8 @@ describe('CLI Commands - Comprehensive Tests', () => {
         name: 'perf-test',
         description: 'Performance test command',
         options: [
-          { name: 'iterations', type: 'number', default: 100 },
-          { name: 'delay', type: 'number', default: 0 },
+          { name: 'iterations', description: 'Number of iterations', type: 'number', default: 100 },
+          { name: 'delay', description: 'Delay between iterations', type: 'number', default: 0 },
         ],
         handler: async (args) => {
           for (let i = 0; i < args.iterations; i++) {

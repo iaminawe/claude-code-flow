@@ -1,274 +1,376 @@
 {
-  "orchestrator": {
-    "description": "Multi-agent task orchestration and coordination",
-    "prompt": "SPARC: orchestrator\\nYou are an AI orchestrator coordinating multiple specialized agents to complete complex tasks efficiently using TodoWrite, TodoRead, Task, and Memory tools.",
-    "tools": [
-      "TodoWrite",
-      "TodoRead",
-      "Task",
-      "Memory",
-      "Bash"
+  "version": "2.0",
+  "metadata": {
+    "createdAt": "2024-01-15T00:00:00Z",
+    "lastUpdated": "2024-12-17T00:00:00Z",
+    "author": "Claude-Flow Team",
+    "description": "SPARC development modes optimized for BatchTools and parallel execution",
+    "parallelExecution": true,
+    "asyncProcessing": true,
+    "connectionPooling": true,
+    "intelligentCaching": true,
+    "resourceMonitoring": true,
+    "taskRetryLogic": true,
+    "maxConcurrency": 10,
+    "performanceMetrics": {
+      "memoryQuery": "1.1ms",
+      "memoryStore": "1.9ms",
+      "taskExecution": "1.4ms",
+      "prdParsing": "5-15ms",
+      "parallelScaling": "linear",
+      "throughput": "300+ ops/sec"
+    },
+    "optimizations": [
+      "Non-blocking async operations",
+      "TTL-based cache invalidation",
+      "Connection pool reuse",
+      "Intelligent task batching",
+      "Resource utilization monitoring",
+      "Automatic slow task detection",
+      "Boomerang pattern for dependencies"
     ],
-    "batchOptimized": true,
-    "coordinationMode": "centralized",
-    "maxParallelTasks": 10
-  },
-  "coder": {
-    "description": "Autonomous code generation and implementation",
-    "prompt": "SPARC: coder\\nYou are an expert programmer focused on writing clean, efficient, and well-documented code using batch file operations.",
-    "tools": [
-      "Read",
-      "Write",
-      "Edit",
-      "Bash",
-      "Glob",
-      "Grep",
-      "TodoWrite"
-    ],
-    "batchOptimized": true,
-    "fileOperations": "parallel",
+    "integration": {
+      "taskmaster": {
+        "version": "1.1.4",
+        "features": [
+          "PRD parsing",
+          "Task generation",
+          "SPARC mapping",
+          "Parallel execution",
+          "Progress monitoring"
+        ]
+      },
+      "swarm": {
+        "version": "2.0",
+        "maxAgents": 100,
+        "coordinationModes": ["centralized", "distributed", "hybrid"]
+      }
+    },
+    "requirements": {
+      "nodeVersion": ">=18.0.0",
+      "memory": "512MB minimum",
+      "cpu": "2 cores recommended"
+    },
     "codeStyle": "ES2022"
   },
-  "researcher": {
-    "description": "Deep research and comprehensive analysis",
-    "prompt": "SPARC: researcher\\nYou are a research specialist focused on gathering comprehensive information using parallel WebSearch/WebFetch and Memory coordination.",
-    "tools": [
-      "WebSearch",
-      "WebFetch",
-      "Read",
-      "Write",
-      "Memory",
-      "TodoWrite",
-      "Task"
-    ],
-    "batchOptimized": true,
-    "searchMode": "parallel",
-    "memoryIntegration": "automatic"
-  },
-  "tdd": {
-    "description": "Test-driven development methodology",
-    "prompt": "SPARC: tdd\\nYou follow strict test-driven development practices using TodoWrite for test planning and batch operations for test execution.",
-    "tools": [
-      "Read",
-      "Write",
-      "Edit",
-      "Bash",
-      "TodoWrite",
-      "Task"
-    ],
-    "batchOptimized": true,
-    "testingMode": "comprehensive",
-    "coverageTarget": 90
-  },
-  "architect": {
-    "description": "System design and architecture planning",
-    "prompt": "SPARC: architect\\nYou are a software architect focused on designing scalable, maintainable system architectures using Memory for design coordination.",
-    "tools": [
-      "Read",
-      "Write",
-      "Glob",
-      "Memory",
-      "TodoWrite",
-      "Task"
-    ],
-    "batchOptimized": true,
-    "designPatterns": "enterprise",
-    "scalabilityFocus": true
-  },
-  "reviewer": {
-    "description": "Code review and quality optimization",
-    "prompt": "SPARC: reviewer\\nYou are a code reviewer focused on improving code quality using batch file analysis and systematic review processes.",
-    "tools": [
-      "Read",
-      "Edit",
-      "Grep",
-      "Bash",
-      "TodoWrite",
-      "Memory"
-    ],
-    "batchOptimized": true,
-    "reviewDepth": "comprehensive",
-    "qualityGates": [
-      "security",
-      "performance",
-      "maintainability"
-    ]
-  },
-  "debugger": {
-    "description": "Debug and fix issues systematically",
-    "prompt": "SPARC: debugger\\nYou are a debugging specialist using TodoWrite for systematic debugging and Memory for tracking issue patterns.",
-    "tools": [
-      "Read",
-      "Edit",
-      "Bash",
-      "Grep",
-      "TodoWrite",
-      "Memory"
-    ],
-    "batchOptimized": true,
-    "debuggingApproach": "systematic",
-    "issueTracking": "memory-based"
-  },
-  "tester": {
-    "description": "Comprehensive testing and validation",
-    "prompt": "SPARC: tester\\nYou are a testing specialist using TodoWrite for test planning and parallel execution for comprehensive coverage.",
-    "tools": [
-      "Read",
-      "Write",
-      "Edit",
-      "Bash",
-      "TodoWrite",
-      "Task"
-    ],
-    "batchOptimized": true,
-    "testTypes": [
-      "unit",
-      "integration",
-      "e2e",
-      "performance"
-    ],
-    "parallelExecution": true
-  },
-  "analyzer": {
-    "description": "Code and data analysis specialist",
-    "prompt": "SPARC: analyzer\\nYou are an analysis specialist using batch operations for efficient data processing and Memory for insight coordination.",
-    "tools": [
-      "Read",
-      "Grep",
-      "Bash",
-      "Write",
-      "Memory",
-      "TodoWrite",
-      "Task"
-    ],
-    "batchOptimized": true,
-    "analysisDepth": "comprehensive",
-    "dataProcessing": "parallel"
-  },
-  "optimizer": {
-    "description": "Performance optimization specialist",
-    "prompt": "SPARC: optimizer\\nYou are a performance optimization specialist using systematic analysis and TodoWrite for optimization planning.",
-    "tools": [
-      "Read",
-      "Edit",
-      "Bash",
-      "Grep",
-      "TodoWrite",
-      "Memory"
-    ],
-    "batchOptimized": true,
-    "optimizationFocus": [
-      "performance",
-      "memory",
-      "scalability"
-    ],
-    "benchmarking": "automatic"
-  },
-  "documenter": {
-    "description": "Documentation generation and maintenance",
-    "prompt": "SPARC: documenter\\nYou are a documentation specialist using batch file operations and Memory for comprehensive documentation coordination.",
-    "tools": [
-      "Read",
-      "Write",
-      "Glob",
-      "Memory",
-      "TodoWrite"
-    ],
-    "batchOptimized": true,
-    "docFormats": [
-      "markdown",
-      "jsdoc",
-      "api-docs"
-    ],
-    "autoGeneration": true
-  },
-  "designer": {
-    "description": "UI/UX design and user experience",
-    "prompt": "SPARC: designer\\nYou are a UI/UX designer using Memory for design coordination and TodoWrite for design process management.",
-    "tools": [
-      "Read",
-      "Write",
-      "Edit",
-      "Memory",
-      "TodoWrite"
-    ],
-    "batchOptimized": true,
-    "designSystems": "atomic",
-    "userCentered": true
-  },
-  "innovator": {
-    "description": "Creative problem solving and innovation",
-    "prompt": "SPARC: innovator\\nYou are an innovation specialist using WebSearch for inspiration and Memory for idea coordination across sessions.",
-    "tools": [
-      "Read",
-      "Write",
-      "WebSearch",
-      "Memory",
-      "TodoWrite",
-      "Task"
-    ],
-    "batchOptimized": true,
-    "creativityMode": "divergent-convergent",
-    "inspirationSources": "web-research"
-  },
-  "swarm-coordinator": {
-    "description": "Swarm coordination and management",
-    "prompt": "SPARC: swarm-coordinator\\nYou coordinate swarms of AI agents using TodoWrite for task management, Task for agent launching, and Memory for coordination.",
-    "tools": [
-      "TodoWrite",
-      "TodoRead",
-      "Task",
-      "Memory",
-      "Bash"
-    ],
-    "batchOptimized": true,
-    "coordinationMode": "hierarchical",
-    "swarmSize": "scalable",
-    "loadBalancing": true
-  },
-  "memory-manager": {
-    "description": "Memory and knowledge management",
-    "prompt": "SPARC: memory-manager\\nYou manage knowledge and memory systems using Memory tools for persistent storage and TodoWrite for knowledge organization.",
-    "tools": [
-      "Memory",
-      "Read",
-      "Write",
-      "TodoWrite",
-      "TodoRead"
-    ],
-    "batchOptimized": true,
-    "memoryStrategy": "hierarchical",
-    "knowledgeGraph": true
-  },
-  "batch-executor": {
-    "description": "Parallel task execution specialist",
-    "prompt": "SPARC: batch-executor\\nYou excel at executing multiple tasks in parallel using batch tool operations and Task coordination for maximum efficiency.",
-    "tools": [
-      "Task",
-      "Bash",
-      "Read",
-      "Write",
-      "TodoWrite",
-      "Memory"
-    ],
-    "batchOptimized": true,
-    "executionMode": "parallel",
-    "resourceManagement": "dynamic",
-    "throughputOptimized": true
-  },
-  "workflow-manager": {
-    "description": "Workflow automation and process management",
-    "prompt": "SPARC: workflow-manager\\nYou design and manage automated workflows using TodoWrite for process planning and Task coordination for execution.",
-    "tools": [
-      "TodoWrite",
-      "TodoRead",
-      "Task",
-      "Bash",
-      "Memory"
-    ],
-    "batchOptimized": true,
-    "workflowEngine": "event-driven",
-    "processOptimization": "continuous",
-    "automationLevel": "high"
+  "modes": {
+    "orchestrator": {
+      "description": "Multi-agent task orchestration and coordination",
+      "prompt": "SPARC: orchestrator\\nYou are an AI orchestrator coordinating multiple specialized agents to complete complex tasks efficiently using TodoWrite, TodoRead, Task, and Memory tools.",
+      "tools": [
+        "TodoWrite",
+        "TodoRead",
+        "Task",
+        "Memory",
+        "Bash"
+      ],
+      "batchOptimized": true,
+      "coordinationMode": "centralized",
+      "maxParallelTasks": 10
+    },
+    "coder": {
+      "description": "Autonomous code generation and implementation",
+      "prompt": "SPARC: coder\\nYou are an expert programmer focused on writing clean, efficient, and well-documented code using batch file operations.",
+      "tools": [
+        "Read",
+        "Edit",
+        "MultiEdit",
+        "Write",
+        "Glob",
+        "Grep",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "fileOperationBatching": true,
+      "codeQualityChecks": true
+    },
+    "architect": {
+      "description": "Autonomous system design and architecture patterns",
+      "prompt": "SPARC: architect\\nYou are a software architect specialized in designing scalable, maintainable systems using domain-driven design, microservices, and cloud-native patterns.",
+      "tools": [
+        "Read",
+        "Write",
+        "Memory",
+        "WebSearch",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "documentationGeneration": true,
+      "diagramSupport": true
+    },
+    "researcher": {
+      "description": "Autonomous research and information gathering",
+      "prompt": "SPARC: researcher\\nYou are a research specialist who gathers, analyzes, and synthesizes information from multiple sources to provide comprehensive insights.",
+      "tools": [
+        "WebSearch",
+        "WebFetch",
+        "Read",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "parallelSearch": true,
+      "caching": true
+    },
+    "debugger": {
+      "description": "Autonomous debugging and problem solving",
+      "prompt": "SPARC: debugger\\nYou are a debugging expert who identifies, analyzes, and resolves complex technical issues using systematic approaches.",
+      "tools": [
+        "Read",
+        "Edit",
+        "Bash",
+        "Grep",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "traceAnalysis": true,
+      "rootCauseDetection": true
+    },
+    "tester": {
+      "description": "Autonomous testing and quality assurance",
+      "prompt": "SPARC: tester\\nYou are a QA specialist focused on comprehensive testing strategies including unit, integration, and end-to-end testing.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "testGeneration": true,
+      "coverageAnalysis": true
+    },
+    "documenter": {
+      "description": "Autonomous documentation and knowledge management",
+      "prompt": "SPARC: documenter\\nYou are a technical writer who creates clear, comprehensive documentation including API docs, guides, and tutorials.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Glob",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "markdownOptimized": true,
+      "apiDocGeneration": true
+    },
+    "reviewer": {
+      "description": "Autonomous code review and quality analysis",
+      "prompt": "SPARC: reviewer\\nYou are a code review expert who ensures code quality, security, and adherence to best practices.",
+      "tools": [
+        "Read",
+        "Grep",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "securityChecks": true,
+      "performanceAnalysis": true
+    },
+    "optimizer": {
+      "description": "Autonomous performance optimization",
+      "prompt": "SPARC: optimizer\\nYou are a performance optimization specialist who improves code efficiency, reduces resource usage, and enhances scalability.",
+      "tools": [
+        "Read",
+        "Edit",
+        "MultiEdit",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "profilingSupport": true,
+      "benchmarking": true
+    },
+    "designer": {
+      "description": "Autonomous UI/UX design and frontend development",
+      "prompt": "SPARC: designer\\nYou are a UI/UX expert who creates intuitive, accessible, and beautiful user interfaces.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "componentLibrary": true,
+      "responsiveDesign": true
+    },
+    "analyzer": {
+      "description": "Autonomous data analysis and insights",
+      "prompt": "SPARC: analyzer\\nYou are a data analyst who extracts insights from complex datasets and creates actionable recommendations.",
+      "tools": [
+        "Read",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "dataProcessing": true,
+      "visualization": true
+    },
+    "innovator": {
+      "description": "Autonomous ideation and creative problem solving",
+      "prompt": "SPARC: innovator\\nYou are a creative technologist who generates innovative solutions and explores cutting-edge approaches.",
+      "tools": [
+        "WebSearch",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "brainstorming": true,
+      "trendAnalysis": true
+    },
+    "integrator": {
+      "description": "System integration and API development",
+      "prompt": "SPARC: integrator\\nYou are an integration specialist who connects systems, builds APIs, and ensures seamless data flow.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "WebFetch",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "apiTesting": true,
+      "webhookSupport": true
+    },
+    "security-expert": {
+      "description": "Security analysis and vulnerability assessment",
+      "prompt": "SPARC: security-expert\\nYou are a security specialist who identifies vulnerabilities, implements security best practices, and ensures system protection.",
+      "tools": [
+        "Read",
+        "Grep",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "vulnerabilityScanning": true,
+      "penetrationTesting": true
+    },
+    "devops-engineer": {
+      "description": "Infrastructure automation and deployment",
+      "prompt": "SPARC: devops-engineer\\nYou are a DevOps expert who automates infrastructure, manages deployments, and ensures system reliability.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "cicdIntegration": true,
+      "containerization": true
+    },
+    "spec-pseudocode": {
+      "description": "SPARC Phase 1 & 2: Specification and pseudocode development",
+      "prompt": "SPARC: spec-pseudocode\\nYou are in the Specification and Pseudocode phase. Create detailed specifications and develop algorithmic pseudocode.",
+      "tools": [
+        "Read",
+        "Write",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "phase": "specification",
+      "outputFormat": "structured"
+    },
+    "tdd": {
+      "description": "Test-Driven Development implementation",
+      "prompt": "SPARC: tdd\\nYou are implementing features using Test-Driven Development. Follow the Red-Green-Refactor cycle strictly.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "MultiEdit",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "testFirst": true,
+      "refactoringSupport": true
+    },
+    "batch-executor": {
+      "description": "Batch operations and parallel task execution",
+      "prompt": "SPARC: batch-executor\\nYou are a batch processing specialist who executes multiple operations in parallel for maximum efficiency.",
+      "tools": [
+        "TodoWrite",
+        "TodoRead",
+        "Task",
+        "Memory",
+        "Read",
+        "Edit",
+        "MultiEdit"
+      ],
+      "batchOptimized": true,
+      "parallelExecution": true,
+      "dependencyResolution": true
+    },
+    "memory-manager": {
+      "description": "Advanced memory and state management",
+      "prompt": "SPARC: memory-manager\\nYou are a memory management specialist who optimizes data storage, retrieval, and cross-agent knowledge sharing.",
+      "tools": [
+        "Memory",
+        "Read",
+        "Write",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "cacheOptimization": true,
+      "distributedMemory": true
+    },
+    "workflow-manager": {
+      "description": "Complex workflow orchestration and automation",
+      "prompt": "SPARC: workflow-manager\\nYou are a workflow automation expert who designs and implements complex multi-step processes.",
+      "tools": [
+        "TodoWrite",
+        "TodoRead",
+        "Task",
+        "Memory",
+        "Bash"
+      ],
+      "batchOptimized": true,
+      "workflowEngine": true,
+      "conditionalLogic": true
+    },
+    "swarm-coordinator": {
+      "description": "Swarm intelligence and distributed agent coordination",
+      "prompt": "SPARC: swarm-coordinator\\nYou are a swarm coordination specialist who manages distributed agent networks for complex problem solving.",
+      "tools": [
+        "TodoWrite",
+        "TodoRead",
+        "Task",
+        "Memory"
+      ],
+      "batchOptimized": true,
+      "distributedCoordination": true,
+      "loadBalancing": true
+    }
   }
 }

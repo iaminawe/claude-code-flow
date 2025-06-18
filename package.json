@@ -1,7 +1,7 @@
 {
   "name": "claude-flow",
   "version": "1.0.70",
-  "description": "Advanced AI agent orchestration system for Claude Code",
+  "description": "Advanced AI agent orchestration system with TaskMaster integration and BatchTool optimization",
   "main": "cli.js",
   "bin": {
     "claude-flow": "./cli.js"
@@ -27,18 +27,23 @@
     "orchestration",
     "mcp",
     "workflow",
-    "automation"
+    "automation",
+    "taskmaster",
+    "sparc",
+    "enterprise",
+    "autonomous",
+    "vscode-extension"
   ],
   "author": "rUv",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ruvnet/claude-code-flow.git"
+    "url": "https://github.com/iaminawe/claude-code-flow.git"
   },
   "bugs": {
-    "url": "https://github.com/ruvnet/claude-code-flow/issues"
+    "url": "https://github.com/iaminawe/claude-code-flow/issues"
   },
-  "homepage": "https://github.com/ruvnet/claude-code-flow#readme",
+  "homepage": "https://github.com/iaminawe/claude-code-flow#readme",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -47,17 +52,27 @@
     "bin/",
     "dist/",
     "src/",
+    ".taskmaster/",
     ".claude/",
+    ".roo/",
+    ".roomodes",
     "scripts/install.js",
     "scripts/swarm-blessed-ui.js",
     "scripts/swarm-simple.js",
     "scripts/swarm-example.sh",
     "README.md",
     "LICENSE",
+    "CLAUDE.md",
     "deno.json",
     "SWARM_TTY_SOLUTION.md",
-    "SWARM_VISIBILITY.md"
+    "SWARM_VISIBILITY.md",
+    "BINARY_DISTRIBUTION.md",
+    "PUBLISHING.md"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "better-sqlite3": "^11.10.0",

@@ -1,314 +1,376 @@
 {
   "version": "2.0",
   "metadata": {
-    "lastUpdated": "2025-06-16",
-    "optimizationStatus": "enhanced",
-    "batchToolsEnabled": true,
-    "features": {
-      "parallelExecution": true,
-      "asyncProcessing": true,
-      "connectionPooling": true,
-      "intelligentCaching": true,
-      "resourceMonitoring": true,
-      "boomerangPattern": true,
-      "dependencyResolution": true,
-      "taskMasterIntegration": true
-    }
-  },
-  "globalConfig": {
-    "defaultExecutor": "optimized",
+    "createdAt": "2024-01-15T00:00:00Z",
+    "lastUpdated": "2024-12-17T00:00:00Z",
+    "author": "Claude-Flow Team",
+    "description": "SPARC development modes optimized for BatchTools and parallel execution",
+    "parallelExecution": true,
+    "asyncProcessing": true,
+    "connectionPooling": true,
+    "intelligentCaching": true,
+    "resourceMonitoring": true,
+    "taskRetryLogic": true,
     "maxConcurrency": 10,
-    "defaultTimeout": 300000,
-    "caching": {
-      "enabled": true,
-      "ttl": 3600000,
-      "maxSize": 1000
+    "performanceMetrics": {
+      "memoryQuery": "1.1ms",
+      "memoryStore": "1.9ms",
+      "taskExecution": "1.4ms",
+      "prdParsing": "5-15ms",
+      "parallelScaling": "linear",
+      "throughput": "300+ ops/sec"
     },
-    "monitoring": {
-      "enabled": true,
-      "metricsInterval": 30000,
-      "slowTaskThreshold": 60000
+    "optimizations": [
+      "Non-blocking async operations",
+      "TTL-based cache invalidation",
+      "Connection pool reuse",
+      "Intelligent task batching",
+      "Resource utilization monitoring",
+      "Automatic slow task detection",
+      "Boomerang pattern for dependencies"
+    ],
+    "integration": {
+      "taskmaster": {
+        "version": "1.1.4",
+        "features": [
+          "PRD parsing",
+          "Task generation",
+          "SPARC mapping",
+          "Parallel execution",
+          "Progress monitoring"
+        ]
+      },
+      "swarm": {
+        "version": "2.0",
+        "maxAgents": 100,
+        "coordinationModes": ["centralized", "distributed", "hybrid"]
+      }
     },
-    "fileOperations": {
-      "outputDir": ".sparc/outputs",
-      "concurrency": 20
-    }
+    "requirements": {
+      "nodeVersion": ">=18.0.0",
+      "memory": "512MB minimum",
+      "cpu": "2 cores recommended"
+    },
+    "codeStyle": "ES2022"
   },
   "modes": {
+    "orchestrator": {
+      "description": "Multi-agent task orchestration and coordination",
+      "prompt": "SPARC: orchestrator\\nYou are an AI orchestrator coordinating multiple specialized agents to complete complex tasks efficiently using TodoWrite, TodoRead, Task, and Memory tools.",
+      "tools": [
+        "TodoWrite",
+        "TodoRead",
+        "Task",
+        "Memory",
+        "Bash"
+      ],
+      "batchOptimized": true,
+      "coordinationMode": "centralized",
+      "maxParallelTasks": 10
+    },
+    "coder": {
+      "description": "Autonomous code generation and implementation",
+      "prompt": "SPARC: coder\\nYou are an expert programmer focused on writing clean, efficient, and well-documented code using batch file operations.",
+      "tools": [
+        "Read",
+        "Edit",
+        "MultiEdit",
+        "Write",
+        "Glob",
+        "Grep",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "fileOperationBatching": true,
+      "codeQualityChecks": true
+    },
     "architect": {
-      "name": "System Architect",
-      "description": "Design system architecture and create component diagrams",
+      "description": "Autonomous system design and architecture patterns",
+      "prompt": "SPARC: architect\\nYou are a software architect specialized in designing scalable, maintainable systems using domain-driven design, microservices, and cloud-native patterns.",
       "tools": [
-        "read",
-        "write",
-        "edit",
-        "browser",
-        "mcp"
+        "Read",
+        "Write",
+        "Memory",
+        "WebSearch",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "system_design": true,
-        "architecture_diagrams": true,
-        "api_design": true,
-        "database_schemas": true,
-        "component_relationships": true
-      }
+      "batchOptimized": true,
+      "documentationGeneration": true,
+      "diagramSupport": true
     },
-    "code": {
-      "name": "Code Generator",
-      "description": "Generate clean, modular, and well-documented code",
+    "researcher": {
+      "description": "Autonomous research and information gathering",
+      "prompt": "SPARC: researcher\\nYou are a research specialist who gathers, analyzes, and synthesizes information from multiple sources to provide comprehensive insights.",
       "tools": [
-        "read",
-        "write",
-        "edit",
-        "execute"
+        "WebSearch",
+        "WebFetch",
+        "Read",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "code_generation": true,
-        "refactoring": true,
-        "optimization": true,
-        "best_practices": true
-      }
+      "batchOptimized": true,
+      "parallelSearch": true,
+      "caching": true
     },
-    "tdd": {
-      "name": "Test-Driven Developer",
-      "description": "Follow Red-Green-Refactor TDD cycle",
+    "debugger": {
+      "description": "Autonomous debugging and problem solving",
+      "prompt": "SPARC: debugger\\nYou are a debugging expert who identifies, analyzes, and resolves complex technical issues using systematic approaches.",
       "tools": [
-        "read",
-        "write",
-        "edit",
-        "execute"
+        "Read",
+        "Edit",
+        "Bash",
+        "Grep",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "test_first": true,
-        "red_green_refactor": true,
-        "test_coverage": true,
-        "regression_testing": true
-      }
+      "batchOptimized": true,
+      "traceAnalysis": true,
+      "rootCauseDetection": true
     },
-    "debug": {
-      "name": "Debug Specialist",
-      "description": "Advanced debugging and troubleshooting",
+    "tester": {
+      "description": "Autonomous testing and quality assurance",
+      "prompt": "SPARC: tester\\nYou are a QA specialist focused on comprehensive testing strategies including unit, integration, and end-to-end testing.",
       "tools": [
-        "read",
-        "edit",
-        "execute",
-        "browser"
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "error_analysis": true,
-        "performance_profiling": true,
-        "memory_debugging": true,
-        "trace_analysis": true
-      }
+      "batchOptimized": true,
+      "testGeneration": true,
+      "coverageAnalysis": true
     },
-    "security-review": {
-      "name": "Security Analyst",
+    "documenter": {
+      "description": "Autonomous documentation and knowledge management",
+      "prompt": "SPARC: documenter\\nYou are a technical writer who creates clear, comprehensive documentation including API docs, guides, and tutorials.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Glob",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "markdownOptimized": true,
+      "apiDocGeneration": true
+    },
+    "reviewer": {
+      "description": "Autonomous code review and quality analysis",
+      "prompt": "SPARC: reviewer\\nYou are a code review expert who ensures code quality, security, and adherence to best practices.",
+      "tools": [
+        "Read",
+        "Grep",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "securityChecks": true,
+      "performanceAnalysis": true
+    },
+    "optimizer": {
+      "description": "Autonomous performance optimization",
+      "prompt": "SPARC: optimizer\\nYou are a performance optimization specialist who improves code efficiency, reduces resource usage, and enhances scalability.",
+      "tools": [
+        "Read",
+        "Edit",
+        "MultiEdit",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "profilingSupport": true,
+      "benchmarking": true
+    },
+    "designer": {
+      "description": "Autonomous UI/UX design and frontend development",
+      "prompt": "SPARC: designer\\nYou are a UI/UX expert who creates intuitive, accessible, and beautiful user interfaces.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "componentLibrary": true,
+      "responsiveDesign": true
+    },
+    "analyzer": {
+      "description": "Autonomous data analysis and insights",
+      "prompt": "SPARC: analyzer\\nYou are a data analyst who extracts insights from complex datasets and creates actionable recommendations.",
+      "tools": [
+        "Read",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "dataProcessing": true,
+      "visualization": true
+    },
+    "innovator": {
+      "description": "Autonomous ideation and creative problem solving",
+      "prompt": "SPARC: innovator\\nYou are a creative technologist who generates innovative solutions and explores cutting-edge approaches.",
+      "tools": [
+        "WebSearch",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "brainstorming": true,
+      "trendAnalysis": true
+    },
+    "integrator": {
+      "description": "System integration and API development",
+      "prompt": "SPARC: integrator\\nYou are an integration specialist who connects systems, builds APIs, and ensures seamless data flow.",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "WebFetch",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
+      ],
+      "batchOptimized": true,
+      "apiTesting": true,
+      "webhookSupport": true
+    },
+    "security-expert": {
       "description": "Security analysis and vulnerability assessment",
+      "prompt": "SPARC: security-expert\\nYou are a security specialist who identifies vulnerabilities, implements security best practices, and ensures system protection.",
       "tools": [
-        "read",
-        "edit",
-        "browser"
+        "Read",
+        "Grep",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "vulnerability_scanning": true,
-        "security_best_practices": true,
-        "penetration_testing": true,
-        "compliance_checking": true
-      }
+      "batchOptimized": true,
+      "vulnerabilityScanning": true,
+      "penetrationTesting": true
     },
-    "docs-writer": {
-      "name": "Documentation Expert",
-      "description": "Create comprehensive documentation",
+    "devops-engineer": {
+      "description": "Infrastructure automation and deployment",
+      "prompt": "SPARC: devops-engineer\\nYou are a DevOps expert who automates infrastructure, manages deployments, and ensures system reliability.",
       "tools": [
-        "read",
-        "write",
-        "edit"
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "api_documentation": true,
-        "user_guides": true,
-        "technical_specs": true,
-        "readme_generation": true
-      }
-    },
-    "integration": {
-      "name": "Integration Engineer",
-      "description": "System integration and API coordination",
-      "tools": [
-        "read",
-        "write",
-        "edit",
-        "execute",
-        "browser",
-        "mcp"
-      ],
-      "capabilities": {
-        "api_integration": true,
-        "service_orchestration": true,
-        "data_mapping": true,
-        "protocol_handling": true
-      }
+      "batchOptimized": true,
+      "cicdIntegration": true,
+      "containerization": true
     },
     "spec-pseudocode": {
-      "name": "Specification Designer",
-      "description": "Create detailed specifications and pseudocode",
+      "description": "SPARC Phase 1 & 2: Specification and pseudocode development",
+      "prompt": "SPARC: spec-pseudocode\\nYou are in the Specification and Pseudocode phase. Create detailed specifications and develop algorithmic pseudocode.",
       "tools": [
-        "read",
-        "write",
-        "edit"
+        "Read",
+        "Write",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "requirement_analysis": true,
-        "algorithm_design": true,
-        "data_flow_modeling": true,
-        "edge_case_analysis": true
-      }
+      "batchOptimized": true,
+      "phase": "specification",
+      "outputFormat": "structured"
     },
-    "devops": {
-      "name": "DevOps Engineer",
-      "description": "Deployment, CI/CD, and infrastructure management",
+    "tdd": {
+      "description": "Test-Driven Development implementation",
+      "prompt": "SPARC: tdd\\nYou are implementing features using Test-Driven Development. Follow the Red-Green-Refactor cycle strictly.",
       "tools": [
-        "read",
-        "write",
-        "edit",
-        "execute"
+        "Read",
+        "Write",
+        "Edit",
+        "MultiEdit",
+        "Bash",
+        "Memory",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "ci_cd_pipelines": true,
-        "containerization": true,
-        "infrastructure_as_code": true,
-        "monitoring_setup": true
-      }
+      "batchOptimized": true,
+      "testFirst": true,
+      "refactoringSupport": true
     },
-    "swarm": {
-      "name": "Swarm Coordinator",
-      "description": "Multi-agent task coordination",
+    "batch-executor": {
+      "description": "Batch operations and parallel task execution",
+      "prompt": "SPARC: batch-executor\\nYou are a batch processing specialist who executes multiple operations in parallel for maximum efficiency.",
       "tools": [
-        "read",
-        "write",
-        "edit",
-        "execute",
-        "mcp"
+        "TodoWrite",
+        "TodoRead",
+        "Task",
+        "Memory",
+        "Read",
+        "Edit",
+        "MultiEdit"
       ],
-      "capabilities": {
-        "agent_orchestration": true,
-        "parallel_processing": true,
-        "task_delegation": true,
-        "result_aggregation": true
-      }
+      "batchOptimized": true,
+      "parallelExecution": true,
+      "dependencyResolution": true
     },
-    "mcp": {
-      "name": "MCP Integration Specialist",
-      "description": "Model Context Protocol integration",
+    "memory-manager": {
+      "description": "Advanced memory and state management",
+      "prompt": "SPARC: memory-manager\\nYou are a memory management specialist who optimizes data storage, retrieval, and cross-agent knowledge sharing.",
       "tools": [
-        "read",
-        "write",
-        "edit",
-        "execute",
-        "mcp"
+        "Memory",
+        "Read",
+        "Write",
+        "TodoWrite",
+        "TodoRead"
       ],
-      "capabilities": {
-        "protocol_implementation": true,
-        "service_integration": true,
-        "context_management": true,
-        "tool_development": true
-      }
+      "batchOptimized": true,
+      "cacheOptimization": true,
+      "distributedMemory": true
     },
-    "refinement-optimization-mode": {
-      "name": "Performance Optimizer",
-      "description": "Code refinement and performance optimization",
+    "workflow-manager": {
+      "description": "Complex workflow orchestration and automation",
+      "prompt": "SPARC: workflow-manager\\nYou are a workflow automation expert who designs and implements complex multi-step processes.",
       "tools": [
-        "read",
-        "edit",
-        "execute"
+        "TodoWrite",
+        "TodoRead",
+        "Task",
+        "Memory",
+        "Bash"
       ],
-      "capabilities": {
-        "performance_analysis": true,
-        "code_optimization": true,
-        "memory_optimization": true,
-        "algorithm_improvement": true
-      }
+      "batchOptimized": true,
+      "workflowEngine": true,
+      "conditionalLogic": true
     },
-    "monitoring": {
-      "name": "System Monitor",
-      "description": "Real-time monitoring and observability",
+    "swarm-coordinator": {
+      "description": "Swarm intelligence and distributed agent coordination",
+      "prompt": "SPARC: swarm-coordinator\\nYou are a swarm coordination specialist who manages distributed agent networks for complex problem solving.",
       "tools": [
-        "read",
-        "write",
-        "execute",
-        "browser"
+        "TodoWrite",
+        "TodoRead",
+        "Task",
+        "Memory"
       ],
-      "capabilities": {
-        "metrics_collection": true,
-        "log_analysis": true,
-        "alerting_setup": true,
-        "dashboard_creation": true
-      }
-    },
-    "ask": {
-      "name": "Interactive Assistant",
-      "description": "Interactive Q&A and guidance",
-      "tools": [
-        "read",
-        "browser"
-      ],
-      "capabilities": {
-        "question_answering": true,
-        "code_explanation": true,
-        "best_practice_guidance": true,
-        "learning_support": true
-      }
-    },
-    "generic": {
-      "name": "General Purpose",
-      "description": "Flexible mode for various tasks",
-      "tools": [
-        "read",
-        "write",
-        "edit",
-        "execute",
-        "browser",
-        "mcp"
-      ],
-      "capabilities": {
-        "general_coding": true,
-        "problem_solving": true,
-        "research": true,
-        "prototyping": true
-      }
-    },
-    "supabase-admin": {
-      "name": "Supabase Administrator",
-      "description": "Supabase database and backend management",
-      "tools": [
-        "read",
-        "write",
-        "edit",
-        "execute",
-        "browser",
-        "mcp"
-      ],
-      "capabilities": {
-        "database_management": true,
-        "auth_configuration": true,
-        "realtime_setup": true,
-        "storage_management": true
-      }
-    },
-    "tutorial": {
-      "name": "Tutorial Creator",
-      "description": "Create interactive tutorials and learning materials",
-      "tools": [
-        "read",
-        "write",
-        "edit"
-      ],
-      "capabilities": {
-        "step_by_step_guides": true,
-        "code_examples": true,
-        "interactive_exercises": true,
-        "concept_explanation": true
-      }
+      "batchOptimized": true,
+      "distributedCoordination": true,
+      "loadBalancing": true
     }
   }
 }

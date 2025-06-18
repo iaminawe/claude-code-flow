@@ -46,5 +46,12 @@ test-init
 test-full-init
 
 swarm-runs
-coordination/
-.claude/logs/
+
+# Temporary executables
+bin/*.tmp-*
+
+# Runtime data
+swarm-coordination/swarm/
+
+# Draft files
+QUICKSTART-TODO.md
